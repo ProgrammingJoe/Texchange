@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>UVic Bookstore :: Textbook Search</title>
+
+    <meta name="Description" content="University of Victoria Bookstore stocks a wide variety of textbooks, general reading books, UVic publications, clothing and gifts. Special requests are always welcome."/>
+    <meta name="robots" content="all,index,follow" />
+    <meta name="revisit-after" content="15 Days" />
+
+    <link rel="shortcut icon" href="/favicon.ico?v=2" />
+
+    <link rel="stylesheet" href="/css/ladda.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css" />
+
+    <link rel="stylesheet" href="/css/style2.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/print.css" type="text/css" media="print"/>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="/js/spin.min.js"></script>
+    <script type="text/javascript" src="/js/ladda.min.js"></script>
+
+    <script type="text/javascript" src="/lib/checkinput.js"></script>
+    <script type="text/javascript" src="/lib/validate_card.js"></script>
+    <script type="text/javascript" src="/js/submit.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-2274730-1', 'auto');
+        ga('require', 'linkid', 'linkid.js');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <!-- Piwik -->
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.uvicbookstore.ca/piwik/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', 1]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+            g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><p><img src="http://www.uvicbookstore.ca/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
+
+    
+</head>
+<body>
+<div id="wrapper">
+    <a href="/"><div id="logo"></div></a>
+
+    <div id="uppercart">
+        <a href="/account/index.php"><img src="/images/icons/acct.gif" alt="Your Account" width="88" height="12" border="0" align="bottom" /></a>
+        <img src="/images/icons/div.gif" width="7" height="12" alt=""/><a href="/shopcart.php"><img src="/images/icons/cart.gif" alt="View Cart" width="80" height="12" border="0"  /></a><img src="/images/icons/div.gif" width="7" height="12" alt=""/>
+
+                                            <a href="/login.php"><img src="/images/icons/login.gif" alt="Login" width="66" height="12" border="0" /></a>
+                        </div>
+
+    <div style="clear: both"></div>
+
+    <div id="header">
+        <img src="/images/bookstore-banner.jpg" alt="Banner" width="730" height="88" />
+    </div>
+
+    <div style="clear: both"></div>
+
+    <!--ZOOMSTOP-->
+    <!--ZOOMSTOPFOLLOW-->
+        <div class="nav-primary">
+        <ul class="nav"><li><a href="/">Home</a></li><li class="active there"><a href="/text/">Textbooks</a></li><li><a href="/general/">General Books</a></li><li><a href="/merch/index.php">Clothing, Gifts, & More</a></li><li><a href="/tech/">Technology</a></li><li><a href="/info/">Store Info</a></li><li><a href="/search/search.php">Search</a></li><li><a href="/events">Events</a></li><li><a href="/info/contact">Contact</a></li></ul>
+        <div style="clear: both"></div>
+    </div>
+    
+    <!--ZOOMRESTARTFOLLOW-->
+    <!--ZOOMRESTART-->
+    <div class="content-wrap">
+                    <div class="full">
+                                        <ul class="breadcrumb"><li><a href="/">Home</a><span class="divider">/</span></li><li><a href="/text/">Textbooks</a><span class="divider">/</span></li><li>
+                                            Search for Textbooks
+                                    </li></ul>
+                                <h1>Textbook Search</h1>
+                <div class="content">
+                    
+                    
+                    
+                        <!--
+    <h2>Find your textbooks... Order your textbooks: Summer 2015</h2>
+    -->
+    
+        
+
+    <span class="sale-price">Find your books</span>
+
+    <p>
+        Choose your courses to build a custom booklist. You can then print your list to shop in-store or place an
+        online order for them to be delivered to your door.
+    </p>
+
+    <ul>
+        <li><a href="/text/faq">Ordering Online? Questions? Taxes? Shipping prices? Sponsored Student? 
+            Rental Textbooks?</a></li>
+    </ul>
+
+    <ul>
+        <li>Use the <strong>Search...</strong> box below to refine the list of available courses</li>
+        <li>Click the checkbox to add the book to Your Booklist</li>
+    </ul>
+    <form method="post" action="/text/search" autocomplete="off">
+        <table align="center">
+            <tr>
+                <td><b>Available courses for Summer 2015</b></td>
+                <td></td>
+                <td><b>Your Booklist</b></td>
+            </tr>
+            <tr>
+                <td>
+                    <input id='inputSearch' placeholder="Search..." autocomplete="off" autofocus>
+                    <input id='resetSearch' type="button" value="Reset" >
+                    <br>
+                    <div class="course-selector">
+                        <div class="available-courses" id="available-courses">
+                        </div>
+                    </div>
+                </td>
+                <td> <div style="width: 60px;"> </div> </td>
+                <td>
+                    <div class="course-selector">
+                        <div class="selected-courses" id="selected-courses">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="divide">&nbsp;</div>
+
+        <div class="srchbtn">
+            <input type="hidden" name="method" value="courses">
+            <input type="submit" value="Start Searching > >">
+        </div>
+    </form>
+
+    <div style="clear:both;"></div>
+
+    <h2>Search for Text Books by ISBN</h2>
+    <div class="jbsearch">
+        <form name="search" action="/text/search" method="post">
+            <input type="text" name="isbn" size="35" value="" placeholder="Search by isbn">
+            <input type="hidden" name="method" value="isbn">
+            <input type="submit" value="Go">
+        </form>
+    </div>
+                </div>
+            </div>
+            </div>
+
+        <!--ZOOMSTOP-->
+    <!--ZOOMSTOPFOLLOW-->
+    <div id="footer">
+        <div>&copy;  <a href="/">UVic Bookstore</a>&nbsp;&middot;&nbsp;<a href="http://www.uvic.ca">University of Victoria</a>&nbsp;&middot;&nbsp;British Columbia&nbsp;&middot;&nbsp;Canada</div>
+        <div><a href="/info/">Address</a>: 3800 Finnerty Rd. Box 2200, Stn CSC Victoria, BC Canada, V8W 3H6</div>
+        <div><a href="/info/">Hours</a>: Monday - Friday: 8:30 - 5:00, Saturday: 11 - 5&nbsp;&nbsp;&middot;&nbsp;&nbsp;Ph: 250.721.8311&nbsp;&nbsp;Fx: 250.721.8553 Toll-free: 877-721-8290</div>
+        <div><a href="/info/contact">Comments or Questions?</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="http://www.uvic.ca/notices/index.html">Legal Notices</a></div>
+        <div>Site search powered by <a href="http://www.wrensoft.com/zoom/">Zoom Search Engine</a></div>
+    </div>
+    <!--ZOOMRESTARTFOLLOW-->
+    <!--ZOOMRESTART-->
+    </div>
+
+
+    
+    <script id="available-course-template" type="text/x-handlebars-template">
+        <div>
+            <input type="checkbox" id="available_course_{{id}}" value="{{id}}" {{checked}}>
+            <label for="available_course_{{id}}">{{name }}</label>
+        </div>
+    </script>
+
+    <script id="selected-course-template" type="text/x-handlebars-template">
+        <div>
+            <input type="checkbox" id="available_course_{{id}}" name="course[]" value="{{id}}" {{checked}}>
+            <label for="available_course_{{id}}">{{name}}</label>
+        </div>
+    </script>
+    
+
+    <script type="text/javascript" src="/js/handlebars-v1.3.0.js"></script>
+    <script type="text/javascript" src="/js/crssearch.js"></script>
+    <script type="text/javascript" src="/js/textsearch.js"></script>
+
+    <script type="text/javascript">
+        $search = new search();
+
+        $.get( "/api/open/v1/courses", function( data ) {
+            $courses = data;
+            $search.initialize(data);
+        });
+    </script>
+
+</body>
+</html>
