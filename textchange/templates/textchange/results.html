@@ -32,16 +32,9 @@
   <body>
 
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="{% url 'textchange:accountcreation' %}">Create Account/Sign In</a></li>
-            <li role="presentation"><a href="{% url 'textchange:settings' %}"><img src="../../static/textchange/gear.png" height="25" width="25"></img></a></li>
-          </ul>
-        </nav>
-        <a href="{% url 'textchange:index' %}"><img src="../../static/textchange/back.png" height="40" width="40"></img></a>
-      </div>
-
+      
+	  {% include "textchange/navbar.html" %}
+	  
       <div class="row marketing">
         <div class="col-lg-6">
           <h4>Wishlist/Postings</h4>

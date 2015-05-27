@@ -31,15 +31,8 @@
 
   <body>
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="{% url 'textchange:accountcreation' %}">Create Account/Sign In</a></li>
-            <li role="presentation"><a href="{% url 'textchange:settings' %}"><img src="../../static/texchange/gear.png" height="25" width="25"></img></a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Textchange UVic</h3>
-      </div>
+	
+      {% include "textchange/navbar.html" %}
 
       <div class="jumbotron">
         <h1>Textchange!</h1>

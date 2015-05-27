@@ -2,36 +2,23 @@ from django.shortcuts import render, render_to_response, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 
-#from .models import Textbook
-#from .forms import AuthenticationForm, TextbookForm, CreateForm
-"""
-def textbook_info(request):
-	textbooks = Textbook.objects.all()
-	for x in textbooks:
-		print(x.textbook_name)
-	return render_to_response('results.html', {'textbooks': textbooks,})
+from .models import Textbook
+from .forms import AuthenticationForm, UserCreate
 
-def create_user(request):
-	if request.method == 'POST':
-		form = CreateForm(request.POST)
-		if form.is_valid():
-			new_user = User.objects.create_user(**form.cleaned_data)
-			login(new_user)
-			return HttpResponseRedirect('accountcreation.html')
-	else:
-		form = CreateForm()
+def register(request):
+	#if request.method =='POST':
+	form = UserCreate(request.POST or None)
+	if form.is_valid():
+		user = form.save(commit=False)#User.objects.create_user(form.cleaned_data['username'], None, form.cleaned_data['password'])
+		user.save()
+		return render_to_response('textchange/index.html') # Redirect after POST
+
+	return render_to_response('results.html', {
+		'form': form,
+		},context_instance=RequestContext(request))
 	
-	return render(request, 'accountcreation.html', {'form': form})
-	
-def display_seller(request):
-	if request.method == 'POST':
-		form = TextbookForm(request.POST)
-		if form.is_valid():
-			return HttpResponseRedirect('/thanks/')
-	else:
-		form = TextbookForm()
-	return render(request, 'results.html', {'form': form})
-"""
+
+
 def index(request):
 	return render_to_response(
 		'textchange/index.html',
@@ -40,7 +27,8 @@ def index(request):
 		)
 		
 def accountcreation(request):
-	signin_form = AuthenticationForm()
+	#signin_form = AuthenticationForm()
+	form = UserCreate
 	
 	return render_to_response(
 		'textchange/accountcreation.html',
