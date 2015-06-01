@@ -39,7 +39,9 @@
         <div class="col-lg-6">
           <h4>Wishlist/Postings</h4>
           <p>View your wishlist and postings here.</p>
-		
+		{% for items in wishlist_info %}
+			{{items.user}}
+		{% endfor %}	
 		</div>
         <div class="col-lg-6">
           <h4>Settings</h4>

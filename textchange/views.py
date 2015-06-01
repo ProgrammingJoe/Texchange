@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth import authenticate, login
 
-from .models import Textbook
+from .models import Textbook, Posting, Wishlist
 from .forms import AuthenticationForm, UserCreate
 
 def index(request):
@@ -63,6 +63,12 @@ def contact(request):
 		)
 		
 def results(request):
+	wishlist_info = Wishlist.objects.all()
+
+	wishlist_items = {
+		"wishlist_info" : wishlist_info
+	}
+	
 	return render_to_response(
 		'textchange/results.html',
 		locals(),
