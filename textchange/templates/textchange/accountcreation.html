@@ -39,14 +39,17 @@
         <div class="col-lg-6">
           <h4>Create an Account</h4>
 		  <p>Join the community!</p>
+		  <form method="POST"> {% csrf_token %}
+		  {{ form.as_p }}
+		  <input type="submit"></input>
         </div>
 		
         <div class="col-lg-6">
           <h4>Sign In</h4>
 		  <p>Sign in to your account here</p>
 		  <form method="POST"> {% csrf_token %}
-		  {{ form.as_p }}
-		  <input type="submit">Submit</input>
+		  {{ form2.as_p }}
+		  <input type="button" value="Login"></input>
 		  </form>
         </div>
       </div>

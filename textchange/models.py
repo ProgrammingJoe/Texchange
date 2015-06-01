@@ -20,7 +20,7 @@ class Posting(models.Model):
 	condition = models.CharField(max_length = 200)
 	price = models.CharField(max_length = 200)
 	user = models.ForeignKey(User)
-	post_date = models.DateTimeField('date_posted')
+	post_date = models.DateTimeField('date_posted', auto_now_add=True, auto_now=False)
 	
 	def __str__(self):
 		return str(self.textbook)
@@ -34,7 +34,7 @@ class Posting(models.Model):
 class Wishlist(models.Model):
 	textbook = models.ForeignKey(Textbook)
 	user = models.ForeignKey(User)
-	wish_date = models.DateTimeField('date_wish')
+	wish_date = models.DateTimeField('date_wish', auto_now_add=True, auto_now=False)
 	
 	def __str__(self):
 		return str(self.textbook)

@@ -1,23 +1,10 @@
 from django.shortcuts import render, render_to_response, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.contrib.auth import authenticate, login
 
 from .models import Textbook
 from .forms import AuthenticationForm, UserCreate
-
-def register(request):
-	#if request.method =='POST':
-	form = UserCreate(request.POST or None)
-	if form.is_valid():
-		user = form.save(commit=False)#User.objects.create_user(form.cleaned_data['username'], None, form.cleaned_data['password'])
-		user.save()
-		return render_to_response('textchange/index.html') # Redirect after POST
-
-	return render_to_response('results.html', {
-		'form': form,
-		},context_instance=RequestContext(request))
-	
-
 
 def index(request):
 	return render_to_response(
@@ -25,17 +12,35 @@ def index(request):
 		locals(),
 		context_instance=RequestContext(request)
 		)
-		
+
+			
 def accountcreation(request):
-	#signin_form = AuthenticationForm()
-	form = UserCreate
+
+
+	form = UserCreate(request.POST or None)
+	form2 = AuthenticationForm(request.POST or None)
+	username = request.POST.get['username']
+	password = request.POST.get['password']
+	user = authenticate(username = username, password = password)
 	
+	if form.is_valid():
+		user = form.save(commit=False)
+		user.save()
+		return render_to_response('textchange/index.html') # Redirect after POST
+	if user is not None:
+		if user.is_active:
+			login(request, user)
+			return render_to_response('textchange/index.html') # Redirect after success
+		else:
+			return render_to_response('textchange/accountcreation.html')
+		
+			
 	return render_to_response(
 		'textchange/accountcreation.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)
-
+	
 def wishlisting(request):
 	return render_to_response(
 		'textchange/wishlisting.html',
