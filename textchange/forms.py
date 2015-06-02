@@ -12,3 +12,7 @@ class UserCreate(UserCreationForm):
 	password1 = forms.CharField()
 	password2 = forms.CharField()
 	email = forms.EmailField()
+	
+class SearchForm(forms.Form):
+	keywords = forms.CharField()
+	
