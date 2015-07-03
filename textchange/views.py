@@ -43,16 +43,14 @@ MYQUERY = Django form "aggregated values
 		context_instance=RequestContext(request)
 		)
 
-			
+
 def accountcreation(request):
-
-
 	form = UserCreate(request.POST)
 	form2 = AuthenticationForm(request.POST)
 	username = request.POST.get('username')
 	password = request.POST.get('password')
 	user = authenticate(username = username, password = password)
-	
+
 	if form.is_valid():
 		user = form.save(commit=False)
 		user.save()
@@ -63,8 +61,8 @@ def accountcreation(request):
 			return render_to_response('textchange/index.html') # Redirect after success
 		else:
 			return render_to_response('textchange/accountcreation.html')
-		
-			
+
+
 	return render_to_response(
 		'textchange/accountcreation.html',
 		locals(),
@@ -85,14 +83,14 @@ def results(request):
 	wishlist_items = {
 		"wishlist_info" : wishlist_info
 	}
-	
+
 	return render_to_response(
 		'textchange/results.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)
-		
-		
+
+
 @login_required
 def wishlisting(request):
 	return render_to_response(
@@ -108,7 +106,7 @@ def settings(request):
 		locals(),
 		context_instance=RequestContext(request)
 		)
-	
+
 @login_required
 def contact(request):
 	return render_to_response(
@@ -116,4 +114,3 @@ def contact(request):
 		locals(),
 		context_instance=RequestContext(request)
 		)
-		
