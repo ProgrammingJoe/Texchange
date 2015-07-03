@@ -1,5 +1,12 @@
 from bs4 import BeautifulSoup
+from collections import namedtuple
 
-books = BeautifulSoup(open("bookstore.html"))
+soup = BeautifulSoup(open("bookstore.html"))
 
-tag.name
+books = soup.findAll("div", { "class" : "textbook-item"})
+
+for x in books:
+    for y in x.find("b"):
+        print("%s\n"% y)
+    for z in x.select("[class~=author]"):
+        print("%s\n"% z.contents)

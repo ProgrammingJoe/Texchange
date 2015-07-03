@@ -1,216 +1,1045 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>UVic Bookstore :: Textbook Search</title>
-
-    <meta name="Description" content="University of Victoria Bookstore stocks a wide variety of textbooks, general reading books, UVic publications, clothing and gifts. Special requests are always welcome."/>
-    <meta name="robots" content="all,index,follow" />
-    <meta name="revisit-after" content="15 Days" />
-
-    <link rel="shortcut icon" href="/favicon.ico?v=2" />
-
-    <link rel="stylesheet" href="/css/ladda.min.css" type="text/css">
-    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css" />
-
-    <link rel="stylesheet" href="/css/style2.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/print.css" type="text/css" media="print"/>
-
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
-
-    <script type="text/javascript" src="/js/spin.min.js"></script>
-    <script type="text/javascript" src="/js/ladda.min.js"></script>
-
-    <script type="text/javascript" src="/lib/checkinput.js"></script>
-    <script type="text/javascript" src="/lib/validate_card.js"></script>
-    <script type="text/javascript" src="/js/submit.js"></script>
-
-    <!-- Google Analytics -->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-2274730-1', 'auto');
-        ga('require', 'linkid', 'linkid.js');
-        ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics -->
-
-    <!-- Piwik -->
-    <script type="text/javascript">
-        var _paq = _paq || [];
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.uvicbookstore.ca/piwik/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', 1]);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-            g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-    </script>
-    <noscript><p><img src="http://www.uvicbookstore.ca/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-    <!-- End Piwik Code -->
-
-    
-</head>
-<body>
-<div id="wrapper">
-    <a href="/"><div id="logo"></div></a>
-
-    <div id="uppercart">
-        <a href="/account/index.php"><img src="/images/icons/acct.gif" alt="Your Account" width="88" height="12" border="0" align="bottom" /></a>
-        <img src="/images/icons/div.gif" width="7" height="12" alt=""/><a href="/shopcart.php"><img src="/images/icons/cart.gif" alt="View Cart" width="80" height="12" border="0"  /></a><img src="/images/icons/div.gif" width="7" height="12" alt=""/>
-
-                                            <a href="/login.php"><img src="/images/icons/login.gif" alt="Login" width="66" height="12" border="0" /></a>
-                        </div>
-
-    <div style="clear: both"></div>
-
-    <div id="header">
-        <img src="/images/bookstore-banner.jpg" alt="Banner" width="730" height="88" />
-    </div>
-
-    <div style="clear: both"></div>
-
-    <!--ZOOMSTOP-->
-    <!--ZOOMSTOPFOLLOW-->
-        <div class="nav-primary">
-        <ul class="nav"><li><a href="/">Home</a></li><li class="active there"><a href="/text/">Textbooks</a></li><li><a href="/general/">General Books</a></li><li><a href="/merch/index.php">Clothing, Gifts, & More</a></li><li><a href="/tech/">Technology</a></li><li><a href="/info/">Store Info</a></li><li><a href="/search/search.php">Search</a></li><li><a href="/events">Events</a></li><li><a href="/info/contact">Contact</a></li></ul>
-        <div style="clear: both"></div>
-    </div>
-    
-    <!--ZOOMRESTARTFOLLOW-->
-    <!--ZOOMRESTART-->
-    <div class="content-wrap">
-                    <div class="full">
-                                        <ul class="breadcrumb"><li><a href="/">Home</a><span class="divider">/</span></li><li><a href="/text/">Textbooks</a><span class="divider">/</span></li><li>
-                                            Search for Textbooks
+<!--ZOOMRESTARTFOLLOW-->
+<!--ZOOMRESTART-->
+    <div class="container">
+        <div class="row">
+                                    <ul class="breadcrumbs"><li><a href="/">Home</a><span class="divider"> / </span></li><li><a href="/text/">Textbooks</a><span class="divider"> / </span></li><li><a href="/text/search">Search for Textbooks</a><span class="divider"> / </span></li><li>
+                                            Textbook Search Results
                                     </li></ul>
-                                <h1>Textbook Search</h1>
-                <div class="content">
-                    
-                    
-                    
-                        <!--
-    <h2>Find your textbooks... Order your textbooks: Summer 2015</h2>
-    -->
-    
-        
+                        <h1>Textbook Search Results</h1>
 
-    <span class="sale-price">Find your books</span>
 
-    <p>
-        Choose your courses to build a custom booklist. You can then print your list to shop in-store or place an
-        online order for them to be delivered to your door.
-    </p>
 
-    <ul>
-        <li><a href="/text/faq">Ordering Online? Questions? Taxes? Shipping prices? Sponsored Student? 
-            Rental Textbooks?</a></li>
-    </ul>
 
-    <ul>
-        <li>Use the <strong>Search...</strong> box below to refine the list of available courses</li>
-        <li>Click the checkbox to add the book to Your Booklist</li>
-    </ul>
-    <form method="post" action="/text/search" autocomplete="off">
-        <table align="center">
-            <tr>
-                <td><b>Available courses for Summer 2015</b></td>
-                <td></td>
-                <td><b>Your Booklist</b></td>
-            </tr>
-            <tr>
-                <td>
-                    <input id='inputSearch' placeholder="Search..." autocomplete="off" autofocus>
-                    <input id='resetSearch' type="button" value="Reset" >
-                    <br>
-                    <div class="course-selector">
-                        <div class="available-courses" id="available-courses">
-                        </div>
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 106</span>
+                        <span>A01 MAY4-JULY31</span>
                     </div>
-                </td>
-                <td> <div style="width: 60px;"> </div> </td>
-                <td>
-                    <div class="course-selector">
-                        <div class="selected-courses" id="selected-courses">
-                        </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            WHITESIDES
+                        </span>
                     </div>
-                </td>
-            </tr>
-        </table>
-
-        <div class="divide">&nbsp;</div>
-
-        <div class="srchbtn">
-            <input type="hidden" name="method" value="courses">
-            <input type="submit" value="Start Searching > >">
-        </div>
-    </form>
-
-    <div style="clear:both;"></div>
-
-    <h2>Search for Text Books by ISBN</h2>
-    <div class="jbsearch">
-        <form name="search" action="/text/search" method="post">
-            <input type="text" name="isbn" size="35" value="" placeholder="Search by isbn">
-            <input type="hidden" name="method" value="isbn">
-            <input type="submit" value="Go">
-        </form>
-    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>GEN 2 ICLICKER</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        MPS
+                    </span>
                 </div>
             </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9781429280471">  9781429280471
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $54.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57223" data-bookid="31806" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $39.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57223" data-bookid="31806" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
             </div>
 
-        <!--ZOOMSTOP-->
-    <!--ZOOMSTOPFOLLOW-->
-    <div id="footer">
-        <div>&copy;  <a href="/">UVic Bookstore</a>&nbsp;&middot;&nbsp;<a href="http://www.uvic.ca">University of Victoria</a>&nbsp;&middot;&nbsp;British Columbia&nbsp;&middot;&nbsp;Canada</div>
-        <div><a href="/info/">Address</a>: 3800 Finnerty Rd. Box 2200, Stn CSC Victoria, BC Canada, V8W 3H6</div>
-        <div><a href="/info/">Hours</a>: Monday - Friday: 8:30 - 5:00, Saturday: 11 - 5&nbsp;&nbsp;&middot;&nbsp;&nbsp;Ph: 250.721.8311&nbsp;&nbsp;Fx: 250.721.8553 Toll-free: 877-721-8290</div>
-        <div><a href="/info/contact">Comments or Questions?</a>&nbsp;&nbsp;&middot;&nbsp;&nbsp;<a href="http://www.uvic.ca/notices/index.html">Legal Notices</a></div>
-        <div>Site search powered by <a href="http://www.wrensoft.com/zoom/">Zoom Search Engine</a></div>
-    </div>
-    <!--ZOOMRESTARTFOLLOW-->
-    <!--ZOOMRESTART-->
-    </div>
+                                    </div>
+
+                                                           <p class="materials">Optional Materials:</p>
+                                                                    <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>INVITATION TO COMPUTER SCIENCE</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        SCHNEIDER
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9781305075771">  9781305075771
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $189.95</span>
+                    <button class="button primary-button add-cart-button" data-course="57223" data-bookid="37411" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
 
 
-    
-    <script id="available-course-template" type="text/x-handlebars-template">
-        <div>
-            <input type="checkbox" id="available_course_{{id}}" value="{{id}}" {{checked}}>
-            <label for="available_course_{{id}}">{{name }}</label>
+                                                                                        <div class="four columns">
+                    <span>Used: $142.50</span>
+                    <button class="button primary-button add-cart-button" data-course="57223" data-bookid="37411" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+                                                                                                          </div>
+                </div>
+            </div>
         </div>
-    </script>
 
-    <script id="selected-course-template" type="text/x-handlebars-template">
-        <div>
-            <input type="checkbox" id="available_course_{{id}}" name="course[]" value="{{id}}" {{checked}}>
-            <label for="available_course_{{id}}">{{name}}</label>
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 110</span>
+                        <span>A01 MAY4-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            ZASTRE
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>BUILDING JAVA PROGRAMS</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        REGES
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9780133360905">  9780133360905
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $163.50</span>
+                    <button class="button primary-button add-cart-button" data-course="57079" data-bookid="33854" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $122.50</span>
+                    <button class="button primary-button add-cart-button" data-course="57079" data-bookid="33854" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+
+                                                                          </div>
+                </div>
+            </div>
         </div>
-    </script>
-    
 
-    <script type="text/javascript" src="/js/handlebars-v1.3.0.js"></script>
-    <script type="text/javascript" src="/js/crssearch.js"></script>
-    <script type="text/javascript" src="/js/textsearch.js"></script>
 
-    <script type="text/javascript">
-        $search = new search();
 
-        $.get( "/api/open/v1/courses", function( data ) {
-            $courses = data;
-            $search.initialize(data);
-        });
-    </script>
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 115</span>
+                        <span>A01 MAY4-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            ZASTRE
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>DATA ABSTRACTION+PROB.SOLVING W/JAVA</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        CARRANO
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9780132122306">  9780132122306
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $181.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57081" data-bookid="30032" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
 
-</body>
-</html>
+
+                                                                                        <div class="four columns">
+                    <span>Used: $134.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57081" data-bookid="30032" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+
+                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 225</span>
+                        <span>A01-02 MAY4-JUL31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            BIRD
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                        <p class="no-required">
+                                    <i class="md-error"></i>
+                                    This course has no required materials
+                                </p>
+
+                                                           <p class="materials">Optional Materials:</p>
+                                                                    <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>ALGORITHMS</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        SEDGEWICK
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9780321573513">  9780321573513
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $88.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57085" data-bookid="30706" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $67.50</span>
+                    <button class="button primary-button add-cart-button" data-course="57085" data-bookid="30706" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+                                                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 230</span>
+                        <span>A01 MAY4-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            CORLESS
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                                    <ul class="comments">
+                                <li>
+                                    <i class=" md-error"></i>
+                                    old editions of stalling text acceptable
+                                </li>
+                            </ul>
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>SOME ASSEMBLY REQUIRED</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        MARGUSH
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9781439820643">  9781439820643
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $127.95</span>
+                    <button class="button primary-button add-cart-button" data-course="57171" data-bookid="35883" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $96.00</span>
+                    <button class="button primary-button add-cart-button" data-course="57171" data-bookid="35883" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+
+                                                           <p class="materials">Optional Materials:</p>
+                                                                    <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>COMPUTER ORGANIZATION+ARCHITECTURE</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        STALLINGS
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9780134101613">  9780134101613
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $203.25</span>
+                    <button class="button primary-button add-cart-button" data-course="57171" data-bookid="37400" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $152.50</span>
+                    <button class="button primary-button add-cart-button" data-course="57171" data-bookid="37400" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+                                                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 320</span>
+                        <span>A01 MAY4-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            KAPRON
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>INTRO.TO THEORY OF COMPUTATION</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        SIPSER
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9781133187790">  9781133187790
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $199.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57225" data-bookid="32372" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $149.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57225" data-bookid="32372" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+
+                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 360</span>
+                        <span>A01 MAY4-JUL31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            PAN
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>OPERATING SYSTEM CONCEPTS</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        SILBERSCHATZ
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9781118063330">  9781118063330
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $156.94</span>
+                    <button class="button primary-button add-cart-button" data-course="57277" data-bookid="35937" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $117.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57277" data-bookid="35937" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+
+                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 370</span>
+                        <span>A01 MAY4-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            GERMAN
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>DATABASE SYSTEMS:COMPLETE BOOK</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        GARCIA-MOLINA
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9780131873254">  9780131873254
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $199.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57219" data-bookid="25145" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $149.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57219" data-bookid="25145" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+
+                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 426/526</span>
+                        <span>A01 MAY4-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            WHITESIDES
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                                    <ul class="comments">
+                                <li>
+                                    <i class=" md-error"></i>
+                                    choose either version of de berg
+                                </li>
+                            </ul>
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                        <p class="no-required">
+                                    <i class="md-error"></i>
+                                    This course has no required materials
+                                </p>
+
+                                                           <p class="materials">Optional Materials:</p>
+                                                                    <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>COMPUTATIONAL GEOMETRY (CLOTH)</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        DE BERG
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9783540779735">  9783540779735
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $71.95</span>
+                    <button class="button primary-button add-cart-button" data-course="57226" data-bookid="25718" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $53.95</span>
+                    <button class="button primary-button add-cart-button" data-course="57226" data-bookid="25718" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+                                                                    <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>COMPUTATIONAL GEOMETRY 3RD ED</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        DE BERG
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9783642096815">  9783642096815
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $71.95</span>
+                    <button class="button primary-button add-cart-button" data-course="57226" data-bookid="29949" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $53.95</span>
+                    <button class="button primary-button add-cart-button" data-course="57226" data-bookid="29949" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+                                                                    <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>DISCRETE+COMPUTATIONAL GEOMETRY</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        DEVADOSS
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9780691145532">  9780691145532
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $93.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57226" data-bookid="37412" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $69.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57226" data-bookid="37412" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+                                                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 429/529</span>
+                        <span>A01  MAY4-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                                                            <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>INTRODUCTION TO MODERN CRYPTOGRAPHY</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        KATZ
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9781466570269">  9781466570269
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $121.50</span>
+                    <button class="button primary-button add-cart-button" data-course="57229" data-bookid="37415" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+
+                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 466/579</span>
+                        <span>A01 MAY5-JULY31</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            PAN
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="materials">Required Materials:</p>
+                                                                                        <p class="no-required">
+                                    <i class="md-error"></i>
+                                    This course has no required materials
+                                </p>
+
+                                                           <p class="materials">Optional Materials:</p>
+                                                                    <div class="textbook-item">
+                                                    <div class="row">
+                <div class="eight columns">
+                    <span>
+                        <i class="md-my-library-books"></i>
+                        <b>COMPUTER NETWORKING</b>
+                    </span>
+                </div>
+                <div class="four columns">
+                    <span class="author">
+                        Author:
+                        KUROSE
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="twelve columns">
+                    <a href="/text/book/9780132856201">  9780132856201
+                    </a>
+                </div>
+                <div class="twelve columns">
+                                                                                                                <div class="four columns">
+                    <span>New: $179.50</span>
+                    <button class="button primary-button add-cart-button" data-course="57283" data-bookid="31994" data-type="NEW">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                                        <div class="four columns">
+                    <span>Used: $134.75</span>
+                    <button class="button primary-button add-cart-button" data-course="57283" data-bookid="31994" data-type="USED">
+                        <label>
+                            Add to cart
+                        </label>
+                    </button>
+                </div>
+
+
+                                                                    </div>
+            </div>
+
+                                    </div>
+                                                                                                          </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row course">
+            <div class="twelve columns">
+                <div class="row course-info">
+                    <div class="eight columns">
+                        <span>C SC 485A/586A</span>
+                        <span>A01</span>
+                    </div>
+                    <div class="four columns">
+                        <span class="instructor">
+                            <span>Instructor:</span>
+                            30194,30202
+                        </span>
+                    </div>
+                    <div class="twelve columns">
+                                            </div>
+                </div>
+                <div class="row">
+                    <div class="twelve columns">
+                                                    <p class="no-required">
+                                <i class="md-error"></i>
+                                This course has no required or optional materials.
+                            </p>
+                                             </div>
+                </div>
+            </div>
+        </div>
+                            <div class="row">
+            <div class="twelve columns">
+                <a class="button primary-button blue" href="/text/">
+                    Return to search
+                </a>
+                <a class="button primary-button green" href="/shopcart.php">
+                    <i class="md-shopping-cart"></i>
+                    Proceed to cart
+                </a>
+            </div>
+        </div>
+        </div>
+    </div>
