@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-from django.contrib.auth.models import User	
+from django.contrib.auth.models import User
 
 class Textbook(models.Model):
 	textbook_name = models.CharField(max_length = 200)
@@ -11,7 +11,7 @@ class Textbook(models.Model):
 	isbn = models.CharField(max_length = 200, primary_key=True)
 	wishlist_count = models.CharField(max_length = 200)
 	listing_count = models.CharField(max_length = 200)
-	
+
 	def __str__(self):
 		return self.textbook_name
 
@@ -21,10 +21,10 @@ class Posting(models.Model):
 	price = models.CharField(max_length = 200)
 	user = models.ForeignKey(User)
 	post_date = models.DateTimeField('date_posted')
-	
+
 	def __str__(self):
 		return str(self.textbook)
-		
+
 	def was_posted_recently(self):
 		return self.post_date >= timezone.now() - datetime.timedelta(days=1)
 	was_posted_recently.admin_order_field = 'post_date'
@@ -35,10 +35,10 @@ class Wishlist(models.Model):
 	textbook = models.ForeignKey(Textbook)
 	user = models.ForeignKey(User)
 	wish_date = models.DateTimeField('date_wish')
-	
+
 	def __str__(self):
 		return str(self.textbook)
-		
+
 	def was_wished_recently(self):
 		return self.wish_date >= timezone.now() - datetime.timedelta(days=1)
 	was_wished_recently.admin_order_field = 'date_wish'
