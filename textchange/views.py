@@ -7,35 +7,21 @@ from django.contrib.auth.decorators import login_required
 from .models import Textbook, Posting, Wishlist
 from .forms import AuthenticationForm, UserCreate
 
-def index(request):
-	if request.method == 'POST':
-		form = SearchForm(request.POST)
-		if form.is_valid():
-			keywords = []
-			keywords = form.cleaned_data['keywords']
-			keyword_list = keywords.extend(query.split())
-			posts = search_for_keywords(keyword_list)
-			if posts:
-				return render_to_response('textchange/index.html') # Redirect after POST
-	"""
-	http://zeth.net/archive/2009/11/29/basic-django-search/
-	"""
-	##############
-	"""keywords = []
-    while '"' in query:
-        first_quote = query.find('"')
-        second_quote = query.find('"', first_quote + 1)
-        quoted_keywords = query[first_quote:second_quote + 1]
-        keywords.append(quoted_keywords.strip('"'))
-        query = query.replace(quoted_keywords, ' ')
-    # Split the rest by spaces
-    keywords.extend(query.split())
-    return keywords
+def search(request):
+    query = request.GET.get('q')
+    if query:
+        # There was a query entered.
+        results = SomeModel.objects.filter(somefield=query)
+    else:
+        # If no query was entered, simply return all objects
+        results = SomeModel.objects.all()
+    return render_to_response(
+		'textchange/results.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
 
-MYQUERY = Django form "aggregated values
-#split_query_into_keywords(MYQUERY)
-	######################
-"""
+def index(request):
 
 	return render_to_response(
 		'textchange/index.html',

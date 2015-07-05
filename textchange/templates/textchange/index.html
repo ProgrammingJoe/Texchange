@@ -37,7 +37,12 @@
       <div class="jumbotron">
         <h1>Textchange!</h1>
         <p class="lead">Buy and sell used textbooks, easily, and at low prices!</p>
-        <p><a class="btn btn-lg btn-success" href="{% url 'textchange:results' %}" role="button">Search bar?</a></p>
+
+        <form method="get" action="/search/">
+          <label for="id_q">Search:</label>
+            <input type="text" name="q" id="id_q"/>
+            <input class="btn btn-lg btn-success" type="submit" value="submit"/?>
+        </form>
       </div>
 
       <div class="row marketing">
@@ -45,7 +50,7 @@
           <a class="btn btn-lg btn-success" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
           <p>View your wishlist and postings here.</p>
         </div>
-		
+
         <div class="col-lg-6">
           <a class="btn btn-lg btn-success" href="{% url 'textchange:settings' %}" role="button">Settings</a>
           <p>Change your profile and application settings here</p>
