@@ -8,5 +8,6 @@ urlpatterns = [
 	url(r'^wishlisting', views.wishlisting, name="wishlisting"),
 	url(r'^settings', views.settings, name="settings"),
 	url(r'^results', views.results, name="results"),
-	url(r'^results/contact', views.contact, name="contact")
+	url(r'^results/contact', views.contact, name="contact"),
+	url(r'^profile', views.profile, name="profile")
 ]

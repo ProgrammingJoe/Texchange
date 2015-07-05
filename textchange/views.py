@@ -29,6 +29,12 @@ def index(request):
 		context_instance=RequestContext(request)
 		)
 
+def profile(request):
+	return render_to_response(
+		'textchange/profile.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
 
 def accountcreation(request):
 	form = UserCreate(request.POST)
