@@ -32,9 +32,9 @@
   <body>
 
     <div class="container">
-      
+
 	  {% include "textchange/navbar.html" %}
-	  
+
 	  <div>
 		{% for items in textbook_info %}
 			{{textbook_info.textbook}}
@@ -48,11 +48,11 @@
 			<table>
 			<tr><td>{{items.user}} {{items.textbook}}</td></tr>
 			</table>
-		{% endfor %}	
+		{% endfor %}
 		</div>
         <div class="col-lg-6">
           <h4>Settings</h4>
-		  
+
           <p>Change your profile and application settings here</p>
 		  {% for items in posting_info %}
 			<table>
