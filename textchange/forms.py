@@ -16,8 +16,8 @@ class UserCreate(UserCreationForm):
 		'password2': forms.PasswordInput(),
 		}
 	username = forms.CharField()
-	password1 = forms.CharField()
-	password2 = forms.CharField()
+	password1 = forms.CharField(widget = forms.PasswordInput)
+	password2 = forms.CharField(widget = forms.PasswordInput)
 	email = forms.EmailField()
 	phone = forms.CharField()
 
