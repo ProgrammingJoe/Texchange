@@ -35,7 +35,6 @@ def navbar(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-
 def accountcreation(request):
     form = UserCreate(request.POST or None)
     form2 = AuthenticationForm(request.POST)
