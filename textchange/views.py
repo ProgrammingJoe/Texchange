@@ -3,36 +3,25 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from functools import reduce
+import operator
+from django.db.models import Q
 
 from .models import Textbook, Posting, Wishlist
 from .forms import AuthenticationForm, UserCreate, Search
 
 
 def index(request):
-    form = Search(request.POST or None)
+    form3 = Search(request.POST or None)
     query = request.POST.get('search')
     keywords = []
     if query:
         results = []
         keywords = query.split()
         for x in keywords:
-            if(Textbook.objects.filter(class_name__icontains=x)):
-                res = Textbook.objects.filter(class_name__icontains=x)
-                for a in res:
-                    results.append(a)
-            if(Textbook.objects.filter(textbook_name__icontains=x)):
-                res = Textbook.objects.filter(textbook_name__icontains=x)
-                for a in res:
-                    results.append(a)
-            if(Textbook.objects.filter(author__icontains=x)):
-                res = Textbook.objects.filter(author__icontains=x)
-                for a in res:
-                    results.append(a)
-            if(Textbook.objects.filter(isbn__icontains=x)):
-                res = Textbook.objects.filter(isbn__icontains=x)
-                for a in res:
-                    results.append(a)
-        print(results)
+            res = Textbook.objects.filter(Q(class_name__icontains = x) | Q(textbook_name__icontains = x) | Q(author__icontains = x) | Q(isbn__icontains = x))
+            for a in res:
+                results.append(a)
         return render_to_response(
             'textchange/results.html',
             locals(),
@@ -40,17 +29,6 @@ def index(request):
             )
     else:
         print("You're supposed to type something idiot \n")
-    # contains
-    # Case-sensitive containment test. For example:
-    #
-    # Entry.objects.get(headline__contains='Lennon')
-    # Roughly translates to this SQL:
-    #
-    # SELECT ... WHERE headline LIKE '%Lennon%';
-    # Note this will match the headline 'Today Lennon honored' but not 'today lennon honored'.
-    #
-    # There’s also a case-insensitive version, icontains.
-
 
     return render_to_response(
 		'textchange/index.html',
