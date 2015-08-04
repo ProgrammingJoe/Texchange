@@ -10,20 +10,14 @@
 	  {% include "textchange/navbar.html" %}
 
 	  <div>
-		{% for items in textbook_info %}
-			{{textbook_info.textbook}}
-		{% endfor %}
+  	{{ text_name.textbook_name }}
+    {{ text_name.class_name }}
 	  </div>
       <div class="row marketing">
         <div class="col-lg-6">
           <h4>Wishlist/Postings</h4>
           <p>View your wishlist and postings here.</p>
-		{% for items in wishlist_info %}
-			<table>
-			<tr><td>{{items.user}} {{items.textbook}}</td></tr>
-			</table>
-		{% endfor %}
-		</div>
+		    </div>
         <div class="col-lg-6">
           <h4>Settings</h4>
 

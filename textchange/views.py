@@ -28,7 +28,7 @@ def index(request):
             context_instance=RequestContext(request)
             )
     else:
-        print("You're supposed to type something idiot \n")
+        print("You're supposed to type something idiot\n")
 
     return render_to_response(
 		'textchange/index.html',
@@ -44,8 +44,8 @@ def profile(request):
 		)
 
 def textbook(request):
-
-	return render_to_response(
+    text_name = request.GET.get('items', None)
+    return render_to_response(
 		'textchange/textbook.html',
 		locals(),
 		context_instance=RequestContext(request)
