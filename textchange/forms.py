@@ -21,5 +21,5 @@ class UserCreate(UserCreationForm):
 	email = forms.EmailField()
 	phone = forms.CharField()
 
-class SearchForm(forms.Form):
-	keywords = forms.CharField()
+class Search(forms.Form):
+	search = forms.CharField(required = False)

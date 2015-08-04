@@ -13,11 +13,10 @@
         <h1>Textchange!</h1>
         <p class="lead">Buy and sell used textbooks, easily, and at low prices!</p>
 
-        <form method="get" action="/search/">
-          <label for="id_q">Search:</label>
-            <input type="text" name="q" id="id_q"/>
-            <input class="btn btn-lg btn-success" type="submit" value="submit"/?>
-        </form>
+        <form method="POST"> {% csrf_token %}
+  		  {{ form.as_p }}
+  		  <input type="submit" value="Search"></input>
+  		  </form>
       </div>
 
       <div class="row marketing">

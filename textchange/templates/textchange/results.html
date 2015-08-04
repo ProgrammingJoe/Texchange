@@ -14,27 +14,17 @@
 			{{textbook_info.textbook}}
 		{% endfor %}
 	  </div>
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Wishlist/Postings</h4>
-          <p>View your wishlist and postings here.</p>
-		{% for items in wishlist_info %}
-			<table>
-			<tr><td>{{items.user}} {{items.textbook}}</td></tr>
-			</table>
-		{% endfor %}
-		</div>
-        <div class="col-lg-6">
-          <h4>Settings</h4>
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Results</div>
 
-          <p>Change your profile and application settings here</p>
-		  {% for items in posting_info %}
-			<table>
-			<tr><td>{{ items.condition }} {{items.price}} {{items.user}} {{items.textbook}}</td></tr>
-			</table>
-	      {% endfor %}
-        </div>
-      </div>
+      <!-- Table -->
+      <table class="table">
+        {% for items in results %}
+        <a><tr><td>{{items.textbook_name}}</td><td>bye</td><td>bye</td><td>bye</td></tr></a>
+        {% endfor %}
+      </table>
+    </div>
 
       <footer class="footer">
         <p>&copy; Brought to you by a student at the University of Victoria 2015</p>

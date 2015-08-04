@@ -5,19 +5,44 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .models import Textbook, Posting, Wishlist
-from .forms import AuthenticationForm, UserCreate
+from .forms import AuthenticationForm, UserCreate, Search
 
 
 def index(request):
-    # query = request.GET.get('q')
-    # if query:
-    #     print("test")
-    #     # There was a query entered.
-    #     # results = Textbook.objects.filter(textbook_name=query)
-    # else:
-    #     print("test")
-    #     # If no query was entered, simply return all objects
-    #     # results = SomeModel.objects.all()
+    form = Search(request.POST or None)
+    query = request.POST.get('search')
+    keywords = []
+    if query:
+        results = []
+        keywords = query.split()
+        for x in keywords:
+            if(Textbook.objects.filter(class_name__icontains=x)):
+                results.append(Textbook.objects.filter(class_name__icontains=x))
+            if(Textbook.objects.filter(textbook_name__icontains=x)):
+                results.append(Textbook.objects.filter(textbook_name__icontains=x))
+            if(Textbook.objects.filter(author__icontains=x)):
+                results.append(Textbook.objects.filter(author__icontains=x))
+            if(Textbook.objects.filter(isbn__icontains=x)):
+                results.append(Textbook.objects.filter(isbn__icontains=x))
+            return render_to_response(
+                'textchange/results.html',
+                locals(),
+                context_instance=RequestContext(request)
+                )
+    else:
+        print("You're supposed to type something idiot \n")
+    # contains
+    # Case-sensitive containment test. For example:
+    #
+    # Entry.objects.get(headline__contains='Lennon')
+    # Roughly translates to this SQL:
+    #
+    # SELECT ... WHERE headline LIKE '%Lennon%';
+    # Note this will match the headline 'Today Lennon honored' but not 'today lennon honored'.
+    #
+    # There’s also a case-insensitive version, icontains.
+
+
     return render_to_response(
 		'textchange/index.html',
 		locals(),
@@ -31,13 +56,20 @@ def profile(request):
 		context_instance=RequestContext(request)
 		)
 
+def textbook(request):
+	return render_to_response(
+		'textchange/textbook.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
+
 def navbar(request):
     logout(request)
     return HttpResponseRedirect('/')
 
 def accountcreation(request):
     form = UserCreate(request.POST or None)
-    form2 = AuthenticationForm(request.POST)
+    form2 = AuthenticationForm(request.POST or None)
     username = request.POST.get('username')
     password = request.POST.get('password')
     user = authenticate(username = username, password = password)
