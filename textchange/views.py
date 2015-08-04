@@ -43,8 +43,10 @@ def profile(request):
 		context_instance=RequestContext(request)
 		)
 
-def textbook(request):
-    text_name = request.GET.get('items', None)
+def textbook(request, uisbn):
+    textbook = Textbook.objects.filter(isbn = uisbn)
+    text = textbook[0]
+    print(text)
     return render_to_response(
 		'textchange/textbook.html',
 		locals(),
@@ -65,11 +67,8 @@ def accountcreation(request):
     if user is not None:
         if user.is_active:
             login(request, user)
-            return render_to_response(
-                'textchange/index.html',
-                locals(),
-                context_instance=RequestContext(request)
-                )
+            return HttpResponseRedirect('/')
+
         else:
             return render_to_response(
                 'textchange/error.html',
@@ -102,26 +101,11 @@ def error(request):
         )
 
 def results(request):
-	posting_info = Posting.objects.all()
-	wishlist_info = Wishlist.objects.all()
-	textbook_info = Textbook.objects.all()
-
-	textbook_items = {
-		"textbook_info" : textbook_info
-	}
-	posting_items = {
-		"posting_info" : posting_info
-	}
-	wishlist_items = {
-		"wishlist_info" : wishlist_info
-	}
-
 	return render_to_response(
 		'textchange/results.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)
-
 
 @login_required
 def wishlisting(request):
