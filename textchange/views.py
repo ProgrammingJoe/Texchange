@@ -17,18 +17,27 @@ def index(request):
         keywords = query.split()
         for x in keywords:
             if(Textbook.objects.filter(class_name__icontains=x)):
-                results.append(Textbook.objects.filter(class_name__icontains=x))
+                res = Textbook.objects.filter(class_name__icontains=x)
+                for a in res:
+                    results.append(a)
             if(Textbook.objects.filter(textbook_name__icontains=x)):
-                results.append(Textbook.objects.filter(textbook_name__icontains=x))
+                res = Textbook.objects.filter(textbook_name__icontains=x)
+                for a in res:
+                    results.append(a)
             if(Textbook.objects.filter(author__icontains=x)):
-                results.append(Textbook.objects.filter(author__icontains=x))
+                res = Textbook.objects.filter(author__icontains=x)
+                for a in res:
+                    results.append(a)
             if(Textbook.objects.filter(isbn__icontains=x)):
-                results.append(Textbook.objects.filter(isbn__icontains=x))
-            return render_to_response(
-                'textchange/results.html',
-                locals(),
-                context_instance=RequestContext(request)
-                )
+                res = Textbook.objects.filter(isbn__icontains=x)
+                for a in res:
+                    results.append(a)
+        print(results)
+        return render_to_response(
+            'textchange/results.html',
+            locals(),
+            context_instance=RequestContext(request)
+            )
     else:
         print("You're supposed to type something idiot \n")
     # contains
@@ -57,6 +66,7 @@ def profile(request):
 		)
 
 def textbook(request):
+
 	return render_to_response(
 		'textchange/textbook.html',
 		locals(),

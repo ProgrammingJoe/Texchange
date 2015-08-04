@@ -21,7 +21,7 @@
       <!-- Table -->
       <table class="table">
         {% for items in results %}
-        <a><tr><td>{{items.textbook_name}}</td><td>bye</td><td>bye</td><td>bye</td></tr></a>
+        <a><tr><td>{{items.textbook_name}}</td><td>{{items.class_name}}</td><td>{{items.author}}</td><td>{{items.isbn}}</td><td><img href="../../static/textchange/forward.png" height="40"></img></td></tr></a>
         {% endfor %}
       </table>
     </div>
