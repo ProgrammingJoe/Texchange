@@ -22,6 +22,7 @@ def index(request):
             res = Textbook.objects.filter(Q(class_name__icontains = x) | Q(textbook_name__icontains = x) | Q(author__icontains = x) | Q(isbn__icontains = x))
             for a in res:
                 results.append(a)
+        results = list(set(results))
         return render_to_response(
             'textchange/results.html',
             locals(),
@@ -37,9 +38,10 @@ def index(request):
 		)
 
 def textbook(request, uisbn):
-    textbook = Textbook.objects.filter(isbn = uisbn)
-    text = textbook[0]
-    print(text)
+    ltextbook = Textbook.objects.filter(isbn = uisbn)
+    text = ltextbook[0]
+    wishlists = Wishlist.objects.filter(textbook = text)
+    listings = Posting.objects.filter(textbook = text)
     return render_to_response(
 		'textchange/textbook.html',
 		locals(),
@@ -117,9 +119,11 @@ def settings(request):
 		)
 
 @login_required
-def contact(request):
-	return render_to_response(
-		'textchange/contact.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
+def contact(request, uuser, uisbn):
+    ltextbook = Textbook.objects.filter(isbn = uisbn)
+    text = ltextbook[0]
+    return render_to_response(
+        'textchange/contact.html',
+        locals(),
+        context_instance=RequestContext(request)
+        )

@@ -6,25 +6,15 @@
   <body>
 
     <div class="container">
-      
+
 	  {% include "textchange/navbar.html" %}
 
       <div class="jumbotron">
-        <h1>Textchange!</h1>
-        <p class="lead">Buy and sell used textbooks, easily, and at low prices!</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Search bar?</a></p>
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Wishlist/Postings</h4>
-          <p>View your wishlist and postings here.</p>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Settings</h4>
-          <p>Change your profile and application settings here</p>
-        </div>
+        <h1>{{ uuser.username }}</h1>
+        <p class="lead">{{ text.textbook_name }} {{ text.author }} {{ text.isbn }} {{ text.class_name }}</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">email?</a></p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">message?</a></p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">phone?</a></p>
       </div>
 
       <footer class="footer">

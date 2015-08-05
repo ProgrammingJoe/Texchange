@@ -1,32 +1,36 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
   {% include "textchange/head.html" %}
 
   <body>
-
     <div class="container">
 
-	  {% include "textchange/navbar.html" %}
+      {% include "textchange/navbar.html" %}
 
-	  <div>
-  	{{ text.textbook_name }}
-    {{ text.class_name }}
-	  </div>
+      <div class="jumbotron">
+        <h1>{{ text.textbook_name }}!</h1>
+        <p class="lead">{{ text.class_name }} {{ text.author }} {{ text.isbn }}</p>
+      </div>
+
       <div class="row marketing">
         <div class="col-lg-6">
-          <h4>Wishlist/Postings</h4>
-          <p>View your wishlist and postings here.</p>
-		    </div>
-        <div class="col-lg-6">
-          <h4>Settings</h4>
+          <a class="btn btn-lg btn-success" href="#" role="button">Add to your wishlist</a>
+          <table class="table">
+            {% for wishes in wishlists %}
+            <tr><td>{{wishes.textbook}}</td><td>{{wishes.user}}</td><td><a href = "{% url 'textchange:contact' uuser=wishes.user uisbn=text.isbn %}">></a></td></tr>
+            {% endfor %}
+          </table>
+        </div>
 
-          <p>Change your profile and application settings here</p>
-		  {% for items in posting_info %}
-			<table>
-			<tr><td>{{ items.condition }} {{items.price}} {{items.user}} {{items.textbook}}</td></tr>
-			</table>
-	      {% endfor %}
+        <div class="col-lg-6">
+          <a class="btn btn-lg btn-success" href="#" role="button">Add a Posting</a>
+          <table class="table">
+            {% for posts in listings %}
+            <tr><td>{{posts.textbook}}</td><td>{{posts.condition}}</td><td>{{posts.price}}</td><td>{{posts.user}}</td><td><a href = "{% url 'textchange:contact' uuser=posts.user uisbn=text.isbn %}">></a></td></tr>
+            {% endfor %}
+          </table>
         </div>
       </div>
 
