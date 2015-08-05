@@ -10,7 +10,6 @@ urlpatterns = [
 	url(r'^results$', views.results, name="results"),
 	url(r'^results/(?P<uisbn>(\w)+)/$', views.textbook, name="textbook"),
 	url(r'^results/(?P<text_name>\w+)/(?P<user_name>\w+)$', views.contact, name="contact"),
-	url(r'^profile$', views.profile, name="profile"),
 	url(r'^navbar$', views.navbar, name="navbar"),
 	url(r'^thanks$', views.thanks, name="thanks"),
 	url(r'^error$', views.error, name="error"),

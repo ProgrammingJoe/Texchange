@@ -36,13 +36,6 @@ def index(request):
 		context_instance=RequestContext(request)
 		)
 
-def profile(request):
-	return render_to_response(
-		'textchange/profile.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
-
 def textbook(request, uisbn):
     textbook = Textbook.objects.filter(isbn = uisbn)
     text = textbook[0]
