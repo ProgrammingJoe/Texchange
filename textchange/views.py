@@ -42,6 +42,10 @@ def textbook(request, uisbn):
     text = ltextbook[0]
     wishlists = Wishlist.objects.filter(textbook = text)
     listings = Posting.objects.filter(textbook = text)
+    if request.POST.get('click', False):
+        new = Wishlist(textbook = text.textbook_name, user = request.user)
+        new.save()
+
     return render_to_response(
 		'textchange/textbook.html',
 		locals(),
@@ -104,11 +108,14 @@ def results(request):
 
 @login_required
 def wishlisting(request):
-	return render_to_response(
-		'textchange/wishlisting.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
+    curuser = request.user
+    wishlists = Wishlist.objects.filter(user = curuser)
+    listings = Posting.objects.filter(user = curuser)
+    return render_to_response(
+	   'textchange/wishlisting.html',
+       locals(),
+       context_instance=RequestContext(request)
+       )
 
 @login_required
 def settings(request):

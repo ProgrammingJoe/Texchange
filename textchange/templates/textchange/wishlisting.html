@@ -10,17 +10,27 @@
 	  {% include "textchange/navbar.html" %}
 
       <div class="jumbotron">
-        <h1>Wishlist</h1>
+        <h2>Your Postings and Wishlist</h2>
+        <p>In order to delete your postings or wishes press the delete button</p>
       </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
-          <p><a class="btn btn-lg btn-success" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist</a></p>
-          <p>View your wishlist and postings here.</p>
+          <h3>Your Wishlist</h3>
+          <table class="table">
+            {% for wishes in wishlists %}
+            <tr><td>{{wishes.textbook}}</td><td><a href = "#">DELETE</a></td></tr>
+            {% endfor %}
+          </table>
         </div>
 
         <div class="col-lg-6">
-          <p><a class="btn btn-lg btn-success" href="" role="button">Remove</a></p>
+          <h3>Your Postings</h3>
+          <table class="table">
+            {% for posts in listings %}
+            <tr><td>{{posts.textbook}}</td><td>{{posts.condition}}</td><td>{{posts.price}}</td><td><a href = "#">DELETE</a></td></tr>
+            {% endfor %}
+          </table>
         </div>
       </div>
 
