@@ -44,7 +44,7 @@ def textbook(request, uisbn):
     text = ltextbook[0]
     wishlists = Wishlist.objects.filter(textbook = text)
     listings = Posting.objects.filter(textbook = text)
-    if(form4):
+    if form4.is_valid():
         new = Wishlist(textbook = text, user = request.user, wish_date = datetime.now())
         new.save()
 
@@ -129,9 +129,9 @@ def wishlisting(request):
     curuser = request.user
     wishlists = Wishlist.objects.filter(user = curuser)
     listings = Posting.objects.filter(user = curuser)
-    # if(form5):
+    # if form5.is_valid():
     #     Posting.objects.filter(user=request.user).filter(isbn=text.isbn).delete()
-    # if(form6):
+    # if form6.is_valid():
     #     Wishlist.objects.filter(user=request.user).filter(isbn=text.isbn).delete()
 
     return render_to_response(
