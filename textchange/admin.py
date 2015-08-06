@@ -11,7 +11,7 @@ class Textbook_table(admin.ModelAdmin):
 class Wishlist_table(admin.ModelAdmin):
 	fields = ['textbook', 'user', 'wish_date']
 	list_display = ('textbook', 'user', 'wish_date')
-	
+
 class Posting_table(admin.ModelAdmin):
 	fields = ['textbook', 'condition', 'price', 'user', 'post_date']
 	list_display = ('textbook', 'condition', 'price', 'user', 'post_date')

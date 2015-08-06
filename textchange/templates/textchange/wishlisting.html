@@ -19,7 +19,7 @@
           <h3>Your Wishlist</h3>
           <table class="table">
             {% for wishes in wishlists %}
-            <tr><td>{{wishes.textbook}}</td><td><a href = "#">DELETE</a></td></tr>
+            <tr><td>{{wishes.textbook}}</td><td><a class="btn btn-lg btn-success" href="#" role="button">Delete</a></td></tr>
             {% endfor %}
           </table>
         </div>

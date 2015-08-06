@@ -5,10 +5,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from functools import reduce
 import operator
+from datetime import datetime
 from django.db.models import Q
 
 from .models import Textbook, Posting, Wishlist
-from .forms import AuthenticationForm, UserCreate, Search
+from .forms import AuthenticationForm, UserCreate, Search, AddWishlist
 
 
 def index(request):
@@ -38,12 +39,13 @@ def index(request):
 		)
 
 def textbook(request, uisbn):
+    form4 = AddWishlist(request.POST or None)
     ltextbook = Textbook.objects.filter(isbn = uisbn)
     text = ltextbook[0]
     wishlists = Wishlist.objects.filter(textbook = text)
     listings = Posting.objects.filter(textbook = text)
-    if request.POST.get('click', False):
-        new = Wishlist(textbook = text.textbook_name, user = request.user)
+    if(form4):
+        new = Wishlist(textbook = text, user = request.user, wish_date = datetime.now())
         new.save()
 
     return render_to_response(
@@ -55,6 +57,20 @@ def textbook(request, uisbn):
 def navbar(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def about(request):
+    return render_to_response(
+		'textchange/about.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
+
+def contactme(request):
+    return render_to_response(
+		'textchange/contactme.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
 
 def accountcreation(request):
     form = UserCreate(request.POST or None)
@@ -108,9 +124,16 @@ def results(request):
 
 @login_required
 def wishlisting(request):
+    # form5 = RemovePosting(request.POST or None)
+    # form6 = RemoveWishlist(request.POST or None)
     curuser = request.user
     wishlists = Wishlist.objects.filter(user = curuser)
     listings = Posting.objects.filter(user = curuser)
+    # if(form5):
+    #     Posting.objects.filter(user=request.user).filter(isbn=text.isbn).delete()
+    # if(form6):
+    #     Wishlist.objects.filter(user=request.user).filter(isbn=text.isbn).delete()
+
     return render_to_response(
 	   'textchange/wishlisting.html',
        locals(),
