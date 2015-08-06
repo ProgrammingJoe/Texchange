@@ -21,7 +21,7 @@
       <!-- Table -->
       <table class="table">
         {% for items in results %}
-        <tr><td>{{items.textbook_name}}</td><td>{{items.class_name}}</td><td>{{items.author}}</td><td>{{items.isbn}}</td><td><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}">></a></td></tr>
+        <tr><td><p>{{items.textbook_name}}</p><p>{{items.class_name}}</p></td><td><p>{{items.author}}</p><p>{{items.isbn}}</p></td><td><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}">></a></td></tr>
         {% endfor %}
       </table>
     </div>
