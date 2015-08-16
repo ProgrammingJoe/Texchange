@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response, RequestContext, HttpResponseRedirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -9,28 +9,30 @@ from datetime import datetime
 from django.db.models import Q
 
 from .models import Textbook, Posting, Wishlist
-from .forms import AuthenticationForm, UserCreate, Search, AddWishlist
+from .forms import AuthenticationForm, UserCreate, Search
 
 
 def index(request):
     form3 = Search(request.POST or None)
     query = request.POST.get('search')
     keywords = []
-    if query:
-        results = []
-        keywords = query.split()
-        for x in keywords:
-            res = Textbook.objects.filter(Q(class_name__icontains = x) | Q(textbook_name__icontains = x) | Q(author__icontains = x) | Q(isbn__icontains = x))
-            for a in res:
-                results.append(a)
-        results = list(set(results))
-        return render_to_response(
-            'textchange/results.html',
-            locals(),
-            context_instance=RequestContext(request)
-            )
-    else:
-        print("You're supposed to type something idiot\n")
+    if request.method == 'POST':
+        if request.POST.get("Search"):
+            if query:
+                results = []
+                keywords = query.split()
+                for x in keywords:
+                    res = Textbook.objects.filter(Q(class_name__icontains = x) | Q(textbook_name__icontains = x) | Q(author__icontains = x) | Q(isbn__icontains = x))
+                    for a in res:
+                        results.append(a)
+                results = list(set(results))
+                return render_to_response(
+                    'textchange/results.html',
+                    locals(),
+                    context_instance=RequestContext(request)
+                    )
+            else:
+                print("You're supposed to type something idiot\n")
 
     return render_to_response(
 		'textchange/index.html',
@@ -39,14 +41,17 @@ def index(request):
 		)
 
 def textbook(request, uisbn):
-    form4 = AddWishlist(request.POST or None)
     ltextbook = Textbook.objects.filter(isbn = uisbn)
     text = ltextbook[0]
     wishlists = Wishlist.objects.filter(textbook = text)
     listings = Posting.objects.filter(textbook = text)
-    if form4.is_valid():
-        new = Wishlist(textbook = text, user = request.user, wish_date = datetime.now())
-        new.save()
+    if request.method == 'POST':
+        if request.POST.get("AddWishlist"):
+            new = Wishlist(textbook = text, user = request.user, wish_date = datetime.now())
+            new.save()
+        if request.POST.get("AddListing"):
+            new = Posting(textbook = text, user = request.user, post_date = datetime.now(), condition="good", price="$.50")
+            new.save()
 
     return render_to_response(
 		'textchange/textbook.html',
@@ -124,21 +129,30 @@ def results(request):
 
 @login_required
 def wishlisting(request):
-    # form5 = RemovePosting(request.POST or None)
-    # form6 = RemoveWishlist(request.POST or None)
     curuser = request.user
     wishlists = Wishlist.objects.filter(user = curuser)
     listings = Posting.objects.filter(user = curuser)
-    # if form5.is_valid():
-    #     Posting.objects.filter(user=request.user).filter(isbn=text.isbn).delete()
-    # if form6.is_valid():
-    #     Wishlist.objects.filter(user=request.user).filter(isbn=text.isbn).delete()
 
     return render_to_response(
 	   'textchange/wishlisting.html',
        locals(),
        context_instance=RequestContext(request)
        )
+
+@login_required
+def removewishlisting(request, uisbn):
+    curuser = request.user
+    ltextbook = Textbook.objects.filter(isbn = uisbn)
+    text = ltextbook[0]
+
+    if request.method == 'POST':
+        if request.POST.get("DeleteWishlist"):
+            Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
+        if request.POST.get("DeletePosting"):
+            Posting.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
+
+    return HttpResponseRedirect('/wishlisting')
+
 
 @login_required
 def settings(request):

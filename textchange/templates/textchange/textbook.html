@@ -12,8 +12,10 @@
       <div class="jumbotron">
         <h1>{{ text.textbook_name }}!</h1>
         <p class="lead">{{ text.class_name }} {{ text.author }} {{ text.isbn }}</p>
-        <input type="button" id="addlisting" value="Add a Posting"></input>
-        <a class="btn btn-lg btn-success" href="{% url 'textchange:textbook' uisbn=text.isbn %}" role="button">Add to Wishlist</a>
+        <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
+          <input type="submit" name="AddListing" value="Add a Posting"></input>
+          <input type="submit" name="AddWishlist" value="Add to Wishlist"></input>
+        </form>
       </div>
 
       <div class="row marketing">

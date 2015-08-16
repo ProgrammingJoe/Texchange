@@ -19,7 +19,13 @@
           <h3>Your Wishlist</h3>
           <table class="table">
             {% for wishes in wishlists %}
-            <tr><td>{{wishes.textbook}}</td><td><a class="btn btn-lg btn-success" href="#" role="button">Delete</a></td></tr>
+
+            <tr><td>{{wishes.textbook}}</td>
+              <td>
+              <form action="{% url 'textchange:removewishlisting' uisbn=wishes.textbook.isbn %}" method="post"> {% csrf_token %}
+              <input type="submit" name="DeleteWishlist" value="Delete"></input>
+              </form>
+              </td></tr>
             {% endfor %}
           </table>
         </div>
@@ -28,7 +34,12 @@
           <h3>Your Postings</h3>
           <table class="table">
             {% for posts in listings %}
-            <tr><td>{{posts.textbook}}</td><td>{{posts.condition}}</td><td>{{posts.price}}</td><td><a href = "#">DELETE</a></td></tr>
+            <tr><td>{{posts.textbook}}</td><td>{{posts.condition}}</td><td>{{posts.price}}</td>
+              <td>
+              <form action="{% url 'textchange:removewishlisting' uisbn=posts.textbook.isbn %}" method="post"> {% csrf_token %}
+              <input type="submit" name="DeletePosting" value="Delete"></input>
+              </form>
+              </td></tr>
             {% endfor %}
           </table>
         </div>

@@ -6,6 +6,7 @@ urlpatterns = [
 	url(r'^$', views.index, name="index"),
 	url(r'^accountcreation$', views.accountcreation, name="accountcreation"),
 	url(r'^wishlisting$', views.wishlisting, name="wishlisting"),
+	url(r'^wishlisting/(?P<uisbn>(\w)+)$', views.removewishlisting, name="removewishlisting"),
 	url(r'^settings$', views.settings, name="settings"),
 	url(r'^results$', views.results, name="results"),
 	url(r'^results/(?P<uisbn>(\w)+)$', views.textbook, name="textbook"),
