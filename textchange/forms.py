@@ -23,12 +23,3 @@ class UserCreate(UserCreationForm):
 
 class Search(forms.Form):
 	search = forms.CharField(required = False)
-
-class AddWishlist(forms.Form):
-	pass
-#
-# class RemoveWishlist(forms.Form):
-# 	pass
-#
-# class RemovePosting(forms.Form):
-# 	pass
