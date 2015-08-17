@@ -5,6 +5,28 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+.option {
+  width: 300px;
+}
+
+.good {
+  background-color: #52B452;
+  height: 50px;
+  width: 180px;
+}
+
+.bad {
+  background-color: #BF322E;
+  height: 35px;
+  width: 70px;
+}
+
+#search {
+  float: right;
+  position: relative;
+  top: -48px;
+  left: -50px;
+}
 
 html {
     font-family: sans-serif;

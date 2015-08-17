@@ -23,7 +23,7 @@
             <tr><td>{{wishes.textbook}}</td>
               <td>
               <form action="{% url 'textchange:removewishlisting' uisbn=wishes.textbook.isbn %}" method="post"> {% csrf_token %}
-              <input type="submit" name="DeleteWishlist" value="Delete"></input>
+              <input class="bad" type="submit" name="DeleteWishlist" value="Delete"></input>
               </form>
               </td></tr>
             {% endfor %}
