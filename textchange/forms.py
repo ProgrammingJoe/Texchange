@@ -23,3 +23,7 @@ class UserCreate(UserCreationForm):
 
 class Search(forms.Form):
 	search = forms.CharField(required = False)
+
+class PostCreate(forms.Form):
+	condition = forms.CharField(max_length = 200)
+	price = forms.CharField(max_length = 200)

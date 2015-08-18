@@ -16,12 +16,12 @@
 	  </div>
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading">Results</div>
+      <div class="panel-heading">Search Results</div>
 
       <!-- Table -->
       <table class="table">
         {% for items in results %}
-        <tr><td><p>{{items.textbook_name}}</p><p>{{items.class_name}}</p></td><td><p>{{items.author}}</p><p>{{items.isbn}}</p></td><td><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}">></a></td></tr>
+        <tr><td><p><strong>{{items.class_name}}</strong></p><p>{{items.author}}</p></td><td><p>{{items.textbook_name}}</p><p>{{items.isbn}}</p></td><td><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}">></a></td></tr>
         {% endfor %}
       </table>
     </div>

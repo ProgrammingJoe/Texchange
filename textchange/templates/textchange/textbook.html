@@ -13,8 +13,16 @@
         <h1>{{ text.textbook_name }}!</h1>
         <p class="lead">{{ text.class_name }} {{ text.author }} {{ text.isbn }}</p>
         <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
+          {% if postexist %}
+          <input class="bad" type="submit" name="DeleteListing" value="Delete your Posting"></input>
+          {% else %}
           <input class="good" type="submit" name="AddListing" value="Add a Posting"></input>
+          {% endif %}
+          {% if wishexist %}
+          <input class="bad" type="submit" name="DeleteWishlist" value="Delete from your Wishlist"></input>
+          {% else %}
           <input class="good" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
+          {% endif %}
         </form>
       </div>
 

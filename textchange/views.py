@@ -14,10 +14,10 @@ from .forms import AuthenticationForm, UserCreate, Search
 
 def index(request):
     form3 = Search(request.POST or None)
-    query = request.POST.get('search')
-    keywords = []
     if request.method == 'POST':
         if request.POST.get("Search"):
+            query = request.POST.get('search')
+            keywords = []
             if query:
                 results = []
                 keywords = query.split()
@@ -45,13 +45,21 @@ def textbook(request, uisbn):
     text = ltextbook[0]
     wishlists = Wishlist.objects.filter(textbook = text)
     listings = Posting.objects.filter(textbook = text)
+    curuser = request.user
+    postexist = Posting.objects.filter(Q(user = curuser) & Q(textbook = text))
+    wishexist = Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text))
     if request.method == 'POST':
         if request.POST.get("AddWishlist"):
-            new = Wishlist(textbook = text, user = request.user, wish_date = datetime.now())
+            new = Wishlist(textbook = text, user = curuser, wish_date = datetime.now())
             new.save()
         if request.POST.get("AddListing"):
-            new = Posting(textbook = text, user = request.user, post_date = datetime.now(), condition="good", price="$.50")
+            new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price="$.50")
             new.save()
+        if request.POST.get("DeleteWishlist"):
+            Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
+        if request.POST.get("DeleteListing"):
+            Posting.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
+
 
     return render_to_response(
 		'textchange/textbook.html',
@@ -70,12 +78,6 @@ def about(request):
 		context_instance=RequestContext(request)
 		)
 
-def contactme(request):
-    return render_to_response(
-		'textchange/contactme.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
 
 def accountcreation(request):
     form = UserCreate(request.POST or None)
@@ -153,14 +155,6 @@ def removewishlisting(request, uisbn):
 
     return HttpResponseRedirect('/wishlisting')
 
-
-@login_required
-def settings(request):
-	return render_to_response(
-		'textchange/settings.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
 
 @login_required
 def contact(request, uuser, uisbn):

@@ -17,15 +17,19 @@
 
 .bad {
   background-color: #BF322E;
+  height: 50px;
+  width: 180px;
+}
+
+.delete {
+  background-color: #BF322E;
   height: 35px;
   width: 70px;
 }
 
 #search {
-  float: right;
-  position: relative;
-  top: -48px;
-  left: -50px;
+  width: 150px;
+  height: 30px;
 }
 
 html {
