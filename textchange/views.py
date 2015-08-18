@@ -78,6 +78,12 @@ def about(request):
 		context_instance=RequestContext(request)
 		)
 
+def help(request):
+    return render_to_response(
+		'textchange/help.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
 
 def accountcreation(request):
     form = UserCreate(request.POST or None)

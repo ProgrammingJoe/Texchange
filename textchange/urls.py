@@ -14,4 +14,5 @@ urlpatterns = [
 	url(r'^thanks$', views.thanks, name="thanks"),
 	url(r'^error$', views.error, name="error"),
 	url(r'^aboutme$', views.about, name="about"),
+	url(r'^help$', views.help, name="help"),
 ]

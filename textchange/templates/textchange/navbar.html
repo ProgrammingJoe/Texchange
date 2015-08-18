@@ -3,11 +3,11 @@
   <nav>
     <ul class="nav nav-pills pull-right">
       {% if request.user.is_authenticated %}
-        <li role="presentation">Welcome {{user.username}}, <a href="{% url 'textchange:navbar' %}"> logout</a></li>
+        <li role="presentation"><a href="{% url 'textchange:navbar' %}">logout</a></li>
       {% else %}
         <li role="presentation"><a href="{% url 'textchange:accountcreation' %}">Create Account/Sign In</a></li>
       {% endif %}
     </ul>
   </nav>
-  <h3 class="text-muted"><a href="{% url 'textchange:index' %}">Textchange UVic</a></h3>
+  <h3 class="text-muted"><a href="{% url 'textchange:index' %}" class="blacklink" id="home">Textchange UVic</a></h3>
 </div>

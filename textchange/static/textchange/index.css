@@ -30,6 +30,35 @@
 #search {
   width: 150px;
   height: 30px;
+  background-color: #C5C5C5;
+}
+
+.button {
+  border-radius:6px;
+}
+
+.blacklink {
+  color: #2A2A2A;
+}
+
+.blacklink:hover {
+  color: #2A2A2A;
+  text-decoration: none;
+}
+
+.blacklink:visited {
+  color: #2A2A2A;
+  text-decoration: none;
+}
+
+#home {
+  background-color: #F8F8F8;
+  padding: 6px;
+  border-radius:6px;
+}
+
+#help {
+  background-color: #C5C5C5;
 }
 
 html {

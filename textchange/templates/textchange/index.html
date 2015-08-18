@@ -15,8 +15,9 @@
 
         <form method="POST"> {% csrf_token %}
   		  {{ form3.as_p }}
-  		  <input id="search" type="submit" value="Search" name="Search"></input>
-  		  </form>
+  		  <input id="search" class="button" type="submit" value="Search" name="Search"></input>
+        </form>
+          <button id="help" class="button"><a href="{% url 'textchange:help' %}" class="blacklink">help</a></button>
       </div>
 
       <div class="row marketing">
