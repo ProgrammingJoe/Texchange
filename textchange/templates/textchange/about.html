@@ -5,6 +5,27 @@
   {% include "textchange/head.html" %}
 
   <body>
+
+    <!-- facebook share js -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1611807462418755";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1611807462418755";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
     <div class="container">
 
       {% include "textchange/navbar.html" %}
@@ -27,11 +48,16 @@
         <a href="https://github.com/programmingjoe">
         <img src="../../static/textchange/github.png" height="33">
         </a>
+      </br>
+    </br>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <div class="fb-share-button" data-href="http://www.texchange.ca" data-layout="button_count"></div><span> Share the website</span>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <div class="fb-like" data-href="https://www.facebook.com/UvicTexchange" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div><span> Like the Facebook page</span>
       </br></br>
       <p>If you would like to give feedback, request features, or make any suggestions about the site please send an email
       the account listed below.
       </p>
-      </th>
       <footer class="footer">
         <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
       </footer>

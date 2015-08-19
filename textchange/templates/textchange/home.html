@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include "textchange/head.html" %}
+
+  <body>
+
+    <div class="container">
+
+      {% include "textchange/navbar.html" %}
+
+      <div class="jumbotron">
+        <h1>Textchange!</h1>
+        <p class="lead">Buy and sell used textbooks, easily, and at low prices!</p>
+
+        <form method="POST"> {% csrf_token %}
+  		  {{ form3.as_p }}
+  		  <input id="search" class="button" type="submit" value="Search" name="Search"></input>
+        </form>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
+          <span>View and delete items from your wishlist and postings here.</span>
+        </div>
+        <div class="col-lg-6">
+          <a class="btn btn-lg btn-success option" href="{% url 'textchange:about' %}" role="button">About Me</a>
+          <span>Learn about, support, and contact the developer</span>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

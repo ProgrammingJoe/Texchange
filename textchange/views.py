@@ -12,7 +12,7 @@ from .models import Textbook, Posting, Wishlist
 from .forms import AuthenticationForm, UserCreate, Search
 
 
-def index(request):
+def home(request):
     form3 = Search(request.POST or None)
     if request.method == 'POST':
         if request.POST.get("Search"):
@@ -35,7 +35,7 @@ def index(request):
                 print("You're supposed to type something idiot\n")
 
     return render_to_response(
-		'textchange/index.html',
+		'textchange/home.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)
@@ -81,6 +81,13 @@ def about(request):
 def help(request):
     return render_to_response(
 		'textchange/help.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
+
+def index(request):
+    return render_to_response(
+		'textchange/index.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)

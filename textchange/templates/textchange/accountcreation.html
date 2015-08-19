@@ -21,6 +21,15 @@
 		  <input type="submit" value="Login"></input>
 		  </form>
         </div>
+        <div class="col-lg-6">
+          <h4>Sign In</h4>
+          <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+          </fb:login-button>
+
+          <div id="status">
+          </div>
+        </div>
       </div>
 
       <footer class="footer">

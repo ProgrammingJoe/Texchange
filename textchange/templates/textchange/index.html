@@ -6,35 +6,11 @@
 
   <body>
     <div class="container">
-
-      {% include "textchange/navbar.html" %}
-
       <div class="jumbotron">
-        <h1>Textchange!</h1>
-        <p class="lead">Buy and sell used textbooks, easily, and at low prices!</p>
-
-        <form method="POST"> {% csrf_token %}
-  		  {{ form3.as_p }}
-  		  <input id="search" class="button" type="submit" value="Search" name="Search"></input>
-        </form>
-          <button id="help" class="button"><a href="{% url 'textchange:help' %}" class="blacklink">help</a></button>
+      <h1>Texchange<a href="{% url 'textchange:home' %}" class="blacklink">!</a></h1>
+    </br>
+      <h4>Coming FALL 2015 for students at UVic</h4>
       </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
-          <p>View and delete items from your wishlist and postings here.</p>
-        </div>
-        <div class="col-lg-6">
-          <a class="btn btn-lg btn-success option" href="{% url 'textchange:about' %}" role="button">About Me</a>
-          <p>Learn about and contact the developer</p>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
-      </footer>
-
     </div> <!-- /container -->
 
 
