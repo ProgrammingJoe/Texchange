@@ -9,12 +9,8 @@
 
 	  {% include "textchange/navbar.html" %}
 
-        <!-- <h2>Your Postings and Wishlist</h2>
-        <p>In order to delete your postings or wishes press the delete button</p> -->
-      <div class="jumbotron">
         <h2>Your Postings and Wishlist</h2>
         <p>In order to delete your postings or wishes press the delete button</p>
-      </div>
 
       <div class="row marketing">
         <div class="col-lg-6">
@@ -22,7 +18,7 @@
           <table class="table">
             {% for wishes in wishlists %}
 
-            <tr><td>{{wishes.textbook}}</td>
+            <tr><td><a href="{% url 'textchange:textbook' uisbn=wishes.textbook.isbn %}" class="blacklink">{{wishes.textbook}}</a></td>
               <td>
               <form action="{% url 'textchange:removewishlisting' uisbn=wishes.textbook.isbn %}" method="post"> {% csrf_token %}
               <input class="delete" type="submit" name="DeleteWishlist" value="Delete"></input>
@@ -36,7 +32,7 @@
           <h3>Your Postings</h3>
           <table class="table">
             {% for posts in listings %}
-            <tr><td>{{posts.textbook}}</td><td>{{posts.condition}}</td><td>{{posts.price}}</td>
+            <tr><td><a href="{% url 'textchange:textbook' uisbn=posts.textbook.isbn %}" class="blacklink">{{posts.textbook}}</a></td><td>${{posts.price}}</td>
               <td>
               <form action="{% url 'textchange:removewishlisting' uisbn=posts.textbook.isbn %}" method="post"> {% csrf_token %}
               <input class="delete" type="submit" name="DeletePosting" value="Delete"></input>

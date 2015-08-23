@@ -53,7 +53,7 @@ def textbook(request, uisbn):
             new = Wishlist(textbook = text, user = curuser, wish_date = datetime.now())
             new.save()
         if request.POST.get("AddListing"):
-            new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price="$.50")
+            new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price=".50")
             new.save()
         if request.POST.get("DeleteWishlist"):
             Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()

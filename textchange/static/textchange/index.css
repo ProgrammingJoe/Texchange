@@ -52,7 +52,7 @@
   text-decoration: none;
 }
 
-#home {
+.textbutton {
   background-color: #F8F8F8;
   padding: 6px;
   border-radius:6px;

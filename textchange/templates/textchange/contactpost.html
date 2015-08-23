@@ -2,9 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include "textchange/head.html" %}
-
+  <!-- {% load staticfiles %} -->
   <body>
-
     <div class="container">
 
 	  {% include "textchange/navbar.html" %}
@@ -26,8 +25,7 @@
       </div>
 
       <div class="col-lg-6">
-        {{ posting.image.url }}
-        <img src="{{ MEDIA_URL }}postings/nophoto.jpg"/>
+          <img src="{{ posting.image.url }}">
 
     </div>
 
