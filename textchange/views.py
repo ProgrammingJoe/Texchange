@@ -8,7 +8,7 @@ import operator
 from datetime import datetime
 from django.db.models import Q
 
-from .models import Textbook, Posting, Wishlist
+from .models import Textbook, Posting, Wishlist, User
 from .forms import AuthenticationForm, UserCreate, Search
 
 
@@ -170,11 +170,29 @@ def removewishlisting(request, uisbn):
 
 
 @login_required
-def contact(request, uuser, uisbn):
+def contactpost(request, uuser, uisbn):
     ltextbook = Textbook.objects.filter(isbn = uisbn)
     text = ltextbook[0]
+    luser = User.objects.filter(username = uuser)
+    quser = luser[0]
+    post = Posting.objects.filter((Q(user = quser) & Q(textbook = ltextbook)))
+    posting = post[0]
     return render_to_response(
-        'textchange/contact.html',
+        'textchange/contactpost.html',
+        locals(),
+        context_instance=RequestContext(request)
+        )
+
+@login_required
+def contactwish(request, uuser, uisbn):
+    ltextbook = Textbook.objects.filter(isbn = uisbn)
+    text = ltextbook[0]
+    luser = User.objects.filter(username = uuser)
+    quser = luser[0]
+    wish = Wishlist.objects.filter((Q(user = quser) & Q(textbook = ltextbook)))
+    wishlist = wish[0]
+    return render_to_response(
+        'textchange/contactwish.html',
         locals(),
         context_instance=RequestContext(request)
         )

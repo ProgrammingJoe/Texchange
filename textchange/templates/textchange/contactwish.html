@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  {% include "textchange/head.html" %}
+
+  <body>
+
+    <div class="container">
+
+	  {% include "textchange/navbar.html" %}
+
+    <div class="row marketing">
+      <div class="col-lg-6">
+        <h3>Textbook Info</h3>
+          <p><strong>Textbook: </strong>{{ wishlist.textbook.textbook_name }}</p>
+          <p><strong>Class: </strong>{{ wishlist.textbook.class_name }}</p>
+          <p><strong>ISBN: </strong>{{ wishlist.textbook.isbn }}</p>
+          <p><strong>Author: </strong>{{ wishlist.textbook.author }}</p>
+        <h3>Contact Info</h3>
+          <p><strong>User: </strong>{{ wishlist.user.username }}</p>
+          <p>Button to contact</p>
+
+
+      </div>
+
+      <div class="col-lg-6">
+        {{ wishlist.image.url }}
+
+
+    </div>
+
+    </div> <!-- /container -->
+
+    <footer class="footer">
+      <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
+    </footer>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

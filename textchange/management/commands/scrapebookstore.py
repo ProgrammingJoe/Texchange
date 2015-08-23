@@ -44,7 +44,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         print(os.listdir("."))
-        soup = BeautifulSoup(open("bookstore.html"))
+        soup = BeautifulSoup(open("bookstore.html"), "html.parser")
         books = soup.findAll("div", { "class" : "textbook-item"})
         bookmodels = []
         for x in books:

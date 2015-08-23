@@ -31,7 +31,7 @@
           <h3>Possible Buyers</h3>
           <table class="table">
             {% for wishes in wishlists %}
-            <tr><td>{{wishes.textbook}}</td><td>{{wishes.user}}</td><td><a href = "{% url 'textchange:contact' uuser=wishes.user uisbn=text.isbn %}">></a></td></tr>
+            <tr><td>{{wishes.textbook}}</td><td>{{wishes.user}}</td><td><a href = "{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}">></a></td></tr>
             {% endfor %}
           </table>
         </div>
@@ -40,7 +40,7 @@
           <h3>Possible Sellers</h3>
           <table class="table">
             {% for posts in listings %}
-            <tr><td>{{posts.textbook}}</td><td>{{posts.condition}}</td><td>{{posts.price}}</td><td>{{posts.user}}</td><td><a href = "{% url 'textchange:contact' uuser=posts.user uisbn=text.isbn %}">></a></td></tr>
+            <tr><td>{{posts.textbook}}</td><td>{{posts.condition}}</td><td>{{posts.price}}</td><td>{{posts.user}}</td><td><a href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}">></a></td></tr>
             {% endfor %}
           </table>
         </div>

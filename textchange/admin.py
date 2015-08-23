@@ -13,8 +13,8 @@ class Wishlist_table(admin.ModelAdmin):
 	list_display = ('textbook', 'user', 'wish_date')
 
 class Posting_table(admin.ModelAdmin):
-	fields = ['textbook', 'condition', 'price', 'user', 'post_date']
-	list_display = ('textbook', 'condition', 'price', 'user', 'post_date')
+	fields = ['textbook', 'condition', 'price', 'user', 'image', 'post_date']
+	list_display = ('textbook', 'condition', 'price', 'user', 'image', 'post_date')
 
 admin.site.register(Textbook, Textbook_table)
 admin.site.register(Wishlist, Wishlist_table)

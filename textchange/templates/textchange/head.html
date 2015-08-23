@@ -7,19 +7,20 @@
   <meta name="author" content="">
   <link rel="icon" href="../../favicon.ico">
 
-  <title>Textchange</title>
+  <title>Texchange</title>
 
+  {% load staticfiles %}
   <!-- Bootstrap core CSS -->
-  <link href="../../static/textchange/index.css" rel="stylesheet">
+  <link href="{% static "textchange/index.css" %}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../../static/textchange/jumbotron.css" rel="stylesheet">
+  <link href="{% static "textchange/jumbotron.css" %}" rel="stylesheet">
 
   <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="../../static/textchange/index.js"></script>
+  <script src="{% static "textchange/index.js" %}"></script>
 
-  <link rel="shortcut icon" href="../../static/textchange/tabicon.png">
+  <link rel="shortcut icon" href="{% static "textchange/tabicon.png" %}">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
