@@ -5,8 +5,8 @@ from django.contrib import admin
 from .models import Textbook, Posting, Wishlist
 
 class Textbook_table(admin.ModelAdmin):
-	fields = ['textbook_name', 'class_name', 'author', 'isbn', 'wishlist_count', 'listing_count']
-	list_display = ('textbook_name', 'class_name', 'author', 'isbn', 'wishlist_count', 'listing_count')
+	fields = ['textbook_name', 'class_name', 'author', 'isbn', 'wishlist_count', 'listing_count', 'NumPosts', 'NumWishes']
+	list_display = ('textbook_name', 'class_name', 'author', 'isbn', 'wishlist_count', 'listing_count', 'NumPosts', 'NumWishes')
 
 class Wishlist_table(admin.ModelAdmin):
 	fields = ['textbook', 'user', 'wish_date']

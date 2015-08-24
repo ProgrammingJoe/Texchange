@@ -4,12 +4,19 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
+# 770 3333 446
 
 class Textbook(models.Model):
 	textbook_name = models.CharField(max_length = 200)
 	class_name = models.CharField(max_length = 200)
 	author = models.CharField(max_length = 200)
 	isbn = models.CharField(max_length = 200, primary_key=True)
+	@property
+	def NumWishes(self):
+		return self.wishlist_set.count()
+	@property
+  	def NumPosts(self):
+		return self.posting_set.count()
 	wishlist_count = models.CharField(max_length = 200)
 	listing_count = models.CharField(max_length = 200)
 

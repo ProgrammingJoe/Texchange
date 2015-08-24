@@ -50,11 +50,13 @@ def textbook(request, uisbn):
     wishexist = Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text))
     if request.method == 'POST':
         if request.POST.get("AddWishlist"):
-            new = Wishlist(textbook = text, user = curuser, wish_date = datetime.now())
-            new.save()
+            if (not (Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)))):
+                new = Wishlist(textbook = text, user = curuser, wish_date = datetime.now())
+                new.save()
         if request.POST.get("AddListing"):
-            new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price=".50")
-            new.save()
+            if (not (Posting.objects.filter(Q(user = curuser) & Q(textbook = text)))):
+                new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price=".50")
+                new.save()
         if request.POST.get("DeleteWishlist"):
             Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
         if request.POST.get("DeleteListing"):
