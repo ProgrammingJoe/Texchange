@@ -17,8 +17,13 @@ class Textbook(models.Model):
 	@property
   	def NumPosts(self):
 		return self.posting_set.count()
-	wishlist_count = models.CharField(max_length = 200)
-	listing_count = models.CharField(max_length = 200)
+	@property
+  	def DemSup(self):
+		if (self.posting_set.count() != 0):
+			showmethemoney = float((self.wishlist_set.count()))/(self.posting_set.count())
+		else:
+			showmethemoney = -1
+		return showmethemoney
 
 	def __str__(self):
 		return self.textbook_name
