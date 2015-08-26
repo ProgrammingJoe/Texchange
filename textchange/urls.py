@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from . import views
 
+# Urls used to specify what urls are displayed with respect to which views function is called
 urlpatterns = [
 	url(r'^$', views.index, name="index"),
 	url(r'^home$', views.home, name="home"),

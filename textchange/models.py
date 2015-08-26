@@ -4,8 +4,7 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-# 770 3333 446
-
+# Textbook model with properties for determining supply and demand of textbooks
 class Textbook(models.Model):
 	textbook_name = models.CharField(max_length = 200)
 	class_name = models.CharField(max_length = 200)
@@ -22,12 +21,13 @@ class Textbook(models.Model):
 		if (self.posting_set.count() != 0):
 			showmethemoney = float((self.wishlist_set.count()))/(self.posting_set.count())
 		else:
-			showmethemoney = -1
+			showmethemoney = 0
 		return showmethemoney
 
 	def __str__(self):
 		return self.textbook_name
 
+# Posting model consisting of a textbook connected with a user
 class Posting(models.Model):
 	textbook = models.ForeignKey(Textbook)
 	condition = models.CharField(max_length = 200)
@@ -45,6 +45,7 @@ class Posting(models.Model):
 	was_posted_recently.boolean = True
 	was_posted_recently.short_description = 'Posted recently'
 
+# Wishlist model consisting of a textbook and a user
 class Wishlist(models.Model):
 	textbook = models.ForeignKey(Textbook)
 	user = models.ForeignKey(User)
