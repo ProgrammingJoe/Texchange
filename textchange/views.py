@@ -8,7 +8,7 @@ import operator
 from datetime import datetime
 from django.db.models import Q
 
-from .models import Textbook, Posting, Wishlist, User, MyUser
+from .models import Textbook, Posting, Wishlist, MyUser
 from .forms import AuthenticationForm, UserCreate, Search
 
 # Index page of the site
@@ -130,7 +130,6 @@ def accountcreation(request):
                 )
     if form.is_valid():
         facebook = request.POST.get('facebook')
-        user = form.save(commit=False)
         user.save()
         if facebook:
             myuser = MyUser(user = user, facebook = facebook)

@@ -9,7 +9,7 @@ class MyUser(models.Model):
 	facebook = models.CharField(max_length=300)
 
 	def __str__(self):
-		return self.user
+		return self.user.username
 
 # Textbook model with properties for determining supply and demand of textbooks
 class Textbook(models.Model):
