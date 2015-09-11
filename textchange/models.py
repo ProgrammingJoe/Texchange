@@ -4,6 +4,13 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
+class MyUser(models.Model):
+	user = models.OneToOneField(User)
+	facebook = models.CharField(max_length=300)
+
+	def __str__(self):
+		return self.user
+
 # Textbook model with properties for determining supply and demand of textbooks
 class Textbook(models.Model):
 	textbook_name = models.CharField(max_length = 200)

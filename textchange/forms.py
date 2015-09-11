@@ -5,13 +5,13 @@ from django.forms import ModelForm
 
 from django import forms
 
-from .models import User, Posting
+from .models import MyUser, Posting
 
 # Form used to create a user
 class UserCreate(UserCreationForm):
 	class Meta:
 		model = User
-		fields = ('username', 'password1', 'password2', 'email', 'phone')
+		fields = ('username', 'password1', 'password2', 'email', 'facebook')
 		widgets = {
 		'password1': forms.PasswordInput(),
 		'password2': forms.PasswordInput(),
@@ -19,8 +19,9 @@ class UserCreate(UserCreationForm):
 	username = forms.CharField()
 	password1 = forms.CharField(widget = forms.PasswordInput)
 	password2 = forms.CharField(widget = forms.PasswordInput)
-	email = forms.EmailField()
-	phone = forms.CharField()
+	email = forms.EmailField(widget = forms.EmailInput)
+	facebook = forms.CharField()
+
 
 # Form used as the input for the search bar
 class Search(forms.Form):

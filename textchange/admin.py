@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Textbook, Posting, Wishlist
+from .models import Textbook, Posting, Wishlist, MyUser
 
 # Fields is the list of elements in the table
 # List_display is the list of attributes and/or properties viewable on the admin site
@@ -18,7 +18,12 @@ class Posting_table(admin.ModelAdmin):
 	fields = ['textbook', 'condition', 'price', 'user', 'image', 'post_date']
 	list_display = ('textbook', 'condition', 'price', 'user', 'image', 'post_date')
 
+class MyUser_table(admin.ModelAdmin):
+	fields = ['user', 'facebook']
+	list_display = ('user', 'facebook')
+
 # Adds the models to the admin site
 admin.site.register(Textbook, Textbook_table)
 admin.site.register(Wishlist, Wishlist_table)
 admin.site.register(Posting, Posting_table)
+admin.site.register(MyUser, MyUser_table)

@@ -22,15 +22,14 @@
 		  </form>
         </div>
         <div class="col-lg-6">
-          <h4>Sign In</h4>
-          <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
-          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-          </fb:login-button>
-
-          <div id="status">
+          <h4>Create an Account</h4>
+          <p>Fill in your information to Create an Account. If your Facebook Profile Url is not filled in e-mail will be used as your form of contact.</p>
+    		  <form method="POST"> {% csrf_token %}
+    		  {{ form.as_p }}
+    		  <input type="submit" value="Create an Account"></input>
+    		  </form>
           </div>
         </div>
-      </div>
 
       <footer class="footer">
         <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
