@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include "textchange/head.html" %}
+
+  <body>
+
+    <div class="container">
+
+      {% include "textchange/navbar.html" %}
+
+      <div class="jumbotron">
+        <p>{{ text.textbook_name }}</p>
+        <p>{{ text.author }}</p>
+        <p>{{ text.isbn }}</p>
+        <p>{{ text.class_name }}</p>
+        <form action="{% url 'textchange:addposting' uisbn=text.isbn %}" method="POST"> {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Add a Posting"></input>
+        </form>
+
+      </div>
+
+      <footer class="footer">
+        <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
+      </footer>
+
+    </div> <!-- /container -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -29,5 +29,7 @@ class Search(forms.Form):
 
 # Form used to create a posting
 class PostCreate(forms.Form):
-	condition = forms.CharField(max_length = 200)
+	CHOICES = (('New', 'New'), ('Like New', 'Like New'), ('Used', 'Used'), ('Usable', 'Usable'))
 	price = forms.CharField(max_length = 200)
+	condition = forms.ChoiceField(choices = CHOICES)
+	image = forms.ImageField(required=False)

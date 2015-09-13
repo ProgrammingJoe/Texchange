@@ -11,6 +11,7 @@ urlpatterns = [
 	url(r'^wishlisting/(?P<uisbn>(\w)+)$', views.removewishlisting, name="removewishlisting"),
 	url(r'^results$', views.results, name="results"),
 	url(r'^results/(?P<uisbn>(\w)+)$', views.textbook, name="textbook"),
+	url(r'^results/(?P<uisbn>(\w)+)/posting/add$', views.addposting, name="addposting"),
 	url(r'^results/(?P<uisbn>(\w)+)/(?P<uuser>(\w)+)/post$', views.contactpost, name="contactpost"),
 	url(r'^results/(?P<uisbn>(\w)+)/(?P<uuser>(\w)+)/wish$', views.contactwish, name="contactwish"),
 	url(r'^navbar$', views.navbar, name="navbar"),

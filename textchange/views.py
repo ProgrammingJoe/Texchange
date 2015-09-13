@@ -8,8 +8,8 @@ import operator
 from datetime import datetime
 from django.db.models import Q
 
-from .models import Textbook, Posting, Wishlist, MyUser
-from .forms import AuthenticationForm, UserCreate, Search
+from .models import Textbook, Posting, Wishlist, MyUser, User
+from .forms import AuthenticationForm, UserCreate, Search, PostCreate
 
 # Index page of the site
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
@@ -130,6 +130,7 @@ def accountcreation(request):
                 )
     if form.is_valid():
         facebook = request.POST.get('facebook')
+        user = form.save(commit=False)
         user.save()
         if facebook:
             myuser = MyUser(user = user, facebook = facebook)
@@ -183,6 +184,36 @@ def wishlisting(request):
        locals(),
        context_instance=RequestContext(request)
        )
+
+# Renders the add a posting form page
+def addposting(request, uisbn):
+    form = PostCreate(request.POST or None)
+
+    # Get textbook with isbn equal to usibn
+    ltextbook = Textbook.objects.filter(isbn = uisbn)
+    text = ltextbook[0]
+    curuser = request.user
+
+    if form.is_valid():
+        condition = request.POST.get('condition')
+        price = request.POST.get('price')
+        image = request.POST.get('image')
+        if image:
+            if (not (Posting.objects.filter(Q(user = curuser) & Q(textbook = text)))):
+                new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition=condition, price=price, image = image)
+                new.save()
+                return HttpResponseRedirect('/results/' + uisbn)
+        else:
+            if (not (Posting.objects.filter(Q(user = curuser) & Q(textbook = text)))):
+                new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition=condition, price=price)
+                new.save()
+                return HttpResponseRedirect('/results/' + uisbn)
+
+    return render_to_response(
+        'textchange/addposting.html',
+        locals(),
+        context_instance=RequestContext(request)
+        )
 
 # Used to delete wishes or postings from the wishlisting page
 @login_required
