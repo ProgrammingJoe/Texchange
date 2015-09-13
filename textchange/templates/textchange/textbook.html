@@ -17,13 +17,21 @@
             <input class="bad button" type="submit" name="DeleteListing" value="Delete your Posting"></input>
           </form>
           {% else %}
-          <a href= "{% url 'textchange:addposting' uisbn=text.isbn %}" class="good button">Add a Posting</a>
+          <a href= "{% url 'textchange:addposting' uisbn=text.isbn %}" class="good button blacklink textbut">Add a Posting</a>
           {% endif %}
         <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
           {% if wishexist %}
-          <input class="bad button" type="submit" name="DeleteWishlist" value="Delete from your Wishlist"></input>
+            {% if postexist %}
+            <input class="bad button" type="submit" name="DeleteWishlist" value="Delete from your Wishlist"></input>
+            {% else %}
+            <input class="bad button hacks" type="submit" name="DeleteWishlist" value="Delete from your Wishlist"></input>
+            {% endif %}
           {% else %}
-          <input class="good button" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
+            {% if postexist %}
+            <input class="good button" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
+            {% else %}
+            <input class="good button hacks" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
+            {% endif %}
           {% endif %}
         </form>
       </div>
