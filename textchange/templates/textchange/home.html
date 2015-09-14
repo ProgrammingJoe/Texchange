@@ -26,6 +26,12 @@
           <span>View and delete items from your wishlist and postings here.</span>
         </div>
         <div class="col-lg-6">
+          <a class="btn btn-lg btn-success option" href="{% url 'textchange:profile' uuser=user %}" role="button">Edit Profile</a>
+          <span>Change your profile information.</span>
+        </br>
+        </br>
+        </div>
+        <div class="col-lg-6">
           <a class="btn btn-lg btn-success option" href="{% url 'textchange:about' %}" role="button">About Me</a>
           <span>Learn about, support, and contact the developer</span>
         </div>

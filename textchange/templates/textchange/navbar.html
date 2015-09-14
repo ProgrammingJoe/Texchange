@@ -3,7 +3,7 @@
   <nav>
     <ul class="nav nav-pills pull-right">
       {% if request.user.is_authenticated %}
-        <li role="presentation"><a href="{% url 'textchange:navbar' %}">logout</a></li>
+        <li role="presentation"><a href="{% url 'textchange:navbar' %}"><span class="blacklink">{{request.user}}, &nbsp;</span> logout</a></li>
       {% else %}
         <li role="presentation"><a href="{% url 'textchange:accountcreation' %}">Create Account/Sign In</a></li>
       {% endif %}

@@ -10,14 +10,14 @@
       {% include "textchange/navbar.html" %}
 
       <div class="jumbotron">
-        <h1>{{ text.textbook_name }}!</h1>
+        <h2>{{ text.textbook_name }}!</h2>
         <p class="lead">{{ text.class_name }} {{ text.author }} {{ text.isbn }}</p>
           {% if postexist %}
           <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
             <input class="bad button" type="submit" name="DeleteListing" value="Delete your Posting"></input>
           </form>
           {% else %}
-          <a href= "{% url 'textchange:addposting' uisbn=text.isbn %}" class="good button blacklink textbut">Add a Posting</a>
+          <a href= "{% url 'textchange:addposting' uisbn=text.isbn %}" class="good button blacklink addpost">Add a Posting</a>
           {% endif %}
         <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
           {% if wishexist %}

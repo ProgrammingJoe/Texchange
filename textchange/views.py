@@ -14,6 +14,7 @@ from .forms import AuthenticationForm, UserCreate, Search, PostCreate
 # Index page of the site
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
 def home(request):
+    curuser = request.user
     form3 = Search(request.POST or None)
     if request.method == 'POST':
         if request.POST.get("Search"):
@@ -266,3 +267,13 @@ def contactwish(request, uuser, uisbn):
         locals(),
         context_instance=RequestContext(request)
         )
+
+
+# Renders the edit profile page
+def profile(request, uuser):
+    curuser = request.user
+    return render_to_response(
+		'textchange/profile.html',
+		locals(),
+		context_instance=RequestContext(request)
+		)
