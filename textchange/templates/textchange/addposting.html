@@ -13,7 +13,7 @@
       <div class="jumbotron">
         <p><strong>{{ text.textbook_name }}<strong></p>
         <p>{{ text.author }} &nbsp; {{ text.class_name }} &nbsp; {{ text.isbn }}</p>
-        <form action="{% url 'textchange:addposting' uisbn=text.isbn %}" method="POST"> {% csrf_token %}
+        <form action="{% url 'textchange:addposting' uisbn=text.isbn %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
           {{ form.as_p }}
           <input type="submit" value="Add a Posting"></input>
         </form>

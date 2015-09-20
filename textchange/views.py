@@ -1,5 +1,5 @@
-from django.shortcuts import render, render_to_response, RequestContext, HttpResponseRedirect
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, render_to_response, RequestContext, HttpResponseRedirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http404
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -45,6 +45,7 @@ def home(request):
 # Textbook details page
 # Consists of add/remove buttons for postings/wishlist
 # Buttons change based on state of that textbook and user combination
+@login_required
 def textbook(request, uisbn):
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn = uisbn)
@@ -187,18 +188,19 @@ def wishlisting(request):
        )
 
 # Renders the add a posting form page
+@login_required
 def addposting(request, uisbn):
-    form = PostCreate(request.POST or None)
+    form = PostCreate(request.POST or None, request.FILES or None)
 
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn = uisbn)
     text = ltextbook[0]
     curuser = request.user
 
-    if form.is_valid():
+    if form.is_valid() and request.POST:
         condition = request.POST.get('condition')
         price = request.POST.get('price')
-        image = request.POST.get('image')
+        image = request.FILES.get('image')
         if image:
             if (not (Posting.objects.filter(Q(user = curuser) & Q(textbook = text)))):
                 new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition=condition, price=price, image = image)
@@ -268,12 +270,8 @@ def contactwish(request, uuser, uisbn):
         context_instance=RequestContext(request)
         )
 
-
-# Renders the edit profile page
-def profile(request, uuser):
-    curuser = request.user
-    return render_to_response(
-		'textchange/profile.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response

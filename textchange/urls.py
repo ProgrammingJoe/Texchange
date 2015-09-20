@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
@@ -6,7 +8,6 @@ from . import views
 urlpatterns = [
 	url(r'^$', views.index, name="index"),
 	url(r'^home$', views.home, name="home"),
-	url(r'^(?P<uuser>(\w+))$', views.profile, name="profile"),
 	url(r'^accountcreation$', views.accountcreation, name="accountcreation"),
 	url(r'^wishlisting$', views.wishlisting, name="wishlisting"),
 	url(r'^wishlisting/(?P<uisbn>(\w)+)$', views.removewishlisting, name="removewishlisting"),
@@ -20,4 +21,4 @@ urlpatterns = [
 	url(r'^error$', views.error, name="error"),
 	url(r'^aboutme$', views.about, name="about"),
 	url(r'^help$', views.help, name="help"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
