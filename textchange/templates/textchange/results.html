@@ -16,7 +16,11 @@
 	  </div>
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading"><h4>Search Results</h4></div>
+      {% if curuser.is_authenticated %}
+        <div class="panel-heading"><h4>Search Results</h4></div>
+      {% else %}
+        <div class="panel-heading"><h4>Search Results</h4><p>Login required to view textbooks.</p></div>
+      {% endif %}
 
       <!-- Table -->
       <table class="table">

@@ -7,7 +7,6 @@ from . import views
 # Urls used to specify what urls are displayed with respect to which views function is called
 urlpatterns = [
 	url(r'^$', views.index, name="index"),
-	url(r'^home$', views.home, name="home"),
 	url(r'^accountcreation$', views.accountcreation, name="accountcreation"),
 	url(r'^wishlisting$', views.wishlisting, name="wishlisting"),
 	url(r'^wishlisting/(?P<uisbn>(\w)+)$', views.removewishlisting, name="removewishlisting"),

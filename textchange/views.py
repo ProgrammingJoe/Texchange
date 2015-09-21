@@ -14,13 +14,10 @@ from .forms import AuthenticationForm, UserCreate, Search, PostCreate
 
 # Index page of the site
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
-def home(request):
+def index(request):
     curuser = request.user
-    messages.add_message(request, messages.INFO, 'Hello world.')
-    print(curuser)
-
     form3 = Search(request.POST or None)
-    if request.method == 'POST':
+    if request.method == 'POST' and form3:
         if request.POST.get("Search"):
             query = request.POST.get('search')
             keywords = []
@@ -41,7 +38,7 @@ def home(request):
                 print("You're supposed to type something idiot\n")
 
     return render_to_response(
-		'textchange/home.html',
+		'textchange/index.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)
@@ -102,14 +99,6 @@ def about(request):
 def help(request):
     return render_to_response(
 		'textchange/help.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
-
-# Temporary index page
-def index(request):
-    return render_to_response(
-		'textchange/index.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)
