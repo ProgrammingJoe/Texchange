@@ -21,7 +21,7 @@
             <tr><td><a href="{% url 'textchange:textbook' uisbn=wishes.textbook.isbn %}" class="blacklink">{{wishes.textbook}}</a></td>
               <td>
               <form action="{% url 'textchange:removewishlisting' uisbn=wishes.textbook.isbn %}" method="post"> {% csrf_token %}
-              <input class="delete" type="submit" name="DeleteWishlist" value="Delete"></input>
+              <input class="delete" type="submit" name="DeleteWishlist"  onclick="return confirm('Are you sure you want to delete your wish?')" value="Delete"></input>
               </form>
               </td></tr>
             {% endfor %}
@@ -35,7 +35,7 @@
             <tr><td><a href="{% url 'textchange:textbook' uisbn=posts.textbook.isbn %}" class="blacklink">{{posts.textbook}}</a></td><td>${{posts.price}}</td>
               <td>
               <form action="{% url 'textchange:removewishlisting' uisbn=posts.textbook.isbn %}" method="post"> {% csrf_token %}
-              <input class="delete" type="submit" name="DeletePosting" value="Delete"></input>
+              <input class="delete" type="submit" name="DeletePosting"  onclick="return confirm('Are you sure you want to delete your posting?')" value="Delete"></input>
               </form>
               </td></tr>
             {% endfor %}

@@ -7,6 +7,7 @@ from functools import reduce
 import operator
 from datetime import datetime
 from django.db.models import Q
+from django.contrib import messages
 
 from .models import Textbook, Posting, Wishlist, MyUser, User
 from .forms import AuthenticationForm, UserCreate, Search, PostCreate
@@ -15,6 +16,9 @@ from .forms import AuthenticationForm, UserCreate, Search, PostCreate
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
 def home(request):
     curuser = request.user
+    messages.add_message(request, messages.INFO, 'Hello world.')
+    print(curuser)
+
     form3 = Search(request.POST or None)
     if request.method == 'POST':
         if request.POST.get("Search"):
@@ -167,11 +171,12 @@ def error(request):
 
 # Renders the results of a textbook search
 def results(request):
-	return render_to_response(
-		'textchange/results.html',
-		locals(),
-		context_instance=RequestContext(request)
-		)
+    curuser = request.user()
+    return render_to_response(
+        'textchange/results.html',
+        locals(),
+        context_instance=RequestContext(request)
+        )
 
 # Renders a page for the user to manage their postings and wishes
 @login_required

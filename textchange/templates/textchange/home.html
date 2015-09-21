@@ -22,7 +22,11 @@
 
       <div class="row marketing">
         <div class="col-lg-6">
-          <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
+          {% if curuser.is_authenticated %}
+            <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
+          {% else %}
+            <a class="btn btn-lg btn-success option" id="notloggedwish" href="" role="button" title="Login Required.">Wishlist and Postings</a>
+          {% endif %}
           <span>View and delete items from your wishlist and postings here.</span>
         </div>
         <div class="col-lg-6">
