@@ -27,9 +27,11 @@ class Command(BaseCommand):
     # Find all spans in x with class author
     def findauthor(self, x):
         tag = x.find("span", { "class" : "author"})
-        author = tag.string
+        author = str(tag)
+        author = author[47:-8]
         author = self.cleanstr(author)
         author = author.replace("Author:", "")
+        print(author)
         return author
 
     # Get the course name
@@ -47,10 +49,10 @@ class Command(BaseCommand):
     # Get the isbn of the book
     # Get the first div with class row in x
     def findisbn(self, x):
-        secondrow = x.findAll("div", { "class" : "row"})[1]
-        link = secondrow.find('a')
-        isbn = link.string
+        secondrow = x.findAll("a", { "class" : "skew"})[0]
+        isbn = secondrow.string
         isbn = self.cleanstr(isbn)
+        print(isbn)
         return isbn
 
     # Main function to call all the methods
