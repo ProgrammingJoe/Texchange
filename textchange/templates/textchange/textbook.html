@@ -11,30 +11,59 @@
 
       <div class="jumbotron">
         <h2>{{ text.textbook_name }}!</h2>
-        <p class="lead">{{ text.class_name }} {{ text.author }} {{ text.isbn }}</p>
-          {% if postexist %}
-          <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
-            <input class="bad button" type="submit" name="DeleteListing" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your postings?')" value="Delete your Posting"></input>
-          </form>
-          {% else %}
-          <a href= "{% url 'textchange:addposting' uisbn=text.isbn %}" class="good button blacklink addpost">Add a Posting</a>
-          {% endif %}
-        <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
-          {% if wishexist %}
-            {% if postexist %}
-            <input class="bad button" type="submit" name="DeleteWishlist" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your wishlist?')" value="Delete from your Wishlist"></input>
-            {% else %}
-            <input class="bad button hacks" type="submit" name="DeleteWishlist" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your wishlist?')" value="Delete from your Wishlist"></input>
-            {% endif %}
-          {% else %}
-            {% if postexist %}
-            <input class="good button" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
-            {% else %}
-            <input class="good button hacks" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
-            {% endif %}
-          {% endif %}
-        </form>
+        <p class="lead">{{ text.author }} {{ text.isbn }}</p>
+
+
+        {% if numtexts < 5 %}
+
+          <div><table style="margin: 0 auto;"><tr>
+          {% for texts in ltextbook %}
+          <td style="padding-left: 5px; padding-right:5px;">
+            <table style="cell-spacing: 0px; border-collapse: collapse;">
+            <tr><td style="padding:2px; background-color: grey; text-align: center; border-top-left-radius: 6px; border-top-right-radius: 6px;">{{ texts.class_name }}</td></tr>
+            <tr><td style="padding:2px; background-color: green; text-align: center; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;">{{ texts.semester }}</td></tr>
+            </table>
+          </td>
+          {% endfor %}
+          </tr></table></div>
+          </br>
+        {% endif %}
+
+
+        <div >
+          <table style="margin: 0 auto; ">
+          <tr>
+            <td style="padding-left: 5px; padding-right:5px;">
+              <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
+                {% if wishexist %}
+                  {% if postexist %}
+                  <input class="bad button" type="submit" name="DeleteWishlist" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your wishlist?')" value="Delete from your Wishlist"></input>
+                  {% else %}
+                  <input class="bad button" type="submit" name="DeleteWishlist" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your wishlist?')" value="Delete from your Wishlist"></input>
+                  {% endif %}
+                {% else %}
+                  {% if postexist %}
+                  <input class="good button" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
+                  {% else %}
+                  <input class="good button" type="submit" name="AddWishlist" value="Add to Wishlist"></input>
+                  {% endif %}
+                {% endif %}
+              </form>
+            </td>
+            <td style="padding-left: 5px; padding-right:5px;">
+              {% if postexist %}
+              <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
+                <input class="bad button" type="submit" name="DeleteListing" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your postings?')" value="Delete your Posting"></input>
+              </form>
+              {% else %}
+              <a href= "{% url 'textchange:addposting' uisbn=text.isbn %}" class="good button blacklink addpost">Add a Posting</a>
+              {% endif %}
+            </td>
+          </tr>
+        </table>
       </div>
+      </div>
+      <!-- JUMBOTRON END -->
 
       <div class="row marketing">
         <div class="col-lg-6">

@@ -28,6 +28,7 @@ def index(request):
                     for a in res:
                         results.append(a)
                 results = list(set(results))
+                numresults = len(results)
                 return render_to_response(
                     'textchange/results.html',
                     locals(),
@@ -49,6 +50,8 @@ def index(request):
 def textbook(request, uisbn):
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn = uisbn)
+    numtexts = len(ltextbook)
+    print(numtexts)
     text = ltextbook[0]
 
     # Create lists of postings and wishes for those textbooks

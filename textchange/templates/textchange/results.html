@@ -17,9 +17,9 @@
     <div class="panel panel-default">
       <!-- Default panel contents -->
       {% if curuser.is_authenticated %}
-        <div class="panel-heading"><h4>Search Results</h4></div>
+        <div class="panel-heading"><h4>Search Results</h4><p>{{numresults}} results were returned.</p></div>
       {% else %}
-        <div class="panel-heading"><h4>Search Results</h4><p>Login required to view textbooks.</p></div>
+        <div class="panel-heading"><h4>Search Results</h4><p>{{numresults}} results were returned.</p><p>Login required to view textbooks.</p></div>
       {% endif %}
 
       <!-- Table -->
