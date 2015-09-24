@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('textchange', '0016_auto_20150823_2020'),
+        ('textchange', '0003_textbook_semester'),
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.AddField(
             model_name='posting',
-            name='price',
-            field=models.DecimalField(max_digits=5, decimal_places=2),
+            name='class_name',
+            field=models.CharField(default=b'Test', max_length=200),
         ),
     ]

@@ -16,7 +16,9 @@ class Textbook(models.Model):
 	textbook_name = models.CharField(max_length = 200)
 	class_name = models.CharField(max_length = 200)
 	author = models.CharField(max_length = 200)
-	isbn = models.CharField(max_length = 200, primary_key=True)
+	isbn = models.CharField(max_length = 200)
+	semester = models.CharField(max_length = 200, default="FALL2015")
+
 	@property
 	def NumWishes(self):
 		return self.wishlist_set.count()
@@ -30,6 +32,9 @@ class Textbook(models.Model):
 		else:
 			showmethemoney = 0
 		return showmethemoney
+
+	class Meta:
+		unique_together = ('isbn', 'class_name')
 
 	def __str__(self):
 		return self.textbook_name

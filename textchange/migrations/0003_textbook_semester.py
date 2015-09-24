@@ -7,16 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('textchange', '0017_auto_20150823_2023'),
+        ('textchange', '0002_auto_20150922_2307'),
     ]
 
     operations = [
-        migrations.RemoveField(
+        migrations.AddField(
             model_name='textbook',
-            name='listing_count',
-        ),
-        migrations.RemoveField(
-            model_name='textbook',
-            name='wishlist_count',
+            name='semester',
+            field=models.CharField(default=b'FALL2015', max_length=200),
         ),
     ]

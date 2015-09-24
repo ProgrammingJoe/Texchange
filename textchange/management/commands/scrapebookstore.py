@@ -3,6 +3,7 @@ from collections import namedtuple
 
 import os
 from django.core.management.base import BaseCommand, CommandError
+from django.db.models import Q
 from textchange.models import Textbook
 
 # This command is used to scrape the UVicBookstore of their textbook information
@@ -78,5 +79,8 @@ class Command(BaseCommand):
             bookmodels.append(object)
 
         for dic in bookmodels:
-            new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'])
+            ltextbook = Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course']))
+            if ltextbook:
+                Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).delete()
+            new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "FALL2015")
             new.save()

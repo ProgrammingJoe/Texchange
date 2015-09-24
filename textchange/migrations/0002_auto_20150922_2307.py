@@ -7,13 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('textchange', '0015_auto_20150823_2018'),
+        ('textchange', '0001_initial'),
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='posting',
-            name='price',
-            field=models.CharField(max_length=200),
+        migrations.AlterUniqueTogether(
+            name='textbook',
+            unique_together=set([('isbn', 'class_name')]),
         ),
     ]

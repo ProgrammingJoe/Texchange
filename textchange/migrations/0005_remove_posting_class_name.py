@@ -7,13 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('textchange', '0009_auto_20150805_2139'),
+        ('textchange', '0004_posting_class_name'),
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.RemoveField(
             model_name='posting',
-            name='image',
-            field=models.ImageField(default=b'../../static/textchange/nophoto.jpg', upload_to=b''),
+            name='class_name',
         ),
     ]

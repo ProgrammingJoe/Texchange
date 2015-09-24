@@ -7,7 +7,6 @@ from functools import reduce
 import operator
 from datetime import datetime
 from django.db.models import Q
-from django.contrib import messages
 
 from .models import Textbook, Posting, Wishlist, MyUser, User
 from .forms import AuthenticationForm, UserCreate, Search, PostCreate
