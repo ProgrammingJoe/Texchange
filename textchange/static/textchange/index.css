@@ -21,13 +21,13 @@
 .good {
   background-color: #52B452;
   height: 50px;
-  width: 180px;
+  width: 160px;
 }
 
 .bad {
   background-color: #BF322E;
   height: 50px;
-  width: 180px;
+  width: 160px;
 }
 
 .delete {
@@ -50,14 +50,39 @@
   background-color: #C5C5C5;
 }
 
-.hacks {
-  margin-bottom: 16px;
+.center {
+  margin: 0 auto;
 }
 
-.addpost {
-  padding: 16px;
-  padding-left: 45px;
-  padding-right: 45px;
+.coursetag {
+  padding:2px;
+  background-color: grey;
+  text-align: center;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.semestertag {
+  padding:2px;
+  background-color: green;
+  text-align: center;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.classsemester {
+  cell-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.buttonspace {
+  padding-left: 5px;
+  padding-right:5px;
+}
+
+.classtag {
+  padding-left: 5px;
+  padding-right:5px;
 }
 
 .button {

@@ -16,24 +16,26 @@
 
         {% if numtexts < 5 %}
 
-          <div><table style="margin: 0 auto;"><tr>
+          <div><table class="center"><tr>
           {% for texts in ltextbook %}
-          <td style="padding-left: 5px; padding-right:5px;">
-            <table style="cell-spacing: 0px; border-collapse: collapse;">
-            <tr><td style="padding:2px; background-color: grey; text-align: center; border-top-left-radius: 6px; border-top-right-radius: 6px;">{{ texts.class_name }}</td></tr>
-            <tr><td style="padding:2px; background-color: green; text-align: center; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;">{{ texts.semester }}</td></tr>
+          <td class="classtag">
+            <table class="classsemester">
+            <tr><td class="coursetag">{{ texts.class_name }}</td></tr>
+            <tr><td class="semestertag">{{ texts.semester }}</td></tr>
             </table>
           </td>
           {% endfor %}
           </tr></table></div>
           </br>
+        {% else %}
+          <p>Item is offered for many textbooks.</p>
         {% endif %}
 
 
         <div >
-          <table style="margin: 0 auto; ">
+          <table class="center">
           <tr>
-            <td style="padding-left: 5px; padding-right:5px;">
+            <td class="buttonspace">
               <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
                 {% if wishexist %}
                   {% if postexist %}
@@ -50,13 +52,15 @@
                 {% endif %}
               </form>
             </td>
-            <td style="padding-left: 5px; padding-right:5px;">
+            <td class="buttonspace">
               {% if postexist %}
               <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
                 <input class="bad button" type="submit" name="DeleteListing" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your postings?')" value="Delete your Posting"></input>
               </form>
               {% else %}
-              <a href= "{% url 'textchange:addposting' uisbn=text.isbn %}" class="good button blacklink addpost">Add a Posting</a>
+              <a href="{% url 'textchange:addposting' uisbn=text.isbn %}">
+                <input class="good button blacklink" type="button" value="Add a Posting" />
+              </a>
               {% endif %}
             </td>
           </tr>
