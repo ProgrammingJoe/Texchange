@@ -5,6 +5,31 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+.width160 {
+  width: 160px;
+}
+
+.width235 {
+  width: 235px;
+}
+
+.width75 {
+  width: 75px;
+}
+
+.width85 {
+  width: 85px;
+}
+
+.width270 {
+  width: 270px;
+}
+
+.width110 {
+  width: 110px;
+}
+
 .option {
   width: 300px;
 }
@@ -21,13 +46,13 @@
 .good {
   background-color: #52B452;
   height: 50px;
-  width: 160px;
+  width: 170px;
 }
 
 .bad {
   background-color: #BF322E;
   height: 50px;
-  width: 160px;
+  width: 170px;
 }
 
 .delete {
