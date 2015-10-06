@@ -7,9 +7,13 @@ from functools import reduce
 import operator
 from datetime import datetime
 from django.db.models import Q
+from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
+import smtplib
+from smtplib import SMTPException
 
 from .models import Textbook, Posting, Wishlist, MyUser, User
-from .forms import AuthenticationForm, UserCreate, Search, PostCreate
+from .forms import AuthenticationForm, UserCreate, Search, PostCreate, Contact
 
 # Index page of the site
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
@@ -51,7 +55,6 @@ def textbook(request, uisbn):
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn = uisbn)
     numtexts = len(ltextbook)
-    print(numtexts)
     text = ltextbook[0]
 
     # Create lists of postings and wishes for those textbooks
@@ -91,11 +94,42 @@ def navbar(request):
 
 # Renders the about page
 def about(request):
+    if request.method == 'GET':
+        form = Contact()
+    else:
+        form = Contact(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            content = form.cleaned_data['content']
+            email = ['contacttexchange@gmail.com']
+
+
+            #try:
+            server = smtplib.SMTP('smtp.gmail.com:587')
+            server.starttls()
+            server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+            server.sendmail(email, email, content)
+            server.quit()
+            print "Successfully sent email"
+        #except SMTPException:
+            print "Error: unable to send email"
+
+            #
+            #
+            # try:
+            #     send_mail(subject, content, email, [settings.EMAIL_HOST_USER])
+            # except BadHeaderError:
+            #     return HttpResponse('Invalid header found.')
+            # return redirect('emailthanks')
+
     return render_to_response(
 		'textchange/about.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)
+
+def emailthanks(request):
+    return HttpResponse('Thank you for your message.')
 
 # Renders the help/tutorial page
 def help(request):

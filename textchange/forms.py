@@ -33,3 +33,8 @@ class PostCreate(forms.Form):
 	price = forms.DecimalField()
 	condition = forms.ChoiceField(choices = CHOICES)
 	image = forms.ImageField(required=False)
+
+class Contact(forms.Form):
+	email = forms.EmailField(required=True)
+	subject = forms.CharField(required=True)
+	content = forms.CharField(widget=forms.Textarea)

@@ -17,6 +17,7 @@ urlpatterns = [
 	url(r'^results/(?P<uisbn>(\w)+)/(?P<uuser>(\w)+)/wish$', views.contactwish, name="contactwish"),
 	url(r'^navbar$', views.navbar, name="navbar"),
 	url(r'^thanks$', views.thanks, name="thanks"),
+	url(r'^emailthanks$', views.emailthanks, name="emailthanks"),
 	url(r'^error$', views.error, name="error"),
 	url(r'^aboutme$', views.about, name="about"),
 	url(r'^help$', views.help, name="help"),

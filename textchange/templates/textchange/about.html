@@ -8,56 +8,52 @@
 
     <!-- facebook share js -->
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1611807462418755";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+    window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1611807462418755',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1611807462418755";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 
     <div class="container">
 
       {% include "textchange/navbar.html" %}
 
-      <h2>About</h2>
+      <h2>Contact Me!</h2>
       <p>Hello visitor!</p>
-      <p>My name is Joe and I am a 3rd year software engineering student studying at the University of Victoria.
-      Thank you for visiting my web application.
-      I developed Texchange in an effort to make textbook exchange at UVic easier than any other methods that are currently available.
-      Texchange falls into the strictly niche market of UVic as only textbooks needed for the term can be listed. This was done
-      make the application easier to follow and understand as it is not filled with all varietys of textbooks.
+      <p>My name is Joe and I am a 3rd year software engineering student studying at the University of Victoria. Texchange was designed
+        to make exchanging textbooks easier at the University of Victoria. If you have any concerns or recommendations about the application
+        or you would just like to contact the developer please feel welcome to send an e-mail with the form below.
       </p>
-      <p>If you would like to learn more about my skills and projects please visit my LinkedIn profile or github profile
-      with the links below.</p>
-        <span>&nbsp;&nbsp;&nbsp;</span>
-        <a href="https://ca.linkedin.com/pub/joe-czepil/69/73/b1b">
-        <img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_myprofile_160x33.png" width="160" height="33" border="0" alt="View Joe Czepil's profile on LinkedIn">
-        </a>
-        <span>&nbsp;&nbsp;&nbsp;</span>
-        <a href="https://github.com/programmingjoe">
-        <img src="../../static/textchange/github.png" height="33">
-        </a>
-      </br>
+
+      <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <div class="form-actions">
+        <button type="submit">Send</button>
+      </div>
+  </form>
+
     </br>
+      <p>Like the Facebook page for application updates and share the website with your friends!</p>
         <span>&nbsp;&nbsp;&nbsp;</span>
         <div class="fb-share-button" data-href="http://www.texchange.ca" data-layout="button_count"></div><span> Share the website</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
         <div class="fb-like" data-href="https://www.facebook.com/UvicTexchange" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div><span> Like the Facebook page</span>
       </br></br>
-      <p>If you would like to give feedback, request features, or make any suggestions about the site please send an email
-      the account listed below.
-      </p>
+      <p>Donate here to support the developer.</p>
       <footer class="footer">
         <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
       </footer>
