@@ -27,12 +27,11 @@ def index(request):
             if query:
                 results = []
                 keywords = query.split()
+                query = Textbook.objects.all()
                 for x in keywords:
-                    res = Textbook.objects.filter(Q(class_name__icontains = x) | Q(textbook_name__icontains = x) | Q(author__icontains = x) | Q(isbn__icontains = x))
-                    for a in res:
-                        results.append(a)
-                results = list(set(results))
-                numresults = len(results)
+                    query = query.filter(Q(class_name__icontains = x) | Q(textbook_name__icontains = x) | Q(author__icontains = x) | Q(isbn__icontains = x))
+
+                numresults = len(query)
                 return render_to_response(
                     'textchange/results.html',
                     locals(),
@@ -104,23 +103,15 @@ def about(request):
             email = ['contacttexchange@gmail.com']
 
 
-            #try:
-            server = smtplib.SMTP('smtp.gmail.com:587')
-            server.starttls()
-            server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-            server.sendmail(email, email, content)
-            server.quit()
-            print "Successfully sent email"
-        #except SMTPException:
-            print "Error: unable to send email"
-
-            #
-            #
-            # try:
-            #     send_mail(subject, content, email, [settings.EMAIL_HOST_USER])
-            # except BadHeaderError:
-            #     return HttpResponse('Invalid header found.')
-            # return redirect('emailthanks')
+            try:
+                server = smtplib.SMTP("smtp.gmail.com", "587")
+                server.starttls()
+                server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+                server.sendmail(email, email, content)
+                server.quit()
+                print "Successfully sent email"
+            except SMTPException:
+                print "Error: unable to send email"
 
     return render_to_response(
 		'textchange/about.html',
