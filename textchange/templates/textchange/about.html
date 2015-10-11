@@ -37,14 +37,22 @@
         to make exchanging textbooks easier at the University of Victoria. If you have any concerns or recommendations about the application
         or you would just like to contact the developer please feel welcome to send an e-mail with the form below.
       </p>
-
+      <br />
       <form method="post">
       {% csrf_token %}
-      {{ form }}
-      <div class="form-actions">
-        <button type="submit">Send</button>
-      </div>
-  </form>
+      {% for field in form %}
+        {{ field.errors }}
+        {% if field.name = 'content' %}
+          {{ field.label_tag|linebreaks }}
+        {% else %}
+          {{ field.label_tag }}
+        {% endif %}
+        {{ field }}
+      {% endfor %}
+        <div class="form-actions">
+          <button type="submit">Send Feedback</button>
+        </div>
+      </form>
 
     </br>
       <p>Like the Facebook page for application updates and share the website with your friends!</p>

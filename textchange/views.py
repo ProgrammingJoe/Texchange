@@ -12,7 +12,7 @@ from django.conf import settings
 import smtplib
 from smtplib import SMTPException
 
-from .models import Textbook, Posting, Wishlist, MyUser, User
+from .models import Textbook, Posting, Wishlist, MyUser, User, Feedback
 from .forms import AuthenticationForm, UserCreate, Search, PostCreate, Contact
 
 # Index page of the site
@@ -100,18 +100,13 @@ def about(request):
         if form.is_valid():
             subject = form.cleaned_data['subject']
             content = form.cleaned_data['content']
-            email = ['contacttexchange@gmail.com']
-
-
+            email =  form.cleaned_data['email']
             try:
-                server = smtplib.SMTP("smtp.gmail.com", "587")
-                server.starttls()
-                server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-                server.sendmail(email, email, content)
-                server.quit()
-                print "Successfully sent email"
+                new = Feedback(email = email, content = content, subject = subject)
+                new.save()
+                print "Message sent successfully"
             except SMTPException:
-                print "Error: unable to send email"
+                print "Error: unable to add feedback"
 
     return render_to_response(
 		'textchange/about.html',

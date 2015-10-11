@@ -30,6 +30,16 @@
   width: 110px;
 }
 
+#noresults {
+  color: red;
+  font-weight: bold;
+}
+
+.feedbackcontent {
+  width: 500px;
+  height: 200px;
+}
+
 .option {
   width: 300px;
 }

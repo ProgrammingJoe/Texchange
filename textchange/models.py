@@ -11,6 +11,11 @@ class MyUser(models.Model):
 	def __str__(self):
 		return self.user.username
 
+class Feedback(models.Model):
+	email = models.EmailField()
+	subject = models.CharField(max_length=200)
+	content = models.CharField(max_length=1000)
+
 # Textbook model with properties for determining supply and demand of textbooks
 class Textbook(models.Model):
 	textbook_name = models.CharField(max_length = 200)

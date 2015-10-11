@@ -5,7 +5,7 @@ from django.forms import ModelForm
 
 from django import forms
 
-from .models import MyUser, Posting
+from .models import MyUser, Posting, Feedback
 
 # Form used to create a user
 class UserCreate(UserCreationForm):
@@ -34,7 +34,10 @@ class PostCreate(forms.Form):
 	condition = forms.ChoiceField(choices = CHOICES)
 	image = forms.ImageField(required=False)
 
-class Contact(forms.Form):
-	email = forms.EmailField(required=True)
-	subject = forms.CharField(required=True)
-	content = forms.CharField(widget=forms.Textarea)
+class Contact(ModelForm):
+	class Meta:
+		model = Feedback
+		fields = ('email', 'subject', 'content')
+	email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class' : 'feedback'}))
+	subject = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'feedback'}))
+	content = forms.CharField(widget=forms.Textarea(attrs={'class' : 'feedbackcontent'}), required=True)
