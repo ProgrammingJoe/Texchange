@@ -34,34 +34,37 @@
       <h2>Contact Me!</h2>
       <p>Hello visitor!</p>
       <p>My name is Joe and I am a 3rd year software engineering student studying at the University of Victoria. Texchange was designed
-        to make exchanging textbooks easier at the University of Victoria. If you have any concerns or recommendations about the application
-        or you would just like to contact the developer please feel welcome to send an e-mail with the form below.
+        to make exchanging textbooks easier at the University of Victoria. If you have any concerns or recommendations about the application,
+        you would just like to contact the developer, or you have other application ideas that you want developed for students at UVic
+        please feel welcome to send a message with the form below.
       </p>
-      <br />
+      <div style="margin-left: auto; margin-right: auto; display: block; width: 500px;">
       <form method="post">
       {% csrf_token %}
       {% for field in form %}
         {{ field.errors }}
+        {{ field.label_tag }}
         {% if field.name = 'content' %}
-          {{ field.label_tag|linebreaks }}
-        {% else %}
-          {{ field.label_tag }}
+          </br>
         {% endif %}
         {{ field }}
+        {% if field.name = 'subject' %}
+          </br>
+        {% endif %}
       {% endfor %}
         <div class="form-actions">
           <button type="submit">Send Feedback</button>
         </div>
       </form>
+    </div>
 
     </br>
-      <p>Like the Facebook page for application updates and share the website with your friends!</p>
+      <p>Like the Facebook page for application updates and share the website with your friends to help grow the community!</p>
         <span>&nbsp;&nbsp;&nbsp;</span>
         <div class="fb-share-button" data-href="http://www.texchange.ca" data-layout="button_count"></div><span> Share the website</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
         <div class="fb-like" data-href="https://www.facebook.com/UvicTexchange" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div><span> Like the Facebook page</span>
       </br></br>
-      <p>Donate here to support the developer.</p>
       <footer class="footer">
         <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
       </footer>

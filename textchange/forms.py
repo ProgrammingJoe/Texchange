@@ -40,4 +40,4 @@ class Contact(ModelForm):
 		fields = ('email', 'subject', 'content')
 	email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class' : 'feedback'}))
 	subject = forms.CharField(required=True, widget=forms.TextInput(attrs={'class' : 'feedback'}))
-	content = forms.CharField(widget=forms.Textarea(attrs={'class' : 'feedbackcontent'}), required=True)
+	content = forms.CharField(widget=forms.Textarea(attrs={'class' : 'feedbackcontent'}), required=True, label="Feedback")

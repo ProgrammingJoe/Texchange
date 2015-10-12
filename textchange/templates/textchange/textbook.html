@@ -75,6 +75,9 @@
             {% for wishes in wishlists %}
             <tr><td class="width270">{{wishes.user}}</td><td><a href = "{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td></tr>
             {% endfor %}
+            {% if not wishlists %}
+              <tr><td>Currently no users buying this textbook. Add a wish to start the trend!</td></tr>
+            {% endif %}
           </table>
         </div>
 
@@ -84,6 +87,9 @@
             {% for posts in listings %}
             <tr><td class="width85">{{posts.condition}}</td><td class="width75">${{posts.price}}</td><td class="width110">{{posts.user}}</td><td><a href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td></tr>
             {% endfor %}
+            {% if not listings %}
+              <tr><td>Currently no users selling this textbook. Add a posting to start the trend!</td></tr>
+            {% endif %}
           </table>
         </div>
       </div>
