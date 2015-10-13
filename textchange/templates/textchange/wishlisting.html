@@ -22,6 +22,9 @@
         <div class="col-lg-6">
           <h3>Your Wishlist</h3>
           <table class="table">
+            {% if not wishlists %}
+              <tr><td>You do not currently have any wishes.</td></tr>
+            {% endif %}
             {% for wishes in wishlists %}
             <tr><td class="width235"><a href="{% url 'textchange:textbook' uisbn=wishes.textbook.isbn %}" class="blacklink">{{wishes.textbook}}</a></td>
               <td class="width85">
@@ -36,6 +39,9 @@
         <div class="col-lg-6">
           <h3>Your Postings</h3>
           <table class="table">
+            {% if not listings %}
+              <tr><td><p>You do not currently have any postings.</td></tr>
+            {% endif %}
             {% for posts in listings %}
             <tr><td class="width160"><a href="{% url 'textchange:textbook' uisbn=posts.textbook.isbn %}" class="blacklink">{{posts.textbook}}</a></td><td class="width75">${{posts.price}}</td>
               <td class="width85">
@@ -48,9 +54,7 @@
         </div>
       </div>
 
-      <footer class="footer">
-        <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
-      </footer>
+      {% include "textchange/footer.html" %}
 
     </div> <!-- /container -->
 

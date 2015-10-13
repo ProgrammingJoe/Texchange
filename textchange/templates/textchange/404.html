@@ -1,25 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
   {% include "textchange/head.html" %}
   <body>
+
     <div class="container">
       {% include "textchange/navbar.html" %}
-
       <div class="jumbotron">
         <h1>Oops! 404</h1>
         <p>This page does not exist. You can go home here <a href="{% url 'textchange:home' %}">Texchange UVic</a></p>
         <h3>(╯'□')╯  ┻━┻</h3>
       </div>
-
-      <footer class="footer">
-        <p>&copy; Brought to you by a student at the University of Victoria 2015</p>
-      </footer>
-
+      {% include "textchange/footer.html" %}
     </div> <!-- /container -->
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
   </body>
 </html>

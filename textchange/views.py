@@ -129,7 +129,6 @@ def help(request):
 # If the user is real, log them in.
 # If the user creation form is valid, save the user
 def accountcreation(request):
-    form = UserCreate(request.POST or None)
     form2 = AuthenticationForm(request.POST or None)
     username = request.POST.get('username')
     password = request.POST.get('password')
@@ -145,19 +144,6 @@ def accountcreation(request):
                 locals(),
                 context_instance=RequestContext(request)
                 )
-    if form.is_valid():
-        facebook = request.POST.get('facebook')
-        user = form.save(commit=False)
-        user.save()
-        if facebook:
-            myuser = MyUser(user = user, facebook = facebook)
-            myuser.save()
-        else:
-            myuser = MyUser(user = user, facebook = None)
-            myuser.save()
-
-        return render(request, 'textchange/thanks.html')
-
     return render_to_response(
         'textchange/accountcreation.html',
         locals(),

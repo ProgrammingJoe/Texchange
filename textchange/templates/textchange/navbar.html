@@ -2,8 +2,7 @@
 <div class="header clearfix">
   <nav>
     <ul class="nav nav-pills pull-right">
-      <li>  <button id="help" class="button"><a href="{% url 'textchange:help' %}" class="blacklink">help</a></button>
-</li>
+      <li><button id="help" class="button"><a href="{% url 'textchange:help' %}" class="blacklink">help</a></button></li>
       {% if request.user.is_authenticated %}
         <li role="presentation"><a href="{% url 'textchange:navbar' %}"><span class="blacklink">{{request.user}}, &nbsp;</span> logout</a></li>
       {% else %}
