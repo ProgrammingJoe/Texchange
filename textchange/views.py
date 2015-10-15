@@ -105,6 +105,7 @@ def about(request):
                 new = Feedback(email = email, content = content, subject = subject)
                 new.save()
                 print "Message sent successfully"
+                return HttpResponseRedirect('/aboutme')
             except SMTPException:
                 print "Error: unable to add feedback"
 

@@ -6,6 +6,10 @@
   <body>
 
   <script>
+    function fb_login() {
+      FB.login( function() {}, { scope: 'email,public_profile' } );
+    }
+
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
@@ -107,8 +111,10 @@
           <h4>Create an Account</h4>
           <p>Fill in your information to Create an Account.</p>
 
-          <fb:login-button scope="public_profile,email" data-size="xlarge" data-max-rows="1" data-show-faces="true" data-auto-logout-link="false" onlogin="checkLoginState();">
+          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
         </fb:login-button>
+
+        <a href="#" onclick="fb_login();"><img src="../../static/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a>
         </div>
 
       </div>

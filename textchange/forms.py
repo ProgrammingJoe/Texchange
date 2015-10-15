@@ -25,12 +25,12 @@ class UserCreate(UserCreationForm):
 
 # Form used as the input for the search bar
 class Search(forms.Form):
-	search = forms.CharField(required = False)
+	search = forms.CharField(required = False, max_length = 50)
 
 # Form used to create a posting
 class PostCreate(forms.Form):
 	CHOICES = (('New', 'New'), ('Like New', 'Like New'), ('Used', 'Used'), ('Usable', 'Usable'))
-	price = forms.DecimalField()
+	price = forms.DecimalField(max_digits=5, decimal_places=2)
 	condition = forms.ChoiceField(choices = CHOICES)
 	image = forms.ImageField(required=False)
 
