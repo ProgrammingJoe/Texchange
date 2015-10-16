@@ -6,6 +6,7 @@ from . import views
 
 # Urls used to specify what urls are displayed with respect to which views function is called
 urlpatterns = [
+	url(r'^home$', views.home, name="home"),
 	url(r'^$', views.index, name="index"),
 	url(r'^accountcreation$', views.accountcreation, name="accountcreation"),
 	url(r'^wishlisting$', views.wishlisting, name="wishlisting"),

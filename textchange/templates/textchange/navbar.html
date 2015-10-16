@@ -90,9 +90,9 @@
 
   <nav>
     <ul class="nav nav-pills pull-right">
-      <li><a href="{% url 'textchange:wishlisting' %}" class="blacklink" style="background-color: #F8F8F8; border: 1px solid black;">Manage Wishlists/Postings</a></li>
+      <!-- <li><a href="{% url 'textchange:wishlisting' %}" class="blacklink" style="background-color: #F8F8F8; border: 1px solid black;">Manage Wishlists/Postings</a></li> -->
       <li><a href="{% url 'textchange:help' %}" class="blacklink" style="background-color: #F8F8F8; border: 1px solid black;">Help</a></li>
-      <li><a href="#" onclick="fb_login();" style="padding: 0px;"><img src="../../static/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a></li><a href="#" onclick="fb_login();"></a></li>
+      <!-- <li><a href="#" onclick="fb_login();" style="padding: 0px;"><img src="../../static/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a></li><a href="#" onclick="fb_login();"></a></li> -->
       {% if request.user.is_authenticated %}
         <li role="presentation"><a href="{% url 'textchange:navbar' %}" style="background-color: #F8F8F8;"><span class="blacklink">{{request.user}}, &nbsp;</span> logout</a></li>
       {% else %}

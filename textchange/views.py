@@ -15,6 +15,13 @@ from smtplib import SMTPException
 from .models import Textbook, Posting, Wishlist, MyUser, User, Feedback
 from .forms import AuthenticationForm, UserCreate, Search, PostCreate, Contact
 
+def home(request):
+    return render_to_response(
+	   'textchange/home.html',
+       locals(),
+       context_instance=RequestContext(request)
+       )
+
 # Index page of the site
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
 def index(request):
