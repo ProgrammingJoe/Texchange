@@ -81,6 +81,7 @@ class Command(BaseCommand):
         for dic in bookmodels:
             ltextbook = Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course']))
             if ltextbook:
-                Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).delete()
-            new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "FALL2015")
-            new.save()
+                Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).update(semester = "FALL2015")
+            else:
+                new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "FALL2015")
+                new.save()
