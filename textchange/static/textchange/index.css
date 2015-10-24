@@ -30,6 +30,17 @@
   width: 110px;
 }
 
+.resultstable td a div{
+  padding: 10px;
+}
+
+.resultstable td a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+
 #id_email {
   width: 180px;
 }

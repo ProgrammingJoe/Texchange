@@ -15,16 +15,16 @@ from smtplib import SMTPException
 from .models import Textbook, Posting, Wishlist, MyUser, User, Feedback
 from .forms import AuthenticationForm, UserCreate, Search, PostCreate, Contact
 
-def home(request):
+def index(request):
     return render_to_response(
-	   'textchange/home.html',
+	   'textchange/index.html',
        locals(),
        context_instance=RequestContext(request)
        )
 
 # Index page of the site
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
-def index(request):
+def home(request):
     curuser = request.user
     form3 = Search(request.POST or None)
     if request.method == 'POST' and form3:
@@ -48,7 +48,7 @@ def index(request):
                 print("You're supposed to type something idiot\n")
 
     return render_to_response(
-		'textchange/index.html',
+		'textchange/home.html',
 		locals(),
 		context_instance=RequestContext(request)
 		)

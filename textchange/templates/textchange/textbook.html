@@ -73,7 +73,7 @@
           <h3>Possible Buyers</h3>
           <table class="table">
             {% for wishes in wishlists %}
-            <tr><td class="width270">{{wishes.user}}</td><td><a href = "{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td></tr>
+            <tr><td  class="width270">{{wishes.user}}</td><td><a href = "{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td></tr>
             {% endfor %}
             {% if not wishlists %}
               <tr><td>Currently no users buying this textbook.</td></tr>

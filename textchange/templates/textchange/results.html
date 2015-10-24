@@ -23,7 +23,30 @@
       {% endif %}
 
       <!-- Table -->
-      <table class="table">
+      <table class="table resultstable">
+        {% if curuser.is_authenticated %}
+          {% for items in query %}
+          <tr>
+            <td><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</div></a></td>
+            <td><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</div></a></td>
+            <td><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          {% for items in query %}
+          <tr>
+            <tr>
+              <td><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</div></a></td>
+              <td><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</div></a></td>
+              <td><a href = "#" title="Login Required."><img src="../../static/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
+            </tr>
+          {% endfor %}
+        {% endif %}
+      </table>
+
+
+
+      <!-- <table class="table">
         {% if curuser.is_authenticated %}
           {% for items in query %}
           <tr><td><p><strong>{{items.class_name}}</strong></p><p>{{items.author}}</p></td><td><p>{{items.textbook_name}}</p><p>{{items.isbn}}</p></td><td><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td></tr>
@@ -33,7 +56,7 @@
           <tr><td><p><strong>{{items.class_name}}</strong></p><p>{{items.author}}</p></td><td><p>{{items.textbook_name}}</p><p>{{items.isbn}}</p></td><td><a href = "#" title="Login Required."><img src="../../static/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td></tr>
           {% endfor %}
         {% endif %}
-      </table>
+      </table> -->
     </div>
 
     {% include "textchange/footer.html" %}
