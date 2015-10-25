@@ -1,29 +1,50 @@
-.width160 {
-  width: 160px;
+
+
+.green {
+  color: green;
 }
 
-.width235 {
-  width: 235px;
+.feedback {
+  width: 510px;
 }
 
-.width75 {
-  width: 75px;
+.homebutton {
+  padding: 8px;
+  border-radius: 6px;
 }
 
-.width85 {
-  width: 85px;
-}
-
-.width270 {
-  width: 270px;
-}
-
-.width110 {
-  width: 110px;
+.softbutton {
+  background-color: #F8F8F8;
+  border: 1px solid #C5C5C5;
 }
 
 .resultstable td a div{
   padding: 10px;
+}
+
+.borderbot {
+  border-bottom: 1px solid #C5C5C5;
+}
+
+.bordertop {
+  border-top: 1px solid #C5C5C5;
+}
+
+.padtopbot15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.padtopbot8 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.wishlisting {
+  margin-right: auto;
+  margin-left: auto;
+  width: 415px;
+  display: block;
 }
 
 .resultstable td a {
@@ -115,6 +136,10 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  background-color: #F8F8F8;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 30px;
 }
 
 .centertext {
@@ -193,4 +218,40 @@
 #help {
   background-color: #C5C5C5;
   z-index: 999;
+}
+
+.width160 {
+  width: 160px;
+}
+
+.width235 {
+  width: 235px;
+}
+
+.width75 {
+  width: 75px;
+}
+
+.width85 {
+  width: 85px;
+}
+
+.width270 {
+  width: 270px;
+}
+
+.width110 {
+  width: 110px;
+}
+
+.width140 {
+  width: 140px;
+}
+
+.width60 {
+  width: 60px;
+}
+
+.width500{
+  width:500px;
 }

@@ -73,13 +73,13 @@
           <h3>Possible Buyers</h3>
           <table class="resultstable">
             {% for wishes in wishlists %}
-            <tr style="border-top: 1px solid #C5C5C5;">
-              <td class="width270"><a class="blacklink" style="padding-top: 15px; padding-bottom: 15px;" href = "{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}">{{wishes.user}}</a></td>
-              <td><a style="padding-top: 8px; padding-bottom: 8px;" href="{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td>
+            <tr class="bordertop">
+              <td class="width270"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}">{{wishes.user}}</a></td>
+              <td><a class="padtopbot8" href="{% url 'textchange:contactwish' uuser=wishes.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td>
             </tr>
             {% endfor %}
             {% if not wishlists %}
-              <tr style="border-top: 1px solid #C5C5C5;"><td>Currently no users buying this textbook.</td></tr>
+              <tr class="bordertop"><td class="padtopbot8">Currently no users buying this textbook.</td></tr>
             {% endif %}
           </table>
         </div>
@@ -88,15 +88,15 @@
           <h3>Possible Sellers</h3>
           <table class="resultstable">
             {% for posts in listings %}
-            <tr style="border-top: 1px solid #C5C5C5;">
-              <td class="width85"><a class="blacklink" style="padding-top: 15px; padding-bottom: 15px;" href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}">{{posts.condition}}</a></td>
-              <td class="width75"><a class="blacklink" style="padding-top: 15px; padding-bottom: 15px;" href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}">${{posts.price}}</a></td>
-              <td class="width110"><a class="blacklink" style="padding-top: 15px; padding-bottom: 15px;" href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}">{{posts.user}}</a></td>
-              <td><a style="padding-top: 8px; padding-bottom: 8px;" href="{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td>
+            <tr class="bordertop">
+              <td class="width85"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}">{{posts.condition}}</a></td>
+              <td class="width75"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}">${{posts.price}}</a></td>
+              <td class="width110"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}">{{posts.user}}</a></td>
+              <td><a class="padtopbot8" href="{% url 'textchange:contactpost' uuser=posts.user uisbn=text.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td>
             </tr>
             {% endfor %}
             {% if not listings %}
-              <tr style="border-top: 1px solid #C5C5C5;"><td>Currently no users selling this textbook.</td></tr>
+              <tr class="bordertop"><td class="padtopbot8">Currently no users selling this textbook.</td></tr>
             {% endif %}
           </table>
         </div>

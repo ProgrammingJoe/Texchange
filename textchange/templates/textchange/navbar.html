@@ -91,18 +91,18 @@
   <nav>
     <ul class="nav nav-pills pull-right">
       <!-- <li><a href="{% url 'textchange:wishlisting' %}" class="blacklink" style="background-color: #F8F8F8; border: 1px solid black;">Manage Wishlists/Postings</a></li> -->
-      <li><a href="{% url 'textchange:help' %}" class="blacklink" style="background-color: #F8F8F8; border: 1px solid #C5C5C5;">Help</a></li>
+      <li><a href="{% url 'textchange:help' %}" class="blacklink softbutton">Help</a></li>
       <!-- <li><a href="#" onclick="fb_login();" style="padding: 0px;"><img src="../../static/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a></li><a href="#" onclick="fb_login();"></a></li> -->
       {% if request.user.is_authenticated %}
-        <li role="presentation"><a href="{% url 'textchange:navbar' %}" style="background-color: #F8F8F8;"><span class="blacklink">{{request.user}}, &nbsp;</span> logout</a></li>
+        <li role="presentation"><a href="{% url 'textchange:navbar' %}" class="softbutton"><span class="blacklink">{{request.user}}, &nbsp;</span> logout</a></li>
       {% else %}
-        <li role="presentation"><a href="{% url 'textchange:accountcreation' %}" style="background-color: #F8F8F8;">Create Account/Sign In</a></li>
+        <li role="presentation"><a href="{% url 'textchange:accountcreation' %}" class="softbutton">Create Account/Sign In</a></li>
       {% endif %}
     </ul>
   </nav>
 
 
-  <h3 class="nav nav-pills"><a href="{% url 'textchange:home' %}" class="blacklink">Texchange UVic</a></h3>
+  <h3 class="nav nav-pills"><a class="softbutton homebutton blacklink" href="{% url 'textchange:home' %}">Texchange UVic</a></h3>
 
 
 </div>

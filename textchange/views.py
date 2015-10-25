@@ -112,7 +112,12 @@ def about(request):
                 new = Feedback(email = email, content = content, subject = subject)
                 new.save()
                 print "Message sent successfully"
-                return HttpResponseRedirect('/aboutme')
+                message = "Message Sent Successfully"
+                return render_to_response(
+            		'textchange/about.html',
+            		locals(),
+            		context_instance=RequestContext(request)
+            		)
             except SMTPException:
                 print "Error: unable to add feedback"
 
