@@ -5,7 +5,7 @@ from django.forms import ModelForm
 
 from django import forms
 
-from .models import MyUser, Posting, Feedback
+from .models import Posting, Feedback
 
 # Form used to create a user
 class UserCreate(UserCreationForm):

@@ -12,7 +12,7 @@ from django.conf import settings
 import smtplib
 from smtplib import SMTPException
 
-from .models import Textbook, Posting, Wishlist, MyUser, User, Feedback
+from .models import Textbook, Posting, Wishlist, User, Feedback
 from .forms import AuthenticationForm, UserCreate, Search, PostCreate, Contact
 
 def index(request):
