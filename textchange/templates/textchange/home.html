@@ -5,7 +5,6 @@
   {% include "textchange/head.html" %}
 
   <body>
-
     <div class="container">
 
       {% include "textchange/navbar.html" %}
@@ -13,7 +12,6 @@
       <div class="jumbotron">
         <h1>Texchange!</h1>
         <p class="lead">Buy and sell used textbooks, easily, and at low prices!</p>
-
         <form method="POST"> {% csrf_token %}
   		  {{ form3.as_p }}
   		  <input id="search" class="button" type="submit" value="Search Textbooks" name="Search"></input>
@@ -37,9 +35,7 @@
 
       {% include "textchange/footer.html" %}
 
-
     </div> <!-- /container -->
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

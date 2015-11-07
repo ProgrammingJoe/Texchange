@@ -22,7 +22,6 @@ class UserCreate(UserCreationForm):
 	email = forms.EmailField(widget = forms.EmailInput)
 	facebook = forms.CharField()
 
-
 # Form used as the input for the search bar
 class Search(forms.Form):
 	search = forms.CharField(required = False, max_length = 50)

@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
   {% include "textchange/head.html" %}
 
   <body>
-
     <div class="container">
 
 	  {% include "textchange/navbar.html" %}
@@ -43,27 +41,11 @@
           {% endfor %}
         {% endif %}
       </table>
-
-
-
-      <!-- <table class="table">
-        {% if curuser.is_authenticated %}
-          {% for items in query %}
-          <tr><td><p><strong>{{items.class_name}}</strong></p><p>{{items.author}}</p></td><td><p>{{items.textbook_name}}</p><p>{{items.isbn}}</p></td><td><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td></tr>
-          {% endfor %}
-        {% else %}
-          {% for items in query %}
-          <tr><td><p><strong>{{items.class_name}}</strong></p><p>{{items.author}}</p></td><td><p>{{items.textbook_name}}</p><p>{{items.isbn}}</p></td><td><a href = "#" title="Login Required."><img src="../../static/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td></tr>
-          {% endfor %}
-        {% endif %}
-      </table> -->
     </div>
 
     {% include "textchange/footer.html" %}
 
-
     </div> <!-- /container -->
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

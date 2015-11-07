@@ -4,7 +4,6 @@
   {% include "textchange/head.html" %}
 
   <body>
-
     <div class="container">
 
 	  {% include "textchange/navbar.html" %}
@@ -17,17 +16,14 @@
           <p><strong>ISBN: </strong>{{ wishlist.textbook.isbn }}</p>
           <p><strong>Author: </strong>{{ wishlist.textbook.author }}</p>
       </div>
-
       <div class="col-lg-6">
         <h3>Contact Info</h3>
           <p><strong>User: </strong>{{ wishlist.user.username }}</p>
           <p>Button to contact</p>
-    </div>
-
+      </div>
     </div> <!-- /container -->
 
     {% include "textchange/footer.html" %}
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

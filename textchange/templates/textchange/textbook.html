@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,19 +11,16 @@
       <div class="jumbotron">
         <h2>{{ text.textbook_name }}!</h2>
         <p class="lead">{{ text.author }} {{ text.isbn }}</p>
-
-
         {% if numtexts < 5 %}
-
           <div><table class="center"><tr>
-          {% for texts in ltextbook %}
-          <td class="classtag">
-            <table class="classsemester">
-            <tr><td class="coursetag">{{ texts.class_name }}</td></tr>
-            <tr><td class="semestertag">{{ texts.semester }}</td></tr>
-            </table>
-          </td>
-          {% endfor %}
+            {% for texts in ltextbook %}
+            <td class="classtag">
+              <table class="classsemester">
+              <tr><td class="coursetag">{{ texts.class_name }}</td></tr>
+              <tr><td class="semestertag">{{ texts.semester }}</td></tr>
+              </table>
+            </td>
+            {% endfor %}
           </tr></table></div>
           </br>
         {% else %}
@@ -104,9 +100,7 @@
 
       {% include "textchange/footer.html" %}
 
-
     </div> <!-- /container -->
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
