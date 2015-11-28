@@ -1,5 +1,6 @@
 from django.contrib import admin
-
+from django.forms import Textarea
+from django.db import models
 # Register your models here.
 
 from .models import Textbook, Posting, Wishlist, Feedback
@@ -19,8 +20,12 @@ class Posting_table(admin.ModelAdmin):
 	list_display = ('textbook', 'condition', 'price', 'user', 'image', 'post_date')
 
 class Feedback_table(admin.ModelAdmin):
+	formfield_overrides = {
+		models.CharField: {'widget': Textarea(attrs={'rows': 5, 'col': 40})},
+	}
 	fields = ['email', 'subject', 'content']
 	list_display = ('email', 'subject', 'content')
+
 
 
 # Adds the models to the admin site
