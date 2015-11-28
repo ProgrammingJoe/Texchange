@@ -111,6 +111,7 @@
           <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
         </fb:login-button>
         <a href="#" onclick="fb_login();"><img src="../../static/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a>
+        <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
         </div>
       </div>
 
