@@ -60,6 +60,10 @@ def textbook(request, uisbn):
     # Create lists of postings and wishes for those textbooks
     wishlists = Wishlist.objects.filter(textbook = text)
     listings = Posting.objects.filter(textbook = text)
+    listings = list(listings)
+    wishlists = list(wishlists)
+    listings.sort(key=lambda x: x.price)
+    wishlists.sort(key=lambda x: x.wish_date)
     curuser = request.user
 
     # Check to see if there is a posting/wish with the current textbook user combination
@@ -72,14 +76,19 @@ def textbook(request, uisbn):
             if (not (Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)))):
                 new = Wishlist(textbook = text, user = curuser, wish_date = datetime.now())
                 new.save()
-        if request.POST.get("AddListing"):
-            if (not (Posting.objects.filter(Q(user = curuser) & Q(textbook = text)))):
-                new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price=".50")
-                new.save()
+                return HttpResponseRedirect('/results/' + uisbn)
+        # if request.POST.get("AddListing"):
+        #     if (not (Posting.objects.filter(Q(user = curuser) & Q(textbook = text)))):
+        #         new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price=".50")
+        #         new.save()
+        #         return HttpResponseRedirect('/results/' + uisbn)
         if request.POST.get("DeleteWishlist"):
             Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
+            return HttpResponseRedirect('/results/' + uisbn)
         if request.POST.get("DeleteListing"):
             Posting.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
+            return HttpResponseRedirect('/results/' + uisbn)
+
 
     return render_to_response(
 		'textchange/textbook.html',
@@ -105,7 +114,6 @@ def about(request):
             try:
                 new = Feedback(email = email, content = content, subject = subject)
                 new.save()
-                print "Message sent successfully"
                 message = "Message Sent Successfully"
                 return render_to_response(
             		'textchange/about.html',
@@ -121,8 +129,6 @@ def about(request):
 		context_instance=RequestContext(request)
 		)
 
-def emailthanks(request):
-    return HttpResponse('Thank you for your message.')
 
 # Renders the help/tutorial page
 def help(request):
@@ -132,30 +138,6 @@ def help(request):
 		context_instance=RequestContext(request)
 		)
 
-# Account creation and login page.
-# If the user is real, log them in.
-# If the user creation form is valid, save the user
-def accountcreation(request):
-    form2 = AuthenticationForm(request.POST or None)
-    username = request.POST.get('username')
-    password = request.POST.get('password')
-    user = authenticate(username = username, password = password)
-
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            return HttpResponseRedirect('/')
-        else:
-            return render_to_response(
-                'textchange/error.html',
-                locals(),
-                context_instance=RequestContext(request)
-                )
-    return render_to_response(
-        'textchange/accountcreation.html',
-        locals(),
-        context_instance=RequestContext(request)
-        )
 
 # Renders the thank you for creating an account page
 def thanks(request):
@@ -250,8 +232,10 @@ def contactpost(request, uuser, uisbn):
     # Get the textbook and user for the posting selected
     ltextbook = Textbook.objects.filter(isbn = uisbn)
     text = ltextbook[0]
-    luser = User.objects.filter(username = uuser)
+    luser = User.objects.filter(pk = uuser)
     quser = luser[0]
+
+    social = quser.social_auth.get(provider='facebook')
 
     # Query for the posting of the user textbook combination.
     post = Posting.objects.filter((Q(user = quser) & Q(textbook = ltextbook)))
@@ -267,8 +251,10 @@ def contactwish(request, uuser, uisbn):
     # Get the textbook and user for the wish selected
     ltextbook = Textbook.objects.filter(isbn = uisbn)
     text = ltextbook[0]
-    luser = User.objects.filter(username = uuser)
+    luser = User.objects.filter(pk = uuser)
     quser = luser[0]
+
+    social = quser.social_auth.get(provider='facebook')
 
     # Query for the wish of the user textbook combination
     wish = Wishlist.objects.filter((Q(user = quser) & Q(textbook = ltextbook)))
