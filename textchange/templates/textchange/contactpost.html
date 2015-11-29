@@ -18,8 +18,8 @@
           <p><strong>ISBN: </strong>{{ posting.textbook.isbn }}</p>
           <p><strong>Author: </strong>{{ posting.textbook.author }}</p>
         <h3>Contact Info</h3>
-          <p><strong>User: </strong>{{ posting.user.username }}</p>
-          <p>Button to contact</p>
+          <p><strong>User: </strong>{{ posting.user.first_name }}</p>
+          <p><a href="http://facebook.com/{{ social.uid }}">Visit their Facebook and send them a message!</a> </p>
       </div>
 
       <div class="col-lg-6">
