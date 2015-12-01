@@ -102,7 +102,12 @@ def navbar(request):
     return HttpResponseRedirect('/')
 
 # Renders the about page
+@login_required
 def about(request):
+    curuser = request.user
+    numfeedbacks = Feedback.objects.filter(user = curuser)
+    numfeedbacks = len(list(numfeedbacks))
+    print(numfeedbacks)
     if request.method == 'GET':
         form = Contact()
     else:
@@ -111,17 +116,30 @@ def about(request):
             subject = form.cleaned_data['subject']
             content = form.cleaned_data['content']
             email =  form.cleaned_data['email']
-            try:
-                new = Feedback(email = email, content = content, subject = subject)
-                new.save()
-                message = "Message Sent Successfully"
+            if(numfeedbacks >= 4):
+                badmessage = "You're on Feedback Timeout now."
                 return render_to_response(
             		'textchange/about.html',
             		locals(),
             		context_instance=RequestContext(request)
             		)
+            try:
+                new = Feedback(email = email, content = content, subject = subject, user = curuser)
+                new.save()
+                message = "Message Sent Successfully"
+                return render_to_response(
+            		'textchange/thanks.html',
+            		locals(),
+            		context_instance=RequestContext(request)
+            		)
             except SMTPException:
                 print "Error: unable to add feedback"
+                message = "Message Failed to Send"
+                return render_to_response(
+            		'textchange/about.html',
+            		locals(),
+            		context_instance=RequestContext(request)
+            		)
 
     return render_to_response(
 		'textchange/about.html',
@@ -143,14 +161,6 @@ def help(request):
 def thanks(request):
     return render_to_response(
         'textchange/thanks.html',
-        locals(),
-        context_instance=RequestContext(request)
-        )
-
-# Renders the 404/error page
-def error(request):
-    return render_to_response(
-        'textchange/error.html',
         locals(),
         context_instance=RequestContext(request)
         )

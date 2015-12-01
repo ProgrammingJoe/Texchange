@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include "textchange/head.html" %}
+
+  <body>
+    <div class="container">
+
+      {% include "textchange/navbar.html" %}
+
+      <div class="jumbotron">
+        <h2>Thank You for your Feedback!</h2>
+      </br>
+        <p class="lead">You can proceed to use the application by using one of the links below.</p>
+        <a class="btn btn-lg btn-success" href="{% url 'textchange:index' %}" role="button">Home</a>
+        <a class="btn btn-lg btn-success" href="{% url 'textchange:about' %}" role="button">Back to Contact</a>
+        </form>
+      </div>
+
+      {% include "textchange/footer.html" %}
+
+    </div> <!-- /container -->
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
