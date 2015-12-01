@@ -29,7 +29,7 @@ class Search(forms.Form):
 # Form used to create a posting
 class PostCreate(forms.Form):
 	CHOICES = (('New', 'New'), ('Like New', 'Like New'), ('Used', 'Used'), ('Usable', 'Usable'))
-	price = forms.DecimalField(max_digits=5, decimal_places=2)
+	price = forms.DecimalField(max_digits=5, decimal_places=2, error_messages={'Invalid': 'Price must be of a max of 5 numbers', 'required': 'A price is required to post.'})
 	condition = forms.ChoiceField(choices = CHOICES)
 	image = forms.ImageField(required=False)
 
