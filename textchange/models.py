@@ -8,6 +8,7 @@ class Feedback(models.Model):
 	email = models.EmailField()
 	subject = models.CharField(max_length=200)
 	content = models.CharField(max_length=1000)
+	user = models.ForeignKey(User, default=20)
 
 # Textbook model with properties for determining supply and demand of textbooks
 class Textbook(models.Model):

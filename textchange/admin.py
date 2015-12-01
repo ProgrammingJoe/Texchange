@@ -23,10 +23,8 @@ class Feedback_table(admin.ModelAdmin):
 	formfield_overrides = {
 		models.CharField: {'widget': Textarea(attrs={'rows': 5, 'col': 40})},
 	}
-	fields = ['email', 'subject', 'content']
-	list_display = ('email', 'subject', 'content')
-
-
+	fields = ['email', 'subject', 'content', 'user']
+	list_display = ('email', 'subject', 'content', 'user')
 
 # Adds the models to the admin site
 admin.site.register(Textbook, Textbook_table)
