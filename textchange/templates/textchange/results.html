@@ -24,10 +24,10 @@
       <table class="resultstable">
         {% if curuser.is_authenticated %}
           {% for items in query %}
-          <tr class="borderbot">
+          <tr class="borderbot" >
             <td class="width140"><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</div></a></td>
-            <td class="width500"><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</div></a></td>
-            <td class="width60"><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td>
+            <td  class="width500"><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</div></a></td>
+            <td  class="width60"><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}"><img src="../../static/textchange/nextarrow.png" class="nextbutton"></a></td>
           </tr>
           {% endfor %}
         {% else %}

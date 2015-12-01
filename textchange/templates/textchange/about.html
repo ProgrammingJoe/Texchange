@@ -4,26 +4,16 @@
 
   {% include "textchange/head.html" %}
 
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1611807462418755";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
   <body>
-
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '1611807462418755',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
-
-    <div id="fb-root"></div>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1611807462418755";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  </script>
 
     <div class="container">
 
@@ -53,6 +43,7 @@
         <div class="form-actions">
           <button type="submit">Send Feedback</button>
             {% if message %}<strong class="green">{{ message }}</strong>{% endif %}
+            {% if badmessage %}<strong class="red">{{ badmessage }}</strong>{% endif %}
         </div>
       </form>
     </div>
@@ -62,7 +53,7 @@
         <span>&nbsp;&nbsp;&nbsp;</span>
         <div class="fb-share-button" data-href="http://www.texchange.ca" data-layout="button_count"></div><span> Share the website</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
-        <div class="fb-like" data-href="https://www.facebook.com/UvicTexchange" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div><span> Like the Facebook page</span>
+        <div class="fb-like" data-href="https://www.facebook.com/UvicTexchange" data-width="180" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div><span> Like and share the Facebook page</span>
       </br></br><p>Honourable mentions go out to Konrad Schultz, Daniel Bolink, and Curtis St. Pierre for helping me on some of the problems I ran into.</p>
       {% include "textchange/footer.html" %}
     </div> <!-- /container -->

@@ -23,12 +23,18 @@
           {% if curuser.is_authenticated %}
             <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
           {% else %}
-            <a class="btn btn-lg btn-success option" id="notloggedwish" href="" role="button" title="Login Required.">Wishlist and Postings</a>
+            <a class="btn btn-lg btn-success option" onclick="alert('You must be logged in to view your Wishlist and Postings')" id="notloggedwish" href="" role="button" title="Login Required.">Wishlist and Postings</a>
           {% endif %}
           <span>Manage your wishlist and postings here</span>
+        </br>
+      </br>
         </div>
         <div class="col-lg-6">
+          {% if curuser.is_authenticated %}
           <a class="btn btn-lg btn-success option" href="{% url 'textchange:about' %}" role="button">Contact Me</a>
+          {% else %}
+          <a class="btn btn-lg btn-success option" onclick="alert('You must be logged in to use the contact page.')" id="notloggedwish" href="" role="button" title="Login Required.">Contact Me</a>
+          {% endif %}
           <span>Contact and support the developer</span>
         </div>
       </div>
