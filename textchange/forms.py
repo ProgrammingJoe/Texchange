@@ -24,7 +24,8 @@ class UserCreate(UserCreationForm):
 
 # Form used as the input for the search bar
 class Search(forms.Form):
-	search = forms.CharField(required = False, max_length = 50)
+	search = forms.CharField(required = False, max_length = 50, widget=forms.TextInput(attrs={'placeholder':'Eg. PSYC 100A'}))
+	#search.render('search', 'Eg. test')
 
 # Form used to create a posting
 class PostCreate(forms.Form):
