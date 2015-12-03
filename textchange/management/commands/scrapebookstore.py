@@ -32,7 +32,6 @@ class Command(BaseCommand):
         author = author[47:-8]
         author = self.cleanstr(author)
         author = author.replace("Author:", "")
-        print(author)
         return author
 
     # Get the course name
@@ -53,7 +52,6 @@ class Command(BaseCommand):
         secondrow = x.findAll("a", { "class" : "skew"})[0]
         isbn = secondrow.string
         isbn = self.cleanstr(isbn)
-        print(isbn)
         return isbn
 
     # Main function to call all the methods
@@ -79,11 +77,9 @@ class Command(BaseCommand):
             bookmodels.append(object)
 
         for dic in bookmodels:
-            print(dic)
-        # for dic in bookmodels:
-        #     ltextbook = Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course']))
-        #     if ltextbook:
-        #         Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).update(semester = "SPRING2016")
-        #     else:
-        #         new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "SPRING2016")
-        #         new.save()
+            ltextbook = Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course']))
+            if ltextbook:
+                Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).update(semester = "SPRING2016")
+            else:
+                new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "SPRING2016")
+                new.save()
