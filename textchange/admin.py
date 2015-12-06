@@ -19,6 +19,7 @@ class Posting_table(admin.ModelAdmin):
 	fields = ['textbook', 'condition', 'price', 'user', 'image', 'post_date']
 	list_display = ('textbook', 'condition', 'price', 'user', 'image', 'post_date')
 
+# Formfield is set so long message
 class Feedback_table(admin.ModelAdmin):
 	formfield_overrides = {
 		models.CharField: {'widget': Textarea(attrs={'rows': 5, 'col': 40})},

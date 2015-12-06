@@ -1,9 +1,7 @@
 from django.db import models
-
-# Create your models here.
-
 from django.contrib.auth.models import User
 
+# Feedback model consists of feedback, a subject, and contact info
 class Feedback(models.Model):
 	email = models.EmailField()
 	subject = models.CharField(max_length=200)
@@ -18,6 +16,7 @@ class Textbook(models.Model):
 	isbn = models.CharField(max_length = 200)
 	semester = models.CharField(max_length = 200, default="FALL2015")
 
+	# Properties for determing supply and demand
 	@property
 	def NumWishes(self):
 		return self.wishlist_set.count()
@@ -32,6 +31,7 @@ class Textbook(models.Model):
 			showmethemoney = 0
 		return showmethemoney
 
+	# Instead of a pk field isbn and class_name together have to be unique
 	class Meta:
 		unique_together = ('isbn', 'class_name')
 

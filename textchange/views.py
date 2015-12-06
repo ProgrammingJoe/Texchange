@@ -18,6 +18,7 @@ from .forms import AuthenticationForm, UserCreate, Search, PostCreate, Contact
 
 # Index page of the site
 # Consists of search form in which the input is split into keywords which are then queuried on all textbook attributes
+# The number of results is also calculated for the user
 def index(request):
     curuser = request.user
     form3 = Search(request.POST or None)
@@ -27,6 +28,7 @@ def index(request):
             keywords = []
             if query:
                 results = []
+                # Split up the input and query each attribute of the textbook per word
                 keywords = query.split()
                 query = Textbook.objects.all()
                 for x in keywords:
@@ -60,6 +62,8 @@ def textbook(request, uisbn):
     # Create lists of postings and wishes for those textbooks
     wishlists = Wishlist.objects.filter(textbook = text)
     listings = Posting.objects.filter(textbook = text)
+
+    # Sort the lists by price and wish_Date
     listings = list(listings)
     wishlists = list(wishlists)
     listings.sort(key=lambda x: x.price)
@@ -77,18 +81,12 @@ def textbook(request, uisbn):
                 new = Wishlist(textbook = text, user = curuser, wish_date = datetime.now())
                 new.save()
                 return HttpResponseRedirect('/results/' + uisbn)
-        # if request.POST.get("AddListing"):
-        #     if (not (Posting.objects.filter(Q(user = curuser) & Q(textbook = text)))):
-        #         new = Posting(textbook = text, user = curuser, post_date = datetime.now(), condition="good", price=".50")
-        #         new.save()
-        #         return HttpResponseRedirect('/results/' + uisbn)
         if request.POST.get("DeleteWishlist"):
             Wishlist.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
             return HttpResponseRedirect('/results/' + uisbn)
         if request.POST.get("DeleteListing"):
             Posting.objects.filter(Q(user = curuser) & Q(textbook = text)).delete()
             return HttpResponseRedirect('/results/' + uisbn)
-
 
     return render_to_response(
 		'textchange/textbook.html',
@@ -105,9 +103,13 @@ def navbar(request):
 @login_required
 def about(request):
     curuser = request.user
+
+    # Calculates the number of feedbacks this user has given
     numfeedbacks = Feedback.objects.filter(user = curuser)
     numfeedbacks = len(list(numfeedbacks))
-    print(numfeedbacks)
+
+    # Handles feedback form and checks if the user has sent lots of feedback already
+    # If the user has already sent more than 3 feedbacks, don't save the feedback
     if request.method == 'GET':
         form = Contact()
     else:
@@ -147,7 +149,6 @@ def about(request):
 		context_instance=RequestContext(request)
 		)
 
-
 # Renders the help/tutorial page
 def help(request):
     return render_to_response(
@@ -156,8 +157,8 @@ def help(request):
 		context_instance=RequestContext(request)
 		)
 
-
 # Renders the thank you for creating an account page
+@login_required
 def thanks(request):
     return render_to_response(
         'textchange/thanks.html',
@@ -198,6 +199,7 @@ def addposting(request, uisbn):
     text = ltextbook[0]
     curuser = request.user
 
+    # Handles the add posting form
     if form.is_valid() and request.POST:
         condition = request.POST.get('condition')
         price = request.POST.get('price')

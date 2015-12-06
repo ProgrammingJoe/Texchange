@@ -34,6 +34,7 @@ class PostCreate(forms.Form):
 	condition = forms.ChoiceField(choices = CHOICES)
 	image = forms.ImageField(required=False)
 
+# The contact form is used to save information in the feedback model
 class Contact(ModelForm):
 	class Meta:
 		model = Feedback

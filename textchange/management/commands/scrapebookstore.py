@@ -8,7 +8,7 @@ from textchange.models import Textbook
 
 # This command is used to scrape the UVicBookstore of their textbook information
 # The html of the bookstore must be put into bookstore.html
-# It can be called with 'python manage.py scrapebookstore'
+# It can be called with 'python manage.py scrapebookstore.py'
 
 class Command(BaseCommand):
 
