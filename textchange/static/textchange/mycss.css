@@ -85,6 +85,13 @@
   font-weight: bold;
 }
 
+.postcomment {
+  max-width: 210px;
+  min-width: 210px;
+  max-height: 100px;
+  min-height: 100px;
+}
+
 .feedbackcontent {
   width: 360px;
   height: 120px;
@@ -106,13 +113,13 @@
 .good {
   background-color: #52B452;
   height: 50px;
-  width: 150px;
+  width: 120px;
 }
 
 .bad {
   background-color: #BF322E;
   height: 50px;
-  width: 150px;
+  width: 120px;
 }
 
 .delete {
