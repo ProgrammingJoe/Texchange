@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Feedback model consists of feedback, a subject, and contact info
 class Feedback(models.Model):
 	email = models.EmailField()
@@ -8,28 +9,31 @@ class Feedback(models.Model):
 	content = models.CharField(max_length=1000)
 	user = models.ForeignKey(User, default=20)
 
+
 # Textbook model with properties for determining supply and demand of textbooks
 class Textbook(models.Model):
-	textbook_name = models.CharField(max_length = 200)
-	class_name = models.CharField(max_length = 200)
-	author = models.CharField(max_length = 200)
-	isbn = models.CharField(max_length = 200)
-	semester = models.CharField(max_length = 200, default="FALL2015")
+	textbook_name = models.CharField(max_length=200)
+	class_name = models.CharField(max_length=200)
+	author = models.CharField(max_length=200)
+	isbn = models.CharField(max_length=200)
+	semester = models.CharField(max_length=200, default="FALL2015")
 
 	# Properties for determing supply and demand
 	@property
 	def NumWishes(self):
 		return self.wishlist_set.count()
+
 	@property
-  	def NumPosts(self):
+	def NumPosts(self):
 		return self.posting_set.count()
+
 	@property
-  	def DemSup(self):
+	def DemSup(self):
 		if (self.posting_set.count() != 0):
 			showmethemoney = float((self.wishlist_set.count()))/(self.posting_set.count())
 		else:
 			showmethemoney = 0
-		return showmethemoney
+			return showmethemoney
 
 	# Instead of a pk field isbn and class_name together have to be unique
 	class Meta:
@@ -38,14 +42,16 @@ class Textbook(models.Model):
 	def __str__(self):
 		return self.textbook_name
 
+
 # Posting model consisting of a textbook connected with a user
 class Posting(models.Model):
 	textbook = models.ForeignKey(Textbook)
-	condition = models.CharField(max_length = 200)
+	condition = models.CharField(max_length=200)
 	price = models.DecimalField(max_digits=5, decimal_places=2)
 	user = models.ForeignKey(User)
 	image = models.ImageField(upload_to='postingpics/%Y/%m/%d', default="../../static/textchange/nophoto.png")
 	post_date = models.DateTimeField('date_posted')
+	comments = models.CharField(max_length=50, default="")
 
 	def __str__(self):
 		return str(self.textbook)
@@ -55,6 +61,7 @@ class Posting(models.Model):
 	was_posted_recently.admin_order_field = 'post_date'
 	was_posted_recently.boolean = True
 	was_posted_recently.short_description = 'Posted recently'
+
 
 # Wishlist model consisting of a textbook and a user
 class Wishlist(models.Model):

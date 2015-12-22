@@ -5,19 +5,23 @@ from django.db import models
 
 from .models import Textbook, Posting, Wishlist, Feedback
 
+
 # Fields is the list of elements in the table
-# List_display is the list of attributes and/or properties viewable on the admin site
+# List_display is the list of attributes and/or properties viewable on admin site
 class Textbook_table(admin.ModelAdmin):
 	fields = ['textbook_name', 'class_name', 'author', 'isbn', 'semester']
 	list_display = ('textbook_name', 'class_name', 'author', 'isbn', 'semester', 'NumPosts', 'NumWishes', 'DemSup')
+
 
 class Wishlist_table(admin.ModelAdmin):
 	fields = ['textbook', 'user', 'wish_date']
 	list_display = ('textbook', 'user', 'wish_date')
 
+
 class Posting_table(admin.ModelAdmin):
-	fields = ['textbook', 'condition', 'price', 'user', 'image', 'post_date']
-	list_display = ('textbook', 'condition', 'price', 'user', 'image', 'post_date')
+	fields = ['textbook', 'condition', 'price', 'user', 'image', 'comments', 'post_date']
+	list_display = ('textbook', 'condition', 'price', 'user', 'image', 'comments', 'post_date')
+
 
 # Formfield is set so long message
 class Feedback_table(admin.ModelAdmin):

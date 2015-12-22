@@ -4,7 +4,8 @@ from django.conf.urls.static import static
 
 from . import views
 
-# Urls used to specify what urls are displayed with respect to which views function is called
+# Urls used to specify what urls are displayed
+# with respect to which views function is called
 urlpatterns = [
 	url(r'^$', views.index, name="index"),
 	url(r'^wishlisting$', views.wishlisting, name="wishlisting"),
