@@ -1,1 +1,1 @@
-web: python manage.py runserver 8002
+web: gunicorn exchange.wsgi --log-file -
