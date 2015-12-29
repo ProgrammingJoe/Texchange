@@ -27,7 +27,7 @@
           <tr class="borderbot" >
             <td class="width140"><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</div></a></td>
             <td  class="width500"><a href="{% url 'textchange:textbook' uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</div></a></td>
-            <td  class="width60"><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}"><img src="{{ STATIC_URL }}textchange/nextarrow.png" class="nextbutton"></a></td>
+            <td  class="width60"><a href = "{% url 'textchange:textbook' uisbn=items.isbn %}"><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton"></a></td>
           </tr>
           {% endfor %}
         {% else %}
@@ -36,7 +36,7 @@
             <tr>
               <td class="width140"><a href="#" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</div></a></td>
               <td class="width500"><a href="#" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</div></a></td>
-              <td class="width60"><a href="#" title="Login Required."><img src="{{ STATIC_URL }}textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
+              <td class="width60"><a href="#" title="Login Required."><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
             </tr>
           {% endfor %}
         {% endif %}
