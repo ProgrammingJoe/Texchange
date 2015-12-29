@@ -49,7 +49,7 @@ class Posting(models.Model):
 	condition = models.CharField(max_length=200)
 	price = models.DecimalField(max_digits=5, decimal_places=2)
 	user = models.ForeignKey(User)
-	image = models.ImageField(upload_to='postingpics/%Y/%m/%d', default="https://texchangedb.s3.amazonaws.com/textchange/nophoto.png")
+	image = models.ImageField(upload_to='postingpics/%Y/%m/%d', default="../../static/textchange/nophoto.png")
 	post_date = models.DateTimeField('date_posted')
 	comments = models.CharField(max_length=50, default="")
 
