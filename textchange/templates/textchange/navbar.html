@@ -5,7 +5,7 @@
       {% if request.user.is_authenticated %}
         <li role="presentation"><a href="{% url 'textchange:navbar' %}" class="softbutton"><span class="blacklink">{{request.user.first_name }}, &nbsp;</span> logout</a></li>
       {% else %}
-        <li><a style="padding: 0px;" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img src="../../static/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a></li>
+        <li><a style="padding: 0px;" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img src="{% static "textchange/facebookloginbutton.png" %}" border="0" alt="" height="42px;"></a></li>
       {% endif %}
     </ul>
   </nav>
