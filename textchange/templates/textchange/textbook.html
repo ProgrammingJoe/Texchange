@@ -10,7 +10,8 @@
 
       <div class="jumbotron">
         <h2>{{ text.textbook_name }}!</h2>
-        <p class="lead">{{ text.author }} {{ text.isbn }}</p>
+        <p class="lead">{{ text.author }}</p>
+        <p class="lead">{{ text.isbn }}</p>
         {% if numtexts < 5 %}
           <div><table class="center"><tr>
             {% for texts in ltextbook %}
