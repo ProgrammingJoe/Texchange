@@ -217,9 +217,8 @@ def addposting(request, uisbn):
                 new.save()
                 return HttpResponseRedirect('/results/' + uisbn)
         else:
-            image = "https://texchangedb.s3.amazonaws.com/textchange/nophoto.png"
             if (not (Posting.objects.filter(user=curuser, textbook=text))):
-                new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
+                new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
                 new.save()
                 return HttpResponseRedirect('/results/' + uisbn)
 
