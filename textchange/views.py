@@ -262,6 +262,7 @@ def contactpost(request, uuser, uisbn):
     # Query for the posting of the user textbook combination.
     post = Posting.objects.filter(user=quser, textbook=ltextbook)
     posting = post[0]
+    print(posting.image.url)
     return render_to_response(
         'textchange/contactpost.html',
         locals(),
