@@ -1,6 +1,5 @@
 from django.shortcuts import render_to_response, RequestContext
 from django.shortcuts import HttpResponseRedirect
-# from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
