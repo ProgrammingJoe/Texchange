@@ -53,8 +53,8 @@ def index(request):
 def textbook(request, uisbn):
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn=uisbn)
-    numtexts = len(ltextbook)
     text = ltextbook[0]
+    numtexts = len(ltextbook)
 
     # Create lists of postings and wishes for those textbooks
     wishlists = Wishlist.objects.filter(textbook=text)
