@@ -53,12 +53,12 @@ def index(request):
 def textbook(request, uisbn):
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn=uisbn)
-    # text = ltextbook[0]
+    text = ltextbook[0]
     numtexts = len(ltextbook)
 
     # Create lists of postings and wishes for those textbooks
-    wishlists = Wishlist.objects.filter(textbook=ltextbook)
-    listings = Posting.objects.filter(textbook=ltextbook)
+    wishlists = Wishlist.objects.filter(textbook=text)
+    listings = Posting.objects.filter(textbook=text)
 
     # Sort the lists by price and wish_Date
     listings = list(listings)
@@ -68,22 +68,22 @@ def textbook(request, uisbn):
     curuser = request.user
 
     # Check to see if there is a posting/wish with the current textbook user combination
-    postexist = Posting.objects.filter(user=curuser, textbook=ltextbook)
-    wishexist = Wishlist.objects.filter(user=curuser, textbook=ltextbook)
+    postexist = Posting.objects.filter(user=curuser, textbook=text)
+    wishexist = Wishlist.objects.filter(user=curuser, textbook=text)
 
     # Depending on status of user textbook combination
     # Add or remove postings/wishes
     if request.method == 'POST':
         if request.POST.get("AddWishlist"):
-            if (not (Wishlist.objects.filter(user=curuser, textbook=ltextbook))):
-                new = Wishlist(textbook=ltextbook, user=curuser, wish_date=datetime.now())
+            if (not (Wishlist.objects.filter(user=curuser, textbook=text))):
+                new = Wishlist(textbook=text, user=curuser, wish_date=datetime.now())
                 new.save()
                 return HttpResponseRedirect('/results/' + uisbn)
         if request.POST.get("DeleteWishlist"):
-            Wishlist.objects.filter(user=curuser, textbook=ltextbook).delete()
+            Wishlist.objects.filter(user=curuser, textbook=text).delete()
             return HttpResponseRedirect('/results/' + uisbn)
         if request.POST.get("DeleteListing"):
-            Posting.objects.filter(user=curuser, textbook=ltextbook).delete()
+            Posting.objects.filter(user=curuser, textbook=text).delete()
             return HttpResponseRedirect('/results/' + uisbn)
 
     return render_to_response(
