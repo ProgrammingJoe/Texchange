@@ -53,12 +53,12 @@ def index(request):
 def textbook(request, uisbn):
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn=uisbn)
-    text = ltextbook[0]
+    # text = ltextbook[0]
     numtexts = len(ltextbook)
 
     # Create lists of postings and wishes for those textbooks
-    wishlists = Wishlist.objects.filter(textbook=text)
-    listings = Posting.objects.filter(textbook=text)
+    wishlists = Wishlist.objects.filter(textbook=ltextbook)
+    listings = Posting.objects.filter(textbook=ltextbook)
 
     # Sort the lists by price and wish_Date
     listings = list(listings)
@@ -68,8 +68,8 @@ def textbook(request, uisbn):
     curuser = request.user
 
     # Check to see if there is a posting/wish with the current textbook user combination
-    postexist = Posting.objects.filter(user=curuser, textbook=text)
-    wishexist = Wishlist.objects.filter(user=curuser, textbook=text)
+    postexist = Posting.objects.filter(user=curuser, textbook=ltextbook)
+    wishexist = Wishlist.objects.filter(user=curuser, textbook=ltextbook)
 
     # Depending on status of user textbook combination
     # Add or remove postings/wishes
