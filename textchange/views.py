@@ -22,22 +22,39 @@ def index(request):
             query = request.POST.get('search')
             keywords = []
             if query:
-                results = []
-                # Split up the input
-                # query each attribute of the textbook per word
                 keywords = query.split()
-                query = Textbook.objects.all()
-                for x in keywords:
-                    query = query.filter(Q(class_name__icontains=x) | Q(textbook_name__icontains=x) | Q(author__icontains=x) | Q(isbn__icontains=x))
-
-                numresults = len(query)
-                return render_to_response(
-                    'textchange/results.html',
-                    locals(),
-                    context_instance=RequestContext(request)
-                    )
+                urlstring = "query="
+                for word in keywords:
+                    if word == keywords[0]:
+                        urlstring += word
+                    else:
+                        urlstring += "_" + word
+                return HttpResponseRedirect("/%s" % urlstring)
+                # return render_to_response(
+                #     'textchange/results.html',
+                #     locals(),
+                #     context_instance=RequestContext(request)
+                #     )
             else:
                 print("You're supposed to type something idiot\n")
+
+            # if query:
+            #     results = []
+            #     # Split up the input
+            #     # query each attribute of the textbook per word
+            #     keywords = query.split()
+            #     query = Textbook.objects.all()
+            #     for x in keywords:
+            #         query = query.filter(Q(class_name__icontains=x) | Q(textbook_name__icontains=x) | Q(author__icontains=x) | Q(isbn__icontains=x))
+            #
+            #     numresults = len(query)
+            #     return render_to_response(
+            #         'textchange/results.html',
+            #         locals(),
+            #         context_instance=RequestContext(request)
+            #         )
+            # else:
+            #     print("You're supposed to type something idiot\n")
 
     return render_to_response(
         'textchange/index.html',
@@ -50,7 +67,7 @@ def index(request):
 # Consists of add/remove buttons for postings/wishlist
 # Buttons change based on state of that textbook and user combination
 @login_required
-def textbook(request, uisbn):
+def textbook(request, uisbn, urlstring):
     # Get textbook with isbn equal to usibn
     ltextbook = Textbook.objects.filter(isbn=uisbn)
     text = ltextbook[0]
@@ -78,13 +95,13 @@ def textbook(request, uisbn):
             if (not (Wishlist.objects.filter(user=curuser, textbook=text))):
                 new = Wishlist(textbook=text, user=curuser, wish_date=datetime.now())
                 new.save()
-                return HttpResponseRedirect('/results/' + uisbn)
+                return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
         if request.POST.get("DeleteWishlist"):
             Wishlist.objects.filter(user=curuser, textbook=text).delete()
-            return HttpResponseRedirect('/results/' + uisbn)
+            return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
         if request.POST.get("DeleteListing"):
             Posting.objects.filter(user=curuser, textbook=text).delete()
-            return HttpResponseRedirect('/results/' + uisbn)
+            return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
 
     return render_to_response(
         'textchange/textbook.html',
@@ -170,8 +187,20 @@ def thanks(request):
 
 
 # Renders the results of a textbook search
-def results(request):
-    curuser = request.user()
+def results(request, urlstring):
+    curuser = request.user
+
+    urlstring = urlstring[6:]
+    results = []
+    # Split up the input
+    # query each attribute of the textbook per word
+    keywords = urlstring.split("_")
+    query = Textbook.objects.all()
+    for x in keywords:
+        query = query.filter(Q(class_name__icontains=x) | Q(textbook_name__icontains=x) | Q(author__icontains=x) | Q(isbn__icontains=x))
+
+    urlstring = "query=" + urlstring
+    numresults = len(query)
     return render_to_response(
         'textchange/results.html',
         locals(),
@@ -196,7 +225,7 @@ def wishlisting(request):
 
 # Renders the add a posting form page
 @login_required
-def addposting(request, uisbn):
+def addposting(request, uisbn, urlstring):
     form = PostCreate(request.POST or None, request.FILES or None)
 
     # Get textbook with isbn equal to usibn
@@ -214,12 +243,12 @@ def addposting(request, uisbn):
             if (not (Posting.objects.filter(user=curuser, textbook=text))):
                 new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
                 new.save()
-                return HttpResponseRedirect('/results/' + uisbn)
+                return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
         else:
             if (not (Posting.objects.filter(user=curuser, textbook=text))):
                 new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
                 new.save()
-                return HttpResponseRedirect('/results/' + uisbn)
+                return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
 
     return render_to_response(
         'textchange/addposting.html',
@@ -249,7 +278,7 @@ def removewishlisting(request, uisbn):
 # Renders the page used to view textbook and contact info
 # for a specific book and user
 @login_required
-def contactpost(request, uuser, uisbn):
+def contactpost(request, uuser, uisbn, urlstring):
     # Get the textbook and user for the posting selected
     ltextbook = Textbook.objects.filter(isbn=uisbn)
     text = ltextbook[0]
@@ -271,7 +300,7 @@ def contactpost(request, uuser, uisbn):
 # Renders the page used to view textbook and contact info
 # for a specific book and user
 @login_required
-def contactwish(request, uuser, uisbn):
+def contactwish(request, uuser, uisbn, urlstring):
     # Get the textbook and user for the wish selected
     ltextbook = Textbook.objects.filter(isbn=uisbn)
     text = ltextbook[0]

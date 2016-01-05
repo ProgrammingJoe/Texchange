@@ -32,7 +32,7 @@
           <table class="center">
           <tr>
             <td class="buttonspace">
-              <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
+              <form action="{% url 'textchange:textbook' urlstring=urlstring uisbn=text.isbn %}" method="post"> {% csrf_token %}
                 {% if wishexist %}
                   {% if postexist %}
                   <input class="bad button" type="submit" name="DeleteWishlist" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your wishlist?')" value="Delete your Wish"></input>
@@ -50,11 +50,11 @@
             </td>
             <td class="buttonspace">
               {% if postexist %}
-              <form action="{% url 'textchange:textbook' uisbn=text.isbn %}" method="post"> {% csrf_token %}
+              <form action="{% url 'textchange:textbook' urlstring=urlstring uisbn=text.isbn %}" method="post"> {% csrf_token %}
                 <input class="bad button" type="submit" name="DeleteListing" onclick="return confirm('Are you sure you want to delete {{ text.textbook_name }} from your postings?')" value="Delete your Post"></input>
               </form>
               {% else %}
-              <a href="{% url 'textchange:addposting' uisbn=text.isbn %}">
+              <a href="{% url 'textchange:addposting' urlstring=urlstring uisbn=text.isbn %}">
                 <input class="good button blacklink" type="button" value="Add a Posting" />
               </a>
               {% endif %}
@@ -72,8 +72,8 @@
           <table class="resultstable">
             {% for wishes in wishlists %}
             <tr class="bordertop">
-              <td class="width270"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactwish' uuser=wishes.user.pk uisbn=text.isbn %}">{{wishes.user.first_name}}</a></td>
-              <td><a class="padtopbot8" href="{% url 'textchange:contactwish' uuser=wishes.user.pk uisbn=text.isbn %}"><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton"></a></td>
+              <td class="width270"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactwish' urlstring=urlstring uuser=wishes.user.pk uisbn=text.isbn %}">{{wishes.user.first_name}}</a></td>
+              <td><a class="padtopbot8" href="{% url 'textchange:contactwish' urlstring=urlstring uuser=wishes.user.pk uisbn=text.isbn %}"><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton"></a></td>
             </tr>
             {% endfor %}
             {% if not wishlists %}
@@ -87,10 +87,10 @@
           <table class="resultstable">
             {% for posts in listings %}
             <tr class="bordertop">
-              <td class="width85"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' uuser=posts.user.pk uisbn=text.isbn %}">{{posts.condition}}</a></td>
-              <td class="width75"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' uuser=posts.user.pk uisbn=text.isbn %}">${{posts.price}}</a></td>
-              <td class="width110"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' uuser=posts.user.pk uisbn=text.isbn %}">{{posts.user.first_name }}</a></td>
-              <td><a class="padtopbot8" href="{% url 'textchange:contactpost' uuser=posts.user.pk uisbn=text.isbn %}"><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton"></a></td>
+              <td class="width85"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' urlstring=urlstring uuser=posts.user.pk uisbn=text.isbn %}">{{posts.condition}}</a></td>
+              <td class="width75"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' urlstring=urlstring uuser=posts.user.pk uisbn=text.isbn %}">${{posts.price}}</a></td>
+              <td class="width110"><a class="blacklink padtopbot15" href = "{% url 'textchange:contactpost' urlstring=urlstring uuser=posts.user.pk uisbn=text.isbn %}">{{posts.user.first_name }}</a></td>
+              <td><a class="padtopbot8" href="{% url 'textchange:contactpost' urlstring=urlstring uuser=posts.user.pk uisbn=text.isbn %}"><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton"></a></td>
             </tr>
             {% endfor %}
             {% if not listings %}
