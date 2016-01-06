@@ -7,11 +7,23 @@
 
 	  {% include "textchange/navbar.html" %}
 
-	  <div>
+	  <!-- <div>
 		{% for items in textbook_info %}
 			{{textbook_info.textbook}}
 		{% endfor %}
-	  </div>
+	  </div> -->
+
+    <div style="text-align: center">
+      <form method="POST"> {% csrf_token %}
+        {% for field in form4 %}
+          {{ field.label_tag }}
+          {{ field }}
+        {% endfor %}
+      <input id="search" class="button" type="submit" value="Search Textbooks" name="Search"></input>
+      </form>
+      </br>
+    </div>
+
     <div class="panel panel-default">
       <!-- Default panel contents -->
       {% if curuser.is_authenticated %}

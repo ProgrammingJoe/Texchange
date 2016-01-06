@@ -190,6 +190,29 @@ def thanks(request):
 def results(request, urlstring):
     curuser = request.user
 
+    form4 = Search(request.POST or None)
+    if request.method == 'POST' and form4:
+        if request.POST.get("Search"):
+            query = request.POST.get('search')
+            keywords = []
+            if query:
+                keywords = query.split()
+                urlstring = "query="
+                for word in keywords:
+                    if word == keywords[0]:
+                        urlstring += word
+                    else:
+                        urlstring += "_" + word
+                return HttpResponseRedirect("/%s" % urlstring)
+                # return render_to_response(
+                #     'textchange/results.html',
+                #     locals(),
+                #     context_instance=RequestContext(request)
+                #     )
+            else:
+                print("You're supposed to type something idiot\n")
+
+
     urlstring = urlstring[6:]
     results = []
     # Split up the input
