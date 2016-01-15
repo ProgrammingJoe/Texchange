@@ -342,9 +342,9 @@ def contactwish(request, uuser, uisbn, urlstring):
         )
 
 
-def fbprivacy(request):
+def fbpolicy(request):
     return render_to_response(
-        'textchange/privacypolicy.html',
+        'textchange/fbpolicy.html',
         locals(),
         context_instance=RequestContext(request)
         )

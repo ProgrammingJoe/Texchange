@@ -19,5 +19,5 @@ urlpatterns = [
     url(r'^thanks$', views.thanks, name="thanks"),
     url(r'^contact$', views.about, name="about"),
     url(r'^help$', views.help, name="help"),
-    url(r'^help/privacypolicy$', views.fbprivacy, name="fbprivacy"),
+    url(r'^help/privacypolicy$', views.fbpolicy, name="fbpolicy"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
