@@ -342,6 +342,14 @@ def contactwish(request, uuser, uisbn, urlstring):
         )
 
 
+def fbprivacy(request):
+    return render_to_response(
+        'textchange/privacypolicy.html',
+        locals(),
+        context_instance=RequestContext(request)
+        )
+
+
 def handler404(request):
     response = render_to_response('404.html', {},
                                   context_instance=RequestContext(request))
