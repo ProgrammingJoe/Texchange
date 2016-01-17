@@ -212,7 +212,6 @@ def results(request, urlstring):
             else:
                 print("You're supposed to type something idiot\n")
 
-
     urlstring = urlstring[6:]
     results = []
     # Split up the input
