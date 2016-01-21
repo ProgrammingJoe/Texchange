@@ -30,31 +30,8 @@ def index(request):
                     else:
                         urlstring += "_" + word
                 return HttpResponseRedirect("/%s" % urlstring)
-                # return render_to_response(
-                #     'textchange/results.html',
-                #     locals(),
-                #     context_instance=RequestContext(request)
-                #     )
             else:
                 print("You're supposed to type something idiot\n")
-
-            # if query:
-            #     results = []
-            #     # Split up the input
-            #     # query each attribute of the textbook per word
-            #     keywords = query.split()
-            #     query = Textbook.objects.all()
-            #     for x in keywords:
-            #         query = query.filter(Q(class_name__icontains=x) | Q(textbook_name__icontains=x) | Q(author__icontains=x) | Q(isbn__icontains=x))
-            #
-            #     numresults = len(query)
-            #     return render_to_response(
-            #         'textchange/results.html',
-            #         locals(),
-            #         context_instance=RequestContext(request)
-            #         )
-            # else:
-            #     print("You're supposed to type something idiot\n")
 
     return render_to_response(
         'textchange/index.html',
@@ -204,11 +181,6 @@ def results(request, urlstring):
                     else:
                         urlstring += "_" + word
                 return HttpResponseRedirect("/%s" % urlstring)
-                # return render_to_response(
-                #     'textchange/results.html',
-                #     locals(),
-                #     context_instance=RequestContext(request)
-                #     )
             else:
                 print("You're supposed to type something idiot\n")
 
