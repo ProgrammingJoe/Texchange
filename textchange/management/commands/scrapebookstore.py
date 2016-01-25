@@ -10,12 +10,13 @@ from textchange.models import Textbook
 # The html of the bookstore must be put into bookstore.html
 # It can be called with 'python manage.py scrapebookstore.py'
 
+
 class Command(BaseCommand):
 
     # Clean up garbage off the string before saving in the db
     def cleanstr(self, str):
-        str = str.replace('\n','')
-        str = str.replace(' ','')
+        str = str.replace('\n', '')
+        str = str.replace(' ', '')
         return str
 
     # Get the textbook name
@@ -27,7 +28,7 @@ class Command(BaseCommand):
     # Get the textbook author
     # Find all spans in x with class author
     def findauthor(self, x):
-        tag = x.find("span", { "class" : "author"})
+        tag = x.find("span", {"class": "author"})
         author = str(tag)
         author = author[47:-8]
         author = self.cleanstr(author)
@@ -40,27 +41,31 @@ class Command(BaseCommand):
         parent1 = x.parent
         parent2 = parent1.parent
         parent3 = parent2.parent
-        info = parent3.find("div", { "class" : "row course-info"})
-        coursetag = info.find('span')
+        # print(parent2)
+        info = parent3.find("div", {"class": "row course-info"})
+        # print(info)
+        coursetag = info.find("div", {"class": "eight columns"})
+        coursetag = coursetag.find('h3')
         course = coursetag.string
+        course = course[:8]
         course = self.cleanstr(course)
         return course
 
     # Get the isbn of the book
     # Get the first div with class row in x
     def findisbn(self, x):
-        secondrow = x.findAll("a", { "class" : "skew"})[0]
+        secondrow = x.findAll("a", {"class": "skew"})[0]
         isbn = secondrow.string
         isbn = self.cleanstr(isbn)
         return isbn
 
     # Main function to call all the methods
     def handle(self, *args, **options):
-        print(os.listdir("."))
+        # print(os.listdir("."))
         # Open up the bookstore.html into soup
         soup = BeautifulSoup(open("bookstore.html"), "html.parser")
         # Make a list of all textbooks divs and assign to books
-        books = soup.findAll("div", { "class" : "textbook-item"})
+        books = soup.findAll("div", {"class": "textbook-item"})
         bookmodels = []
         # Loop through all books, find all information and save to the database
         for x in books:
@@ -68,6 +73,7 @@ class Command(BaseCommand):
             author = self.findauthor(x)
             course = self.findcourse(x)
             isbn = self.findisbn(x)
+            print(book + " ||| " + author + " ||| " + course + " ||| " + isbn)
             object = {
                 'book': book,
                 'author': author,
@@ -76,10 +82,10 @@ class Command(BaseCommand):
             }
             bookmodels.append(object)
 
-        for dic in bookmodels:
-            ltextbook = Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course']))
-            if ltextbook:
-                Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).update(semester = "SPRING2016")
-            else:
-                new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "SPRING2016")
-                new.save()
+        # for dic in bookmodels:
+        #     ltextbook = Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course']))
+        #     if ltextbook:
+        #         Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).update(semester = "SPRING2016")
+        #     else:
+        #         new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "SPRING2016")
+        #         new.save()

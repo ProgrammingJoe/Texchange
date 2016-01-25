@@ -37,8 +37,8 @@
         {% if curuser.is_authenticated %}
           {% for items in query %}
           <tr class="borderbot" >
-            <td class="width140"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</br>{% if items.NumWishes > 0 %}Wish Count: {{items.NumWishes}}{% endif %}</div></a></td>
-            <td class="width500"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</br>{% if items.NumPosts > 0 %}Post Count: {{items.NumPosts}}{% endif %}</div></a></td>
+            <td class="width140"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</br>Wish Count: {{items.NumWishes}}</div></a></td>
+            <td class="width500"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</br>Post Count: {{items.NumPosts}}</div></a></td>
             <td class="width60"><a href = "{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}"><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton"></a></td>
           </tr>
           {% endfor %}
@@ -46,8 +46,8 @@
           {% for items in query %}
           <tr>
             <tr class=borderbot>
-              <td class="width140"><a href="#" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</div></a></td>
-              <td class="width500"><a href="#" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</div></a></td>
+              <td class="width140"><a href="#" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</br>Wish Count: {{items.NumWishes}}</div></a></td>
+              <td class="width500"><a href="#" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</br>Post Count: {{items.NumPosts}}</div></a></td>
               <td class="width60"><a href="#" title="Login Required."><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
             </tr>
           {% endfor %}
