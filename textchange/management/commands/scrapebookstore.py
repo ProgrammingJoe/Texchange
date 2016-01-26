@@ -61,7 +61,7 @@ class Command(BaseCommand):
         soup = BeautifulSoup(open("bookstore.html"), "html.parser")
         # Make a list of all textbooks divs and assign to books
         books = soup.findAll("div", {"class": "textbook-item"})
-        # print(soup.prettify())
+        print(soup.prettify())
         bookmodels = []
         # Loop through all books, find all information and save to the database
         for x in books:
@@ -70,7 +70,7 @@ class Command(BaseCommand):
             course = self.findcourse(x)
             # next sibling previous sibling beautifulsoup
             isbn = self.findisbn(x)
-            print(book + " ||| " + author + " ||| " + course + " ||| " + isbn)
+            # print(book + " ||| " + author + " ||| " + course + " ||| " + isbn)
             object = {
                 'book': book,
                 'author': author,
@@ -79,10 +79,10 @@ class Command(BaseCommand):
             }
             bookmodels.append(object)
 
-        for dic in bookmodels:
-            ltextbook = Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course']))
-            if ltextbook:
-                Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course'])).update(semester="SPRING2016")
-            else:
-                new = Textbook(textbook_name=dic['book'], class_name=dic['course'], author=dic['author'], isbn=dic['isbn'], semester="SPRING2016")
-                new.save()
+        # for dic in bookmodels:
+        #     ltextbook = Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course']))
+        #     if ltextbook:
+        #         Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course'])).update(semester="SPRING2016")
+        #     else:
+        #         new = Textbook(textbook_name=dic['book'], class_name=dic['course'], author=dic['author'], isbn=dic['isbn'], semester="SPRING2016")
+        #         new.save()
