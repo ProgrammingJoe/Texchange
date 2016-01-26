@@ -1,14 +1,11 @@
 from bs4 import BeautifulSoup
-from collections import namedtuple
-
-import os
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db.models import Q
 from textchange.models import Textbook
 
 # This command is used to scrape the UVicBookstore of their textbook information
 # The html of the bookstore must be put into bookstore.html
-# It can be called with 'python manage.py scrapebookstore.py'
+# It can be called with 'python manage.py scrapebookstore'
 
 
 class Command(BaseCommand):
@@ -82,10 +79,10 @@ class Command(BaseCommand):
             }
             bookmodels.append(object)
 
-        # for dic in bookmodels:
-        #     ltextbook = Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course']))
-        #     if ltextbook:
-        #         Textbook.objects.filter(Q(isbn = dic['isbn']) & Q(class_name = dic['course'])).update(semester = "SPRING2016")
-        #     else:
-        #         new = Textbook(textbook_name = dic['book'], class_name = dic['course'], author = dic['author'], isbn = dic['isbn'], semester = "SPRING2016")
-        #         new.save()
+        for dic in bookmodels:
+            ltextbook = Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course']))
+            if ltextbook:
+                Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course'])).update(semester="SPRING2016")
+            else:
+                new = Textbook(textbook_name=dic['book'], class_name=dic['course'], author=dic['author'], isbn=dic['isbn'], semester="SPRING2016")
+                new.save()
