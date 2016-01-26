@@ -1,6 +1,9 @@
 # Texchange
-Django textbook exchange application
 
-A textbook exchange application that will be put into production for students at UVic.
+A web application designed to make textbook exchange at the University of Victoria easy.
 
-Type "Python manage.py runserver" to run
+The application can be found at: http://www.texchange.ca/
+
+
+
+
