@@ -40,10 +40,8 @@ class Command(BaseCommand):
     def findcourse(self, x):
         parent1 = x.parent
         parent2 = parent1.parent
-        parent3 = parent2.parent
-        # print(parent2)
+        parent3 = parent2.previous_sibling.previous_sibling.previous_sibling.previous_sibling.previous_sibling.previous_sibling
         info = parent3.find("div", {"class": "row course-info"})
-        # print(info)
         coursetag = info.find("div", {"class": "eight columns"})
         coursetag = coursetag.find('h3')
         course = coursetag.string
@@ -66,12 +64,14 @@ class Command(BaseCommand):
         soup = BeautifulSoup(open("bookstore.html"), "html.parser")
         # Make a list of all textbooks divs and assign to books
         books = soup.findAll("div", {"class": "textbook-item"})
+        # print(soup.prettify())
         bookmodels = []
         # Loop through all books, find all information and save to the database
         for x in books:
             book = self.findbook(x)
             author = self.findauthor(x)
             course = self.findcourse(x)
+            # next sibling previous sibling beautifulsoup
             isbn = self.findisbn(x)
             print(book + " ||| " + author + " ||| " + course + " ||| " + isbn)
             object = {
