@@ -2,8 +2,9 @@ from bs4 import BeautifulSoup
 import urllib2
 from django.core.management.base import BaseCommand
 from textchange.models import Textbook
-import operator
 import re
+import time
+import os
 
 
 class Command(BaseCommand):
@@ -13,10 +14,13 @@ class Command(BaseCommand):
         prices = soup.find("div", {"class": "textbook-item"})
         prices2 = prices.findAll("span", {"class": "right"})
         for y in prices2:
-            if "Used" in y.string:
-                used = y.string
-            elif "New" in y.string:
-                new = y.string
+            if y is not None:
+                if "Used" in y.string:
+                    used = y.string
+                elif "New" in y.string:
+                    new = y.string
+            else:
+                return(0, 0)
         new = new.replace(' ', '')
         a = re.search('[0-9]+\.[0-9][0-9]', new)
         if a:
@@ -48,6 +52,7 @@ class Command(BaseCommand):
                 else:
                     total += float(startprice) + float(shipprice)
                 count += 1
+                break
         if count == 0:
             return 99999
         else:
@@ -61,22 +66,32 @@ class Command(BaseCommand):
 
         showmethemoney = []
 
-        textbooks = Textbook.objects.all().distinct('isbn')
+        textbooks = Textbook.objects.filter(semester="SPRING2016").distinct('isbn')
         count = 0
         for book in textbooks:
-            if count % 10 == 0:
+            # time.sleep(4)
+            if count % 25 == 0:
                 print(count)
-            abepage = urllib2.urlopen(abebase_one + book.isbn + abebase_two).read()
-            uvicpage = urllib2.urlopen(uvicbase + book.isbn).read()
-            abesoup = BeautifulSoup(abepage)
-            uvicsoup = BeautifulSoup(uvicpage)
+            os.environ['http_proxy'] = ''
+            abelink = urllib2.urlopen(abebase_one + book.isbn + abebase_two)
+            abepage = abelink.read()
+            abelink.close()
+            uviclink = urllib2.urlopen(uvicbase + book.isbn)
+            uvicpage = uviclink.read()
+            uviclink.close()
+            abesoup = BeautifulSoup(abepage, "html.parser")
+            uvicsoup = BeautifulSoup(uvicpage, "html.parser")
             price = self.bookstoreprice(uvicsoup)
             avgprice = self.abeprice(abesoup)
             if(avgprice != 99999 and price[1] != 0 and price[0] != 0):
                 showmethemoney.append((book.isbn, price[1]-avgprice, price[0]-avgprice))
-            if count == 200:
+            if count == 300:
                 break
             count += 1
         showmethemoney = sorted(showmethemoney, key=lambda x: -x[1])
+        print("===================================")
+        print("|     ISBN      || Used  ||  New  |")
+        print("|===============||=======||=======|")
         for book in showmethemoney:
-            print(book)
+            print("| {0:s} || {1:5.2f} || {2:5.2f} |".format(book[0], book[1], book[2]))
+        print("===================================")
