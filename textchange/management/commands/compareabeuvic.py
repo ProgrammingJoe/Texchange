@@ -5,6 +5,7 @@ from textchange.models import Textbook
 import re
 import time
 import os
+import sys
 
 
 class Command(BaseCommand):
@@ -14,7 +15,7 @@ class Command(BaseCommand):
         prices = soup.find("div", {"class": "textbook-item"})
         prices2 = prices.findAll("span", {"class": "right"})
         for y in prices2:
-            if y is not None:
+            if y is not None and y.string is not None:
                 if "Used" in y.string:
                     used = y.string
                 elif "New" in y.string:
@@ -68,10 +69,14 @@ class Command(BaseCommand):
 
         textbooks = Textbook.objects.filter(semester="SPRING2016").distinct('isbn')
         count = 0
+        sys.stdout.write("books = [")
+        for x in textbooks:
+            sys.stdout.write(x.isbn + ", ")
+        sys.stdout.write("]")
         for book in textbooks:
             # time.sleep(4)
-            if count % 25 == 0:
-                print(count)
+            # if count % 25 == 0:
+            #     print(count)
             os.environ['http_proxy'] = ''
             abelink = urllib2.urlopen(abebase_one + book.isbn + abebase_two)
             abepage = abelink.read()
@@ -85,13 +90,13 @@ class Command(BaseCommand):
             avgprice = self.abeprice(abesoup)
             if(avgprice != 99999 and price[1] != 0 and price[0] != 0):
                 showmethemoney.append((book.isbn, price[1]-avgprice, price[0]-avgprice))
-            if count == 300:
-                break
+            # if count == 300:
+            #     break
             count += 1
         showmethemoney = sorted(showmethemoney, key=lambda x: -x[1])
-        print("===================================")
-        print("|     ISBN      || Used  ||  New  |")
-        print("|===============||=======||=======|")
-        for book in showmethemoney:
-            print("| {0:s} || {1:5.2f} || {2:5.2f} |".format(book[0], book[1], book[2]))
-        print("===================================")
+        # print("=====================================")
+        # print("|     ISBN      ||  Used  ||  New   |")
+        # print("|===============||========||========|")
+        # for book in showmethemoney:
+        #     print("| {0:s} || {1:6.2f} || {2:6.2f} |".format(book[0], book[1], book[2]))
+        # print("=====================================")
