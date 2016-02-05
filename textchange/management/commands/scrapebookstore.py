@@ -59,16 +59,14 @@ class Command(BaseCommand):
         # print(os.listdir("."))
         # Open up the bookstore.html into soup
         soup = BeautifulSoup(open("bookstore.html"), "html.parser")
-        # Make a list of all textbooks divs and assign to books
         books = soup.findAll("div", {"class": "textbook-item"})
-        print(soup.prettify())
+        # print(soup.prettify())
         bookmodels = []
         # Loop through all books, find all information and save to the database
         for x in books:
             book = self.findbook(x)
             author = self.findauthor(x)
             course = self.findcourse(x)
-            # next sibling previous sibling beautifulsoup
             isbn = self.findisbn(x)
             # print(book + " ||| " + author + " ||| " + course + " ||| " + isbn)
             object = {

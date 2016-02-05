@@ -313,6 +313,7 @@ def contactwish(request, uuser, uisbn, urlstring):
         )
 
 
+# Render facebook policy page
 def fbpolicy(request):
     return render_to_response(
         'textchange/fbpolicy.html',
