@@ -323,20 +323,20 @@ def fbpolicy(request):
 
 
 # HTTP Error 404
-def page_not_found(request, exception, template_name='404.html'):
-    response = render_to_response(
-        '404.html',
-        context_instance=RequestContext(request)
-    )
-    response.status_code = 404
-    return response
-
-
-# HTTP Error 500
-def server_error(request, exception, template_name='500.html'):
-    response = render_to_response(
-        '500.html',
-        context_instance=RequestContext(request)
-    )
-    response.status_code = 500
-    return response
+# def page_not_found(request, exception, template_name='404.html'):
+#     response = render_to_response(
+#         '404.html',
+#         context_instance=RequestContext(request)
+#     )
+#     response.status_code = 404
+#     return response
+#
+#
+# # HTTP Error 500
+# def server_error(request, exception, template_name='500.html'):
+#     response = render_to_response(
+#         '500.html',
+#         context_instance=RequestContext(request)
+#     )
+#     response.status_code = 500
+#     return response
