@@ -14,15 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
-from django.conf.urls import (
-    handler400, handler403, handler404, handler500
-)
 from django.contrib import admin
-
-handler400 = 'textchange.views.bad_request'
-handler403 = 'textchange.views.permission_denied'
-handler404 = 'textchange.views.page_not_found'
-handler500 = 'textchange.views.server_error'
 
 urlpatterns = [
     url(r'^', include('textchange.urls', namespace="textchange")),
