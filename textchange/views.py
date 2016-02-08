@@ -322,28 +322,8 @@ def fbpolicy(request):
         )
 
 
-# HTTP Error 400
-def bad_request(request):
-    response = render_to_response(
-        '400.html',
-        context_instance=RequestContext(request)
-    )
-    response.status_code = 400
-    return response
-
-
-# HTTP Error 403
-def permission_denied(request):
-    response = render_to_response(
-        '403.html',
-        context_instance=RequestContext(request)
-    )
-    response.status_code = 403
-    return response
-
-
 # HTTP Error 404
-def page_not_found(request):
+def page_not_found(request, exception, template_name='404.html'):
     response = render_to_response(
         '404.html',
         context_instance=RequestContext(request)
@@ -353,7 +333,7 @@ def page_not_found(request):
 
 
 # HTTP Error 500
-def server_error(request):
+def server_error(request, exception, template_name='500.html'):
     response = render_to_response(
         '500.html',
         context_instance=RequestContext(request)
