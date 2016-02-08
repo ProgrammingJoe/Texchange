@@ -4,6 +4,8 @@ from django.conf.urls.static import static
 
 from . import views
 
+handler404 = 'textchange.views.page_not_found'
+handler500 = 'textchange.views.server_error'
 
 # Urls used to specify what urls are displayed
 # with respect to which views function is called
