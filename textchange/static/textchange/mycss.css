@@ -1,3 +1,12 @@
+#fbfooter {
+  height: 20px;
+  width: 105px;
+}
+
+.floatright {
+  float: right;
+}
+
 #id_search {
   width: 200px;
 }
