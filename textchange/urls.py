@@ -1,16 +1,9 @@
 from django.conf.urls import url
-from django.conf.urls import (
-    handler400, handler403, handler404, handler500
-)
 from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
 
-handler400 = 'views.bad_request'
-handler403 = 'views.permission_denied'
-handler404 = 'views.page_not_found'
-handler500 = 'views.server_error'
 
 # Urls used to specify what urls are displayed
 # with respect to which views function is called

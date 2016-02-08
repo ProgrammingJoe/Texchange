@@ -15,6 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+# from django.conf.urls import (
+#     handler404, handler500
+# )
+
+handler404 = 'textchange.views.page_not_found'
+handler500 = 'textchange.views.server_error'
 
 urlpatterns = [
     url(r'^', include('textchange.urls', namespace="textchange")),
