@@ -1,8 +1,16 @@
 from django.conf.urls import url
+from django.conf.urls import (
+    handler400, handler403, handler404, handler500
+)
 from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
+
+handler400 = 'textchange.views.bad_request'
+handler403 = 'textchange.views.permission_denied'
+handler404 = 'textchange.views.page_not_found'
+handler500 = 'textchange.views.server_error'
 
 # Urls used to specify what urls are displayed
 # with respect to which views function is called
@@ -21,9 +29,3 @@ urlpatterns = [
     url(r'^help$', views.help, name="help"),
     url(r'^help/privacypolicy$', views.fbpolicy, name="fbpolicy"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-handler404 = 'textchange.views.handler404'
-# handler400 = 'my_app.views.bad_request'
-# handler403 = 'my_app.views.permission_denied'
-# handler404 = 'my_app.views.page_not_found'
-# handler500 = 'my_app.views.server_error'
