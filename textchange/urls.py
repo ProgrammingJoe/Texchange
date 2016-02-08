@@ -21,3 +21,9 @@ urlpatterns = [
     url(r'^help$', views.help, name="help"),
     url(r'^help/privacypolicy$', views.fbpolicy, name="fbpolicy"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'views.handler404'
+# handler400 = 'my_app.views.bad_request'
+# handler403 = 'my_app.views.permission_denied'
+# handler404 = 'my_app.views.page_not_found'
+# handler500 = 'my_app.views.server_error'
