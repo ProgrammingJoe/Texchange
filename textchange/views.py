@@ -94,14 +94,7 @@ def navbar(request):
 
 
 # Renders the about page
-@login_required
 def about(request):
-    curuser = request.user
-
-    # Calculates the number of feedbacks this user has given
-    numfeedbacks = Feedback.objects.filter(user=curuser)
-    numfeedbacks = len(list(numfeedbacks))
-
     # Handles feedback form and checks if the user has sent too much feedback
     # If the user has already sent more than 3 feedbacks, don't save feedback
     if request.method == 'GET':
@@ -112,15 +105,8 @@ def about(request):
             subject = form.cleaned_data['subject']
             content = form.cleaned_data['content']
             email = form.cleaned_data['email']
-            if(numfeedbacks >= 4):
-                badmessage = "You're on Feedback Timeout now."
-                return render_to_response(
-                    'textchange/about.html',
-                    locals(),
-                    context_instance=RequestContext(request)
-                    )
             try:
-                new = Feedback(email=email, content=content, subject=subject, user=curuser)
+                new = Feedback(email=email, content=content, subject=subject)
                 new.save()
                 message = "Message Sent Successfully"
                 return render_to_response(
