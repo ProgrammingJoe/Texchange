@@ -51,8 +51,8 @@ def textbook(request, uisbn, urlstring):
     numtexts = len(ltextbook)
 
     # Create lists of postings and wishes for those textbooks
-    wishlists = Wishlist.objects.filter(textbook=text)
-    listings = Posting.objects.filter(textbook=text)
+    wishlists = Wishlist.objects.filter(textbook__isbn=text.isbn)
+    listings = Posting.objects.filter(textbook__isbn=text.isbn)
 
     # Sort the lists by price and wish_Date
     listings = list(listings)
