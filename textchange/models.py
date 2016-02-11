@@ -21,11 +21,13 @@ class Textbook(models.Model):
 # Properties for determing supply and demand
     @property
     def NumWishes(self):
-        return self.wishlist_set.count()
+        return Wishlist.objects.filter(textbook__isbn=self.isbn).count()
+        # return self.wishlist_set.count()
 
     @property
     def NumPosts(self):
-        return self.posting_set.count()
+        return Posting.objects.filter(textbook__isbn=self.isbn).count()
+        # return self.posting_set.count()
 
     @property
     def DemSup(self):
