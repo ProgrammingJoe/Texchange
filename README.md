@@ -15,11 +15,8 @@ The application can be found at: http://www.texchange.ca/
 
 * import os
 * from base_settings import *
-
 * BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 * SECRET_KEY = ''
-
 * DEBUG = True
 * ALLOWED_HOSTS = [".ngrok.io"]
 * SOCIAL_AUTH_FACEBOOK_KEY = ''
