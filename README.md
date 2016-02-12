@@ -13,18 +13,18 @@ The application can be found at: http://www.texchange.ca/
 
 ####Settings.py
 
-*import os
-*from base_settings import *
+* import os
+* from base_settings import *
 
-*BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+* BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-*SECRET_KEY = ''
+* SECRET_KEY = ''
 
-*DEBUG = True
-*ALLOWED_HOSTS = [".ngrok.io"]
-*SOCIAL_AUTH_FACEBOOK_KEY = ''
-*SOCIAL_AUTH_FACEBOOK_SECRET = ''
-*DATABASES = {
+* DEBUG = True
+* ALLOWED_HOSTS = [".ngrok.io"]
+* SOCIAL_AUTH_FACEBOOK_KEY = ''
+* SOCIAL_AUTH_FACEBOOK_SECRET = ''
+* DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': '',
@@ -34,7 +34,7 @@ The application can be found at: http://www.texchange.ca/
         'PORT': '',
     }
 }
-*MEDIA_ROOT = 'pathtoprojectfolder/Texchange/textchange/media/'
-*MEDIA_URL = '/media/'
-*STATIC_ROOT = 'pathtoprojectfolder/Texchange/textchange/static/'
-*STATIC_URL = '/static/'
+* MEDIA_ROOT = 'pathtoprojectfolder/Texchange/textchange/media/'
+* MEDIA_URL = '/media/'
+* STATIC_ROOT = 'pathtoprojectfolder/Texchange/textchange/static/'
+* STATIC_URL = '/static/'
