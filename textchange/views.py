@@ -308,8 +308,8 @@ def fbpolicy(request):
         )
 
 
-HTTP Error 404
-def page_not_found(request, exception, template_name='404.html'):
+# HTTP Error 404
+def page_not_found(request):
     response = render_to_response(
         '404.html',
         context_instance=RequestContext(request)
