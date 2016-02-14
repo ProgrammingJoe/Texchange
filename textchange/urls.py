@@ -21,3 +21,5 @@ urlpatterns = [
     url(r'^help$', views.help, name="help"),
     url(r'^help/privacypolicy$', views.fbpolicy, name="fbpolicy"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'views.page_not_found'
