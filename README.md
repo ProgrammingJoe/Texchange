@@ -9,7 +9,7 @@ The application can be found at: http://www.texchange.ca/
 * Put these settings in a file called settings.py in the exchange folder
 * You will need to create a Facebook app to get login working (https://developers.facebook.com/)
 * You can use ngrok from https://ngrok.com/ to get the Facebook login working as it will not work using 127.0.0.1/port as the target address in the Facebook app settings
-* Don't forget to update pathtoprojectfolder in MEDIA_ROOT and STATIC_URL
+* Don't forget to update Pathtoprojectfolder in MEDIA_ROOT and STATIC_URL
 
 ####Settings.py
 
