@@ -15,12 +15,12 @@
       <p>My name is Joe and I am a 3rd year software engineering student studying at the University of Victoria. Texchange was designed
         to make exchanging textbooks easier at the University of Victoria. If you have any concerns or recommendations about the application,
         you would just like to contact the developer, or you have other application ideas that you want developed for students at UVic
-        please feel welcome to send a message with the form below. If you would like to stay anonymous simply enter "A@B.C" into the e-mail field.
+        please feel welcome to send a message with the form below. If you would like to stay anonymous simply enter "texchange@gmail.com" into the e-mail field.
       </p>
       <div class="feedback" style="margin-left: auto; margin-right: auto; display: block;">
       <form method="post">
       {% csrf_token %}
-      {% for field in form %}
+      {% for field in form %}nbge
         {{ field.errors }}
         {{ field.label_tag }}
         {% if field.name = 'content' %}
@@ -40,8 +40,6 @@
     </div>
 
     </br>
-
-    <p>Check out this FREE <a href="http://schedulecourses.com/">Class Scheduling Application</a> for UVic students built by a UVic graduate.</p>
 
         <p>If you would like to support the developer, donate using the button below.</p>
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
