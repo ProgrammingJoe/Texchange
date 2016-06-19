@@ -18,16 +18,20 @@ class Command(BaseCommand):
 
     # Get the textbook name
     def findbook(self, x):
-        tag = x.find("b")
-        book = tag.string
-        return book
+        title = x.find("span", {"class": "textbook-results-title"})
+        if len(title.contents) > 4:
+            title = title.contents[4]
+        else:
+            title = title.contents[2]
+        title = title.replace('  ', '')
+        title = title.replace('\n', '')
+        return title
 
     # Get the textbook author
     # Find all spans in x with class author
     def findauthor(self, x):
-        tag = x.find("span", {"class": "author"})
-        author = str(tag)
-        author = author[47:-8]
+        tag = x.find("span", {"class": "textbook-results-author"})
+        author = tag.contents[0]
         author = self.cleanstr(author)
         author = author.replace("Author:", "")
         return author
@@ -35,12 +39,11 @@ class Command(BaseCommand):
     # Get the course name
     # Find all divs with class row course-info for the parentx3 of x
     def findcourse(self, x):
-        parent1 = x.parent
-        parent2 = parent1.parent
-        parent3 = parent2.previous_sibling.previous_sibling.previous_sibling.previous_sibling.previous_sibling.previous_sibling
-        info = parent3.find("div", {"class": "row course-info"})
-        coursetag = info.find("div", {"class": "eight columns"})
-        coursetag = coursetag.find('h3')
+        parent = x.parent
+        parent = parent.parent
+        parent = parent.previous_sibling.previous_sibling.previous_sibling.previous_sibling.previous_sibling.previous_sibling
+        info = parent.find("div", {"class": "six columns"})
+        coursetag = info.find('h3')
         course = coursetag.string
         course = course[:8]
         course = self.cleanstr(course)
@@ -49,7 +52,7 @@ class Command(BaseCommand):
     # Get the isbn of the book
     # Get the first div with class row in x
     def findisbn(self, x):
-        secondrow = x.findAll("a", {"class": "skew"})[0]
+        secondrow = x.findAll("a", {"class": "textbook-results-skew"})[0]
         isbn = secondrow.string
         isbn = self.cleanstr(isbn)
         return isbn
@@ -68,7 +71,7 @@ class Command(BaseCommand):
             author = self.findauthor(x)
             course = self.findcourse(x)
             isbn = self.findisbn(x)
-            # print(book + " ||| " + author + " ||| " + course + " ||| " + isbn)
+            print(book + " ||| " + author + " ||| " + course + " ||| " + isbn)
             object = {
                 'book': book,
                 'author': author,
