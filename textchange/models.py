@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from auditlog.registry import auditlog
+from auditlog.models import LogEntry
 
 
 # Feedback model consists of feedback, a subject, and contact info
@@ -79,3 +81,8 @@ class Wishlist(models.Model):
     was_wished_recently.admin_order_field = 'date_wish'
     was_wished_recently.boolean = True
     was_wished_recently.short_description = 'Wished recently'
+
+
+# LogEntry.objects.get_for_model(Posting).filter(action=2).count() to get number of deleted postings
+auditlog.register(Posting)
+auditlog.register(Wishlist)
