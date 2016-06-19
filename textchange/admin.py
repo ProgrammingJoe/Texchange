@@ -4,7 +4,10 @@ from django.db import models
 # Register your models here.
 
 from .models import Textbook, Posting, Wishlist, Feedback
+<<<<<<< HEAD
 from auditlog.models import LogEntry
+=======
+>>>>>>> 7393a2d8030d4c2d5cef7cbc90c3b35775740b69
 
 
 # Fields is the list of elements in the table
@@ -36,7 +39,6 @@ class Feedback_table(admin.ModelAdmin):
 class Audit_table(admin.ModelAdmin):
     fields = ['action', 'actor', 'actor_id', 'additional_data', 'changes', 'content_type', 'content_type_id', 'id', 'object_id', 'object_pk', 'object_repr', 'remote_addr', 'timestamp']
     list_display = ('action', 'actor', 'actor_id', 'additional_data', 'changes', 'content_type', 'content_type_id', 'id', 'object_id', 'object_pk', 'object_repr', 'remote_addr', 'timestamp')
-
 
 # Adds the models to the admin site
 admin.site.register(Textbook, Textbook_table)

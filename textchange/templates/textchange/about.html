@@ -20,7 +20,7 @@
       <div class="feedback" style="margin-left: auto; margin-right: auto; display: block;">
       <form method="post">
       {% csrf_token %}
-      {% for field in form %}nbge
+      {% for field in form %}
         {{ field.errors }}
         {{ field.label_tag }}
         {% if field.name = 'content' %}
