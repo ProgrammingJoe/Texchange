@@ -4,10 +4,7 @@ from django.db import models
 # Register your models here.
 
 from .models import Textbook, Posting, Wishlist, Feedback
-<<<<<<< HEAD
 from auditlog.models import LogEntry
-=======
->>>>>>> 7393a2d8030d4c2d5cef7cbc90c3b35775740b69
 
 
 # Fields is the list of elements in the table
