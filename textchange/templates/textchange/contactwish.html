@@ -19,7 +19,11 @@
       <div class="col-lg-6">
         <h3>Contact Info</h3>
           <p><strong>User: </strong>{{ wishlist.user.first_name }}</p>
+          {% if social.provider == 'google-oauth2' %}
+          <p>{{social.uid}}<p>
+          {% elif social.provider == 'facebook' %}
           <p><a href="http://facebook.com/{{ social.uid }}">Visit their Facebook and send them a message!</a> </p>
+          {% endif %}
       </div>
     </div> <!-- /container -->
 
