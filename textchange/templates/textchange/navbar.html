@@ -6,7 +6,7 @@
         <li role="presentation"><a href="{% url 'textchange:navbar' %}" class="softbutton"><span class="blacklink">{{request.user.first_name }}, &nbsp;</span> logout</a></li>
       {% else %}
         <li><a style="padding: 0px;" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img src="https://texchangedb.s3.amazonaws.com/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a></li>
-        <li><a style="padding: 0px;" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">google</a></li>
+        <!-- <li><a style="padding: 0px;" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">google</a></li> -->
       {% endif %}
     </ul>
   </nav>
