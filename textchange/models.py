@@ -49,7 +49,7 @@ class Textbook(models.Model):
 
 # Posting model consisting of a textbook connected with a user
 class Posting(models.Model):
-    textbook = models.ForeignKey(Textbook)
+    textbook = models.ForeignKey(Textbook, on_delete=models.CASCADE)
     condition = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     user = models.ForeignKey(User)
@@ -69,7 +69,7 @@ class Posting(models.Model):
 
 # Wishlist model consisting of a textbook and a user
 class Wishlist(models.Model):
-    textbook = models.ForeignKey(Textbook)
+    textbook = models.ForeignKey(Textbook, on_delete=models.CASCADE)
     user = models.ForeignKey(User)
     wish_date = models.DateTimeField('date_wish')
 
