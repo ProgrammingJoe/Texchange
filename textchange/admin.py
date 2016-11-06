@@ -10,8 +10,8 @@ from auditlog.models import LogEntry
 # Fields is the list of elements in the table
 # List_display is the list of attributes and/or properties viewable on admin site
 class Textbook_table(admin.ModelAdmin):
-    fields = ['textbook_name', 'class_name', 'author', 'isbn', 'semester']
-    list_display = ('textbook_name', 'class_name', 'author', 'isbn', 'semester', 'NumPosts', 'NumWishes', 'DemSup')
+    fields = ['textbook_name', 'class_name', 'author', 'isbn', 'semester', 'longschool', 'shortschool']
+    list_display = ('textbook_name', 'class_name', 'author', 'isbn', 'semester', 'longschool', 'shortschool', 'NumPosts', 'NumWishes', 'DemSup')
 
 
 class Wishlist_table(admin.ModelAdmin):

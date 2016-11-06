@@ -1,6 +1,12 @@
 <div class="header clearfix">
   <nav>
     <ul class="nav nav-pills pull-right">
+      {% if curuser.is_authenticated %}
+        <li><a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a></li>
+      {% else %}
+        <li><a class="btn btn-lg btn-success option" onclick="alert('You must be logged in to view your Wishlist and Postings')" id="notloggedwish" href="" role="button" title="Login Required.">Wishlist and Postings</a></li>
+      {% endif %}
+      <li><a class="btn btn-lg btn-success option" href="{% url 'textchange:about' %}" role="button">Contact Me</a></li>
       <li><a href="{% url 'textchange:help' %}" class="blacklink softbutton">Help</a></li>
       {% if request.user.is_authenticated %}
         <li role="presentation"><a href="{% url 'textchange:navbar' %}" class="softbutton"><span class="blacklink">{{request.user.first_name }}, &nbsp;</span> logout</a></li>
@@ -9,5 +15,5 @@
       {% endif %}
     </ul>
   </nav>
-  <h3 class="nav nav-pills"><a class="softbutton homebutton blacklink" href="{% url 'textchange:index' %}">Texchange UVic</a></h3>
+  <h3 class="nav nav-pills"><a class="softbutton homebutton blacklink" href="{% url 'textchange:index' %}">Texchange</a></h3>
 </div>

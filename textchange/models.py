@@ -9,6 +9,7 @@ class Feedback(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=200)
     content = models.CharField(max_length=1000)
+    # Default user is Joe because I couldn't figure out how to remove this attribute (Bad practice :()
     user = models.ForeignKey(User, default=20)
 
 
@@ -19,6 +20,8 @@ class Textbook(models.Model):
     author = models.CharField(max_length=200)
     isbn = models.CharField(max_length=200)
     semester = models.CharField(max_length=200, default="FALL2015")
+    longschool = models.CharField(max_length=200, default="University of Victoria")
+    shortschool = models.CharField(max_length=20, default="UVic")
 
 # Properties for determing supply and demand
     @property
