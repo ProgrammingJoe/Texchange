@@ -265,10 +265,7 @@ def contactpost(request, uuser, uisbn, urlstring):
     luser = User.objects.filter(pk=uuser)
     quser = luser[0]
 
-    if quser.social_auth.filter(provider='facebook'):
-        social = quser.social_auth.get(provider='facebook')
-    elif quser.social_auth.filter(provider='google-oauth2'):
-        social = quser.social_auth.get(provider='google-oauth2')
+    social = quser.social_auth.get(provider='facebook')
 
     # Query for the posting of the user textbook combination.
     post = Posting.objects.filter(user=quser, textbook=ltextbook)
@@ -290,10 +287,7 @@ def contactwish(request, uuser, uisbn, urlstring):
     luser = User.objects.filter(pk=uuser)
     quser = luser[0]
 
-    if quser.social_auth.filter(provider='facebook'):
-        social = quser.social_auth.get(provider='facebook')
-    elif quser.social_auth.filter(provider='google-oauth2'):
-        social = quser.social_auth.get(provider='google-oauth2')
+    social = quser.social_auth.get(provider='facebook')
 
     # Query for the wish of the user textbook combination
     wish = Wishlist.objects.filter(user=quser, textbook=ltextbook)
