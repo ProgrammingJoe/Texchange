@@ -1,12 +1,6 @@
+{% extends "textchange/base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-  {% include "textchange/head.html" %}
-
-  <body>
-    <div class="container">
-
-	  {% include "textchange/navbar.html" %}
+    {% block content %}
 
     <div class="row marketing">
       <div class="col-lg-6">
@@ -21,10 +15,6 @@
           <p><strong>User: </strong>{{ wishlist.user.first_name }}</p>
           <p><a href="http://facebook.com/{{ social.uid }}">Visit their Facebook and send them a message!</a> </p>
       </div>
-    </div> <!-- /container -->
+    </div>
 
-    {% include "textchange/footer.html" %}
-
-  </div>
-  </body>
-</html>
+    {% endblock %}

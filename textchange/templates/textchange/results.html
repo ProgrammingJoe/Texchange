@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  {% include "textchange/head.html" %}
+{% extends "textchange/base.html" %}
 
-  <body>
-    <div class="container">
-
-	  {% include "textchange/navbar.html" %}
-
-	  <!-- <div>
-		{% for items in textbook_info %}
-			{{textbook_info.textbook}}
-		{% endfor %}
-	  </div> -->
+    {% block content %}
 
     <div style="text-align: center">
       <form method="POST"> {% csrf_token %}
@@ -55,9 +44,4 @@
       </table>
     </div>
 
-    {% include "textchange/footer.html" %}
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+    {% endblock %}

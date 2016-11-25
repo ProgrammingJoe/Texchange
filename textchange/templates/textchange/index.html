@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  {% include "textchange/head.html" %}
+{% extends "textchange/base.html" %}
 
-  <body>
-    <div class="container">
+    {% block content %}
 
-	  {% include "textchange/navbar.html" %}
-
-    <div style="text-align: center">
-      <form method="POST"> {% csrf_token %}
+    <div class="index-search-form-container">
+      {{ form3.media }}
+      <form method="POST" class="index-search-form"> {% csrf_token %}
         {% for field in form3 %}
-          {{ field.label_tag }}
           {{ field }}
         {% endfor %}
       <input id="search" class="button" type="submit" value="Search Textbooks" name="Search"></input>
@@ -18,21 +13,4 @@
       </br>
     </div>
 
-    <div class="panel panel-default">
-      <!-- Default panel contents -->
-        <div class="panel-heading"><h4>Search Results</h4><p>You should search things</p></div>
-
-      <!-- Table -->
-      <table class="resultstable">
-          <tr class="borderbot" >
-            <td><span>boop</p></td>
-          </tr>
-      </table>
-    </div>
-
-    {% include "textchange/footer.html" %}
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+    {% endblock %}

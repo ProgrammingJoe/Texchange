@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "textchange/base.html" %}
 
-  {% include "textchange/head.html" %}
-
-  <body>
-    <div class="container">
-
-      {% include "textchange/navbar.html" %}
+    {% block content %}
 
       <div class="jumbotron">
         <h2>{{ text.textbook_name }}!</h2>
@@ -100,9 +94,4 @@
         </div>
       </div>
 
-      {% include "textchange/footer.html" %}
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+      {% endblock %}

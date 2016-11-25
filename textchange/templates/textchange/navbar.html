@@ -1,19 +1,46 @@
-<div class="header clearfix">
-  <nav>
-    <ul class="nav nav-pills pull-right">
-      {% if curuser.is_authenticated %}
-        <li><a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a></li>
-      {% else %}
-        <li><a class="btn btn-lg btn-success option" onclick="alert('You must be logged in to view your Wishlist and Postings')" id="notloggedwish" href="" role="button" title="Login Required.">Wishlist and Postings</a></li>
-      {% endif %}
-      <li><a class="btn btn-lg btn-success option" href="{% url 'textchange:about' %}" role="button">Contact Me</a></li>
-      <li><a href="{% url 'textchange:help' %}" class="blacklink softbutton">Help</a></li>
-      {% if request.user.is_authenticated %}
-        <li role="presentation"><a href="{% url 'textchange:navbar' %}" class="softbutton"><span class="blacklink">{{request.user.first_name }}, &nbsp;</span> logout</a></li>
-      {% else %}
-        <li><a style="padding: 0px;" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img src="https://texchangedb.s3.amazonaws.com/textchange/facebookloginbutton.png" border="0" alt="" height="42px;"></a></li>
-      {% endif %}
-    </ul>
-  </nav>
-  <h3 class="nav nav-pills"><a class="softbutton homebutton blacklink" href="{% url 'textchange:index' %}">Texchange</a></h3>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+{{ load.media }}
+
+<div id="header">
+    <div class="leftcolumn">
+      <h3 class="nav nav-pills"><a class="softbutton homebutton blacklink" href="{% url 'textchange:index' %}">Texchange</a></h3>
+    </div>
+    {% if request.user.is_authenticated %}
+      <div class="rightcolumn">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+          <div id="myDropdown" class="dropdown-content">
+              <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
+              <a href="{% url 'textchange:navbar' %}" class="softbutton"><span class="blacklink">{{request.user.first_name }}, &nbsp;</span> logout</a>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="rightcolumn">
+        <a class="login" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login / Sign Up</a>
+      </div>
+    {% endif %}
 </div>

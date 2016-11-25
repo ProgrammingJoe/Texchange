@@ -1,12 +1,7 @@
+{% extends "textchange/base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
+    {% block content %}
 
-  {% include "textchange/head.html" %}
-
-  <body>
-    <div class="container">
-      {% include "textchange/navbar.html" %}
       <div class="addpostform centertext">
         <p>{{ text.textbook_name }}</p>
         <p>{{ text.author }}</p>
@@ -26,9 +21,4 @@
       </div>
       </br>
 
-      {% include "textchange/footer.html" %}
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+      {% endblock %}

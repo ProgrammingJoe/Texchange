@@ -1,15 +1,6 @@
+{% extends "textchange/base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-  {% include "textchange/head.html" %}
-
-  <body>
-
-    <div class="container">
-
-      {% include "textchange/navbar.html" %}
-
+    {% block content %}
       <h2>Contact Me!</h2>
       <p>Hello visitor!</p>
       <p>My name is Joe and I am a 3rd year software engineering student studying at the University of Victoria. Texchange was designed
@@ -51,9 +42,4 @@
 
         <p>Honourable mentions go out to Konrad Schultz, Daniel Bolink, and Curtis St. Pierre for helping me on some of the problems I ran into.</p>
 
-      {% include "textchange/footer.html" %}
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+      {% endblock %}
