@@ -8,13 +8,12 @@ from . import views
 # with respect to which views function is called
 urlpatterns = [
     url(r'^$', views.index, name="index"),
+    url(r'^login$', views.login, name="login"),
     url(r'^wishlisting$', views.wishlisting, name="wishlisting"),
     url(r'^wishlisting/(?P<uisbn>(\w)+)$', views.removewishlisting, name="removewishlisting"),
     url(r'^(?P<urlstring>(query=(\w)+(_(\w)+)*))$', views.results, name="results"),
-    url(r'^(?P<urlstring>(query=(\w)+(_(\w)+)*))/(?P<uisbn>(\w)+)$', views.textbook, name="textbook"),
-    url(r'^(?P<urlstring>(query=(\w)+(_(\w)+)*))/(?P<uisbn>(\w)+)/posting/add$', views.addposting, name="addposting"),
-    url(r'^(?P<urlstring>(query=(\w)+(_(\w)+)*))/(?P<uisbn>(\w)+)/(?P<uuser>(\w)+)/post$', views.contactpost, name="contactpost"),
-    url(r'^(?P<urlstring>(query=(\w)+(_(\w)+)*))/(?P<uisbn>(\w)+)/(?P<uuser>(\w)+)/wish$', views.contactwish, name="contactwish"),
+    url(r'^posting$', views.addposting, name="addposting"),
+    url(r'^(?P<urlstring>(query=(\w)+(_(\w)+)*))/(?P<uid>(\w)+)/post$', views.contactpost, name="contactpost"),
     url(r'^navbar$', views.navbar, name="navbar"),
     url(r'^thanks$', views.thanks, name="thanks"),
     url(r'^contact$', views.about, name="about"),

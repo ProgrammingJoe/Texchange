@@ -2,23 +2,27 @@
 
     {% block content %}
 
-    <div class="row marketing">
-      <div class="col-lg-6">
+    <div class="post_container">
+      <div class="post_info">
         <h3>Textbook Info</h3>
-          <p><strong>Textbook: </strong>{{ posting.textbook.textbook_name }}</p>
+          <p><strong>Textbook: </strong>{{ posting.textbook.textbook_name|title }}</p>
           <p><strong>Condition: </strong>{{ posting.condition }}</p>
           <p><strong>Price: </strong>{{ posting.price }}</p>
           <p><strong>Class: </strong>{{ posting.textbook.class_name }}</p>
-          <p><strong>ISBN: </strong>{{ posting.textbook.isbn }}</p>
-          <p><strong>Author: </strong>{{ posting.textbook.author }}</p>
+          <p><strong>ISBN: </strong>{{posting.textbook.isbn|slice:":3"}}-{{posting.textbook.isbn|slice:"3:4"}}-{{posting.textbook.isbn|slice:"4:7"}}-{{posting.textbook.isbn|slice:"7:12"}}-{{posting.textbook.isbn|slice:"12:13"}}</p>
+          <p><strong>Author: </strong>{{ posting.textbook.author|title }}</p>
           <p><strong>Additional Comments: </strong>{{ posting.comments }}</p>
         <h3>Contact Info</h3>
-          <p><strong>User: </strong>{{ posting.user.first_name }}</p>
+        <p><strong>User: </strong>{{ posting.user.first_name }}</p>
+          {% if social.provider == 'google-oauth2' %}
+          <p>{{social.uid}}<p>
+          {% elif social.provider == 'facebook' %}
           <p><a href="http://facebook.com/{{ social.uid }}">Visit their Facebook and send them a message!</a> </p>
+          {% endif %}
       </div>
 
-      <div class="col-lg-6">
-          <img src="{{ posting.image.url }}" id="postimage">
+      <div class="post_image">
+          <img src="{{ posting.image.url }}" id="">
       </div>
     </div>
 

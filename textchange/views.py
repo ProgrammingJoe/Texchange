@@ -6,7 +6,7 @@ from datetime import datetime
 from django.db.models import Q
 from smtplib import SMTPException
 
-from .models import Textbook, Posting, Wishlist, User, Feedback
+from .models import Textbook, Posting, User, Feedback
 from .forms import Search, PostCreate, Contact
 
 
@@ -18,8 +18,11 @@ def index(request):
     curuser = request.user
     form3 = Search(request.POST or None)
     if request.method == 'POST' and form3:
+        print("boop2")
         if request.POST.get("Search"):
+            print("boop")
             query = request.POST.get('search')
+            school = request.POST.get('school')
             keywords = []
             if query:
                 keywords = query.split()
@@ -35,53 +38,6 @@ def index(request):
 
     return render_to_response(
         'textchange/index.html',
-        locals(),
-        context_instance=RequestContext(request)
-        )
-
-
-# Textbook details page
-# Consists of add/remove buttons for postings/wishlist
-# Buttons change based on state of that textbook and user combination
-@login_required
-def textbook(request, uisbn, urlstring):
-    # Get textbook with isbn equal to usibn
-    ltextbook = Textbook.objects.filter(isbn=uisbn)
-    text = ltextbook[0]
-    numtexts = len(ltextbook)
-
-    # Create lists of postings and wishes for those textbooks
-    wishlists = Wishlist.objects.filter(textbook__isbn=text.isbn)
-    listings = Posting.objects.filter(textbook__isbn=text.isbn)
-
-    # Sort the lists by price and wish_Date
-    listings = list(listings)
-    wishlists = list(wishlists)
-    listings.sort(key=lambda x: x.price)
-    wishlists.sort(key=lambda x: x.wish_date)
-    curuser = request.user
-
-    # Check to see if there is a posting/wish with the current textbook user combination
-    postexist = Posting.objects.filter(user=curuser, textbook=text)
-    wishexist = Wishlist.objects.filter(user=curuser, textbook=text)
-
-    # Depending on status of user textbook combination
-    # Add or remove postings/wishes
-    if request.method == 'POST':
-        if request.POST.get("AddWishlist"):
-            if (not (Wishlist.objects.filter(user=curuser, textbook=text))):
-                new = Wishlist(textbook=text, user=curuser, wish_date=datetime.now())
-                new.save()
-                return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
-        if request.POST.get("DeleteWishlist"):
-            Wishlist.objects.filter(user=curuser, textbook=text).delete()
-            return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
-        if request.POST.get("DeleteListing"):
-            Posting.objects.filter(user=curuser, textbook=text).delete()
-            return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
-
-    return render_to_response(
-        'textchange/textbook.html',
         locals(),
         context_instance=RequestContext(request)
         )
@@ -179,6 +135,7 @@ def results(request, urlstring):
     for x in keywords:
         query = query.filter(Q(class_name__icontains=x) | Q(textbook_name__icontains=x) | Q(author__icontains=x) | Q(isbn__icontains=x))
 
+    query = Posting.objects.filter(textbook__in=query)
     urlstring = "query=" + urlstring
     numresults = len(query)
     return render_to_response(
@@ -193,7 +150,6 @@ def results(request, urlstring):
 def wishlisting(request):
     # Creates lists of postings and wishes for that user
     curuser = request.user
-    wishlists = Wishlist.objects.filter(user=curuser)
     listings = Posting.objects.filter(user=curuser)
 
     return render_to_response(
@@ -205,12 +161,10 @@ def wishlisting(request):
 
 # Renders the add a posting form page
 @login_required
-def addposting(request, uisbn, urlstring):
+def addposting(request):
     form = PostCreate(request.POST or None, request.FILES or None)
 
     # Get textbook with isbn equal to usibn
-    ltextbook = Textbook.objects.filter(isbn=uisbn)
-    text = ltextbook[0]
     curuser = request.user
 
     # Handles the add posting form
@@ -219,16 +173,7 @@ def addposting(request, uisbn, urlstring):
         price = request.POST.get('price')
         image = request.FILES.get('image')
         comments = request.POST.get('comments')
-        if image:
-            if (not (Posting.objects.filter(user=curuser, textbook=text))):
-                new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
-                new.save()
-                return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
-        else:
-            if (not (Posting.objects.filter(user=curuser, textbook=text))):
-                new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
-                new.save()
-                return HttpResponseRedirect('/' + urlstring + '/' + uisbn)
+        return HttpResponseRedirect('/')
 
     return render_to_response(
         'textchange/addposting.html',
@@ -247,8 +192,6 @@ def removewishlisting(request, uisbn):
 
     # If delete is called query and delete
     if request.method == 'POST':
-        if request.POST.get("DeleteWishlist"):
-            Wishlist.objects.filter(user=curuser, textbook=text).delete()
         if request.POST.get("DeletePosting"):
             Posting.objects.filter(user=curuser, textbook=text).delete()
 
@@ -258,18 +201,17 @@ def removewishlisting(request, uisbn):
 # Renders the page used to view textbook and contact info
 # for a specific book and user
 @login_required
-def contactpost(request, uuser, uisbn, urlstring):
+def contactpost(request, uid, urlstring):
     # Get the textbook and user for the posting selected
-    ltextbook = Textbook.objects.filter(isbn=uisbn)
-    text = ltextbook[0]
-    luser = User.objects.filter(pk=uuser)
-    quser = luser[0]
+    posting = Posting.objects.get(id=uid)
+    quser = User.objects.get(id=posting.user_id)
 
+    if quser.social_auth.filter(provider='facebook'):
+        social = quser.social_auth.get(provider='facebook')
+    elif quser.social_auth.filter(provider='google-oauth2'):
+        social = quser.social_auth.get(provider='google-oauth2')
     social = quser.social_auth.get(provider='facebook')
 
-    # Query for the posting of the user textbook combination.
-    post = Posting.objects.filter(user=quser, textbook=ltextbook)
-    posting = post[0]
     return render_to_response(
         'textchange/contactpost.html',
         locals(),
@@ -277,23 +219,10 @@ def contactpost(request, uuser, uisbn, urlstring):
         )
 
 
-# Renders the page used to view textbook and contact info
-# for a specific book and user
-@login_required
-def contactwish(request, uuser, uisbn, urlstring):
-    # Get the textbook and user for the wish selected
-    ltextbook = Textbook.objects.filter(isbn=uisbn)
-    text = ltextbook[0]
-    luser = User.objects.filter(pk=uuser)
-    quser = luser[0]
-
-    social = quser.social_auth.get(provider='facebook')
-
-    # Query for the wish of the user textbook combination
-    wish = Wishlist.objects.filter(user=quser, textbook=ltextbook)
-    wishlist = wish[0]
+# Render login page
+def login(request):
     return render_to_response(
-        'textchange/contactwish.html',
+        'textchange/login.html',
         locals(),
         context_instance=RequestContext(request)
         )

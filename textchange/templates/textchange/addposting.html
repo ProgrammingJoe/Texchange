@@ -2,11 +2,8 @@
 
     {% block content %}
 
-      <div class="addpostform centertext">
-        <p>{{ text.textbook_name }}</p>
-        <p>{{ text.author }}</p>
-        <p>{{ text.isbn }}</p>
-        <form action="{% url 'textchange:addposting' urlstring=urlstring uisbn=text.isbn %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+      <div class="posting_form">
+        <form action="{% url 'textchange:addposting' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
           {% for field in form %}
             <span style="color: red;">{{ field.errors }}</span>
             {{ field.label_tag }}
@@ -16,9 +13,8 @@
               </br>
             {% endif %}
           {% endfor %}
-          <input type="submit" value="Add a Posting" class="good button"></input>
+          <input type="submit" value="Add a Posting" class=""></input>
         </form>
       </div>
-      </br>
 
       {% endblock %}

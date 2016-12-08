@@ -1,4 +1,5 @@
-<footer class="footer">
-  <a href="https://www.facebook.com/UvicTexchange">Facebook</a></span></p>
-  <p><a href="{% url 'textchange:about' %}" role="button">Contact Me</a>&nbsp<a href="{% url 'textchange:help' %}">Help</a></p>
-</footer>
+<div class="footer">
+  <div class="contact"><a class="contact_in" href="{% url 'textchange:about' %}" role="button">Contact Me</a><a class="help_in" href="{% url 'textchange:help' %}">Help</a></div>
+  <div class="facebook"><a href="https://www.facebook.com/UvicTexchange"><img class="facebook_block" src="../../static/textchange/facebookblock.png"></a></div>
+  <div class="color"><a class="color_in" onclick="changeColor()">Do you need a change in color?</a></div>
+</div>

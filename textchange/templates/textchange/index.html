@@ -3,13 +3,15 @@
     {% block content %}
 
     <div class="index-search-form-container">
-      {{ form3.media }}
-      <form method="POST" class="index-search-form"> {% csrf_token %}
+      <div class="index-search-form">
+      <form method="POST"> {% csrf_token %}
         {% for field in form3 %}
           {{ field }}
         {% endfor %}
-      <input id="search" class="button" type="submit" value="Search Textbooks" name="Search"></input>
+      <input id="search" type="submit" value="Search Textbooks"></input>
       </form>
+      <div class="booktosell"><p>Have a textbook that you want to <a href="{% url 'textchange:addposting' %}">Sell?</a></p></div>
+    </div>
       </br>
     </div>
 

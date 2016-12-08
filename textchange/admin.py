@@ -3,7 +3,7 @@ from django.forms import Textarea
 from django.db import models
 # Register your models here.
 
-from .models import Textbook, Posting, Wishlist, Feedback
+from .models import Textbook, Posting, Feedback
 from auditlog.models import LogEntry
 
 
@@ -11,12 +11,7 @@ from auditlog.models import LogEntry
 # List_display is the list of attributes and/or properties viewable on admin site
 class Textbook_table(admin.ModelAdmin):
     fields = ['textbook_name', 'class_name', 'author', 'isbn', 'semester', 'longschool', 'shortschool']
-    list_display = ('textbook_name', 'class_name', 'author', 'isbn', 'semester', 'longschool', 'shortschool', 'NumPosts', 'NumWishes', 'DemSup')
-
-
-class Wishlist_table(admin.ModelAdmin):
-    fields = ['textbook', 'user', 'wish_date']
-    list_display = ('textbook', 'user', 'wish_date')
+    list_display = ('textbook_name', 'class_name', 'author', 'isbn', 'semester', 'longschool', 'shortschool', 'NumPosts', 'DemSup')
 
 
 class Posting_table(admin.ModelAdmin):
@@ -39,7 +34,6 @@ class Audit_table(admin.ModelAdmin):
 
 # Adds the models to the admin site
 admin.site.register(Textbook, Textbook_table)
-admin.site.register(Wishlist, Wishlist_table)
 admin.site.register(Posting, Posting_table)
 admin.site.register(Feedback, Feedback_table)
 admin.site.register(LogEntry, Audit_table)

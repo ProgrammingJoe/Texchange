@@ -2,18 +2,18 @@
 <html lang="en">
   {% include "textchange/head.html" %}
 
-  <body>
+  <body onload="getColor()">
+
+    {% include "textchange/navbar.html" %}
+
     <div class="container">
-
-      {% include "textchange/navbar.html" %}
-
       {% block content %}
 
       {% endblock %}
-
-      {% include "textchange/footer.html" %}
-
     </div>
+
+    {% include "textchange/footer.html" %}
+
   </body>
   </div> <!-- /container -->
 

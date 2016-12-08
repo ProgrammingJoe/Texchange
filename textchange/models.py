@@ -23,12 +23,6 @@ class Textbook(models.Model):
     longschool = models.CharField(max_length=200, default="University of Victoria")
     shortschool = models.CharField(max_length=20, default="UVic")
 
-# Properties for determing supply and demand
-    @property
-    def NumWishes(self):
-        return Wishlist.objects.filter(textbook__isbn=self.isbn).count()
-        # return self.wishlist_set.count()
-
     @property
     def NumPosts(self):
         return Posting.objects.filter(textbook__isbn=self.isbn).count()
@@ -70,22 +64,5 @@ class Posting(models.Model):
     was_posted_recently.short_description = 'Posted recently'
 
 
-# Wishlist model consisting of a textbook and a user
-class Wishlist(models.Model):
-    textbook = models.ForeignKey(Textbook)
-    user = models.ForeignKey(User)
-    wish_date = models.DateTimeField('date_wish')
-
-    def __str__(self):
-        return str(self.textbook)
-
-    def was_wished_recently(self):
-        return self.wish_date >= timezone.now() - datetime.timedelta(days=1)
-    was_wished_recently.admin_order_field = 'date_wish'
-    was_wished_recently.boolean = True
-    was_wished_recently.short_description = 'Wished recently'
-
-
 # LogEntry.objects.get_for_model(Posting).filter(action=2).count() to get number of deleted postings
 auditlog.register(Posting)
-auditlog.register(Wishlist)

@@ -2,48 +2,29 @@
 
     {% block content %}
 
-      <div class="wishlisting">
+      <div class="">
       <h2>Your Postings and Wishlist</h2>
       <span>You can manage your postings and wishes here...</span><br />
         <ol>
-          <li type="circle">Press the delete button to delete wishes and postings.</li>
-          <li type="circle">You can click the textbook name to go to it's page.</li>
+          <li type="">Press the delete button to delete wishes and postings.</li>
+          <li type="">You can click the textbook name to go to it's page.</li>
         </ol>
       </div>
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h3>Your Wishlist</h3>
-          <table class="table">
-            {% if not wishlists %}
-              <tr><td>You do not currently have any wishes.</td></tr>
-            {% endif %}
-            {% for wishes in wishlists %}
-            {% with "query="|add:wishes.textbook.isbn as urlstring %}
-            <tr><td class="width235"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=wishes.textbook.isbn %}" class="blacklink">{{wishes.textbook}}</a></td>
-            {% endwith %}
-              <td class="width85">
-              <form action="{% url 'textchange:removewishlisting' uisbn=wishes.textbook.isbn %}" method="post"> {% csrf_token %}
-              <input class="delete" type="submit" name="DeleteWishlist"  onclick="return confirm('Are you sure you want to delete {{wishes}} from your wishlist?')" value="Delete"></input>
-              </form>
-              </td></tr>
-            {% endfor %}
-          </table>
-        </div>
-
-        <div class="col-lg-6">
+      <div class="">
+        <div class="">
           <h3>Your Postings</h3>
-          <table class="table">
+          <table class="">
             {% if not listings %}
               <tr><td><p>You do not currently have any postings.</td></tr>
             {% endif %}
             {% for posts in listings %}
             {% with "query="|add:posts.textbook.isbn as urlstring %}
-            <tr><td class="width160"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=posts.textbook.isbn %}" class="blacklink">{{posts.textbook}}</a></td><td class="width75">${{posts.price}}</td>
+            <tr><td class=""><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=posts.textbook.isbn %}" class="blacklink">{{posts.textbook}}</a></td><td class="width75">${{posts.price}}</td>
             {% endwith %}
-              <td class="width85">
+              <td class="">
               <form action="{% url 'textchange:removewishlisting' uisbn=posts.textbook.isbn %}" method="post"> {% csrf_token %}
-              <input class="delete" type="submit" name="DeletePosting"  onclick="return confirm('Are you sure you want to delete {{posts}} from your postings?')" value="Delete"></input>
+              <input class="" type="submit" name="DeletePosting"  onclick="return confirm('Are you sure you want to delete {{posts}} from your postings?')" value="Delete"></input>
               </form>
               </td></tr>
             {% endfor %}

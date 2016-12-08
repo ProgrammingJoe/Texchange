@@ -11,15 +11,36 @@
 
   <title>UVic Texchange Exchange Textbooks at University of Victoria</title>
 
+
+
   {% load staticfiles %}
 
   <meta name="wot-verification" content="dbc0d3681956a7bd2371"/>
 
   <link href="{% static "textchange/mycss.css" %}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static "autocomplete_light/vendor/select2/dist/css/select2.css" %}" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
   <link rel="shortcut icon" href="{% static "textchange/tabicon.png" %}">
+
+  <script>
+  function getColor() {
+    var rand = localStorage.getItem("funColor");
+    if(rand) {
+      document.getElementsByClassName("container")[0].style.background = rand;
+      document.getElementsByClassName("header")[0].style.background = rand;
+      document.getElementsByClassName("footer")[0].style.background = rand;
+    }
+  }
+
+  function changeColor() {
+    colors = ["#DFF6A1", "#91DE91", "#7CBABD"];
+    var rand = colors[Math.floor(Math.random() * colors.length)];
+    document.getElementsByClassName("container")[0].style.background = rand;
+    document.getElementsByClassName("header")[0].style.background = rand;
+    document.getElementsByClassName("footer")[0].style.background = rand;
+    localStorage.setItem("funColor", rand);
+  }
+  </script>
 
   <!-- Info displayed when site it shared/linked -->
   <meta property="og:url"           content="http://www.texchange.ca" />

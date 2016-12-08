@@ -24,23 +24,23 @@ window.onclick = function(event) {
 
 {{ load.media }}
 
-<div id="header">
-    <div class="leftcolumn">
-      <h3 class="nav nav-pills"><a class="softbutton homebutton blacklink" href="{% url 'textchange:index' %}">Texchange</a></h3>
+<div class="header">
+    <div class="leftheader">
+      <a class="header_in" href="{% url 'textchange:index' %}">Texchange</a>
     </div>
     {% if request.user.is_authenticated %}
-      <div class="rightcolumn">
+      <div class="rightheader">
         <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+          <span onclick="myFunction()" class="dropbtn">{{request.user.first_name}} {{request.user.last_name}}</span>
           <div id="myDropdown" class="dropdown-content">
               <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
-              <a href="{% url 'textchange:navbar' %}" class="softbutton"><span class="blacklink">{{request.user.first_name }}, &nbsp;</span> logout</a>
+              <a href="{% url 'textchange:navbar' %}" class="softbutton">Logout</a>
           </div>
         </div>
       </div>
     {% else %}
-      <div class="rightcolumn">
-        <a class="login" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login / Sign Up</a>
+      <div class="rightheader">
+        <a class="floatright" href="{% url 'textchange:login' %}">Login / Sign Up</a>
       </div>
     {% endif %}
 </div>

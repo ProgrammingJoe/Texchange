@@ -2,42 +2,50 @@
 
     {% block content %}
 
-    <div style="text-align: center">
-      <form method="POST"> {% csrf_token %}
-        {% for field in form4 %}
-          {{ field.label_tag }}
-          {{ field }}
-        {% endfor %}
-      <input id="search" class="button" type="submit" value="Search Textbooks" name="Search"></input>
-      </form>
-      </br>
-    </div>
+    <div class="results-search-form-container">
+    <div class="results-search-form">
+    <form method="POST"> {% csrf_token %}
+      {% for field in form4 %}
+        {{ field }}
+      {% endfor %}
+    <input id="search" type="submit" value="Search Textbooks" name="Search"></input>
+    </form>
+  </div>
+</div>
 
-    <div class="panel panel-default">
+    <div class="results_container">
       <!-- Default panel contents -->
       {% if curuser.is_authenticated %}
-        <div class="panel-heading"><h4>Search Results</h4><p>{{numresults}} results were returned.</p></div>
+        <div class=""><h4>Search Results</h4><p>{{numresults}} results were returned.</p></div>
       {% else %}
-        <div class="panel-heading"><h4>Search Results</h4><p>{{numresults}} results were returned.</p><p id="noresults">Login required to view textbooks.</p></div>
+        <div class=""><h4>Search Results</h4><p>{{numresults}} results were returned.</p><p id="noresults">Login required to view textbooks.</p></div>
       {% endif %}
 
       <!-- Table -->
-      <table class="resultstable">
+      <table class="results_table">
         {% if curuser.is_authenticated %}
           {% for items in query %}
-          <tr class="borderbot" >
-            <td class="width140"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</br>Wish Count: {{items.NumWishes}}</div></a></td>
-            <td class="width500"><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</br>Post Count: {{items.NumPosts}}</div></a></td>
-            <td class="width60"><a href = "{% url 'textchange:textbook' urlstring=urlstring uisbn=items.isbn %}"><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton"></a></td>
+          <a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">
+            <div>
+          <tr style="results_row1" >
+            <td class="results_top-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column1"><strong>{{items.textbook|title}}</strong></a></td>
+            <td class="results_top-middle"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column2">{{items.textbook.author|title}}</br></a></td>
+            <td class="results_top-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column3">{{items.user.first_name}} {{items.user.last_name}}</br></a></td>
           </tr>
+          <tr style="results_row2">
+            <td class="results_bottom-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column1">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
+            <td class="results_bottom-middle"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column2">{{items.textbook.class_name}}</br></a></td>
+            <td class="results_bottom-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column3">${{items.price}}</br></a></td>
+          </tr>
+        </div></a>
           {% endfor %}
         {% else %}
           {% for items in query %}
           <tr>
-            <tr class=borderbot>
-              <td class="width140"><a href="#" class="blacklink"><div><strong>{{items.class_name}}</strong></br>{{items.author}}</br>Wish Count: {{items.NumWishes}}</div></a></td>
-              <td class="width500"><a href="#" class="blacklink"><div>{{items.textbook_name}}</br>{{items.isbn}}</br>Post Count: {{items.NumPosts}}</div></a></td>
-              <td class="width60"><a href="#" title="Login Required."><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
+            <tr class="">
+              <td class=""><a href="#" class=""><div><strong>{{items.textbook}}</strong></div></a></td>
+              <td class=""><a href="#" class=""><div>{{items.user}}</br></div></a></td>
+              <td class=""><a href="#" title="Login Required."><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
             </tr>
           {% endfor %}
         {% endif %}
