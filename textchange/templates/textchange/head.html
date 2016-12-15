@@ -26,18 +26,14 @@
   function getColor() {
     var rand = localStorage.getItem("funColor");
     if(rand) {
-      document.getElementsByClassName("container")[0].style.background = rand;
-      document.getElementsByClassName("header")[0].style.background = rand;
-      document.getElementsByClassName("footer")[0].style.background = rand;
+      document.getElementsByTagName("BODY")[0].style.background = rand;
     }
   }
 
   function changeColor() {
     colors = ["#DFF6A1", "#91DE91", "#7CBABD"];
     var rand = colors[Math.floor(Math.random() * colors.length)];
-    document.getElementsByClassName("container")[0].style.background = rand;
-    document.getElementsByClassName("header")[0].style.background = rand;
-    document.getElementsByClassName("footer")[0].style.background = rand;
+    document.getElementsByTagName("BODY")[0].style.background = rand;
     localStorage.setItem("funColor", rand);
   }
   </script>

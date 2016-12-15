@@ -24,14 +24,18 @@ window.onclick = function(event) {
 
 {{ load.media }}
 
+{% if homepage %}
+<div class="header_invisible">
+  {% else %}
 <div class="header">
+{% endif %}
     <div class="leftheader">
-      <a class="header_in" href="{% url 'textchange:index' %}">Texchange</a>
+      <a class="header_in" href="{% url 'textchange:index' %}">texchange</a>
     </div>
     {% if request.user.is_authenticated %}
       <div class="rightheader">
         <div class="dropdown">
-          <span onclick="myFunction()" class="dropbtn">{{request.user.first_name}} {{request.user.last_name}}</span>
+          <span onclick="myFunction()" class="dropbtn">Hi, {{request.user.first_name}}!</span>
           <div id="myDropdown" class="dropdown-content">
               <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Wishlist and Postings</a>
               <a href="{% url 'textchange:navbar' %}" class="softbutton">Logout</a>

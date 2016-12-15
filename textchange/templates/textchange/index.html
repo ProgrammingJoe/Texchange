@@ -8,11 +8,13 @@
         {% for field in form3 %}
           {{ field }}
         {% endfor %}
-      <input id="search" type="submit" value="Search Textbooks"></input>
+      <input id="search" type="submit" name="Search"></input>
       </form>
       <div class="booktosell"><p>Have a textbook that you want to <a href="{% url 'textchange:addposting' %}">Sell?</a></p></div>
     </div>
       </br>
     </div>
+
+    {% include "textchange/footer.html" %}
 
     {% endblock %}

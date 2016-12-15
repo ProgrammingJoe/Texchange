@@ -1,7 +1,7 @@
 {% extends "textchange/base.html" %}
 
     {% block content %}
-
+    <div class="content_container">
       <h1>Application Summary</h1>
       <p>Texchange was designed to make searching for used textbooks easy for UVic students. All a user has to do
       is search for their textbook by ISBN, textbook name, class name, or author. Once they find their textbook they
@@ -69,5 +69,6 @@
       </ul>
       <p><a href="{% url 'textchange:fbpolicy' %}">Facebook Privacy Policy</a></p>
       <p><a href="#toc">Back to Top</a></p>
+    </div>
 
       {% endblock %}

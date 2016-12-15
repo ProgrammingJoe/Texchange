@@ -15,6 +15,7 @@ from .forms import Search, PostCreate, Contact
 # input is split into keywords and queuried on all textbook attributes
 # The number of results is also calculated for the user
 def index(request):
+    homepage = "homepage"
     curuser = request.user
     form3 = Search(request.POST or None)
     if request.method == 'POST' and form3:
@@ -167,14 +168,21 @@ def addposting(request):
     # Get textbook with isbn equal to usibn
     curuser = request.user
 
-    # Handles the add posting form
-    if form.is_valid() and request.POST:
-        condition = request.POST.get('condition')
-        price = request.POST.get('price')
-        image = request.FILES.get('image')
-        comments = request.POST.get('comments')
-        return HttpResponseRedirect('/')
-
+    isbn = request.POST.get('isbn')
+    print(isbn)
+    school = request.POST.get('school')
+    print(school)
+    if(isbn and school):
+        print("bloop")
+        file_s = Textbook.objects.filter(shortschool=school).values_list('isbn', flat=True)
+        if(isbn in file_s and form.is_valid() and request.POST):
+            condition = request.POST.get('condition')
+            price = request.POST.get('price')
+            image = request.FILES.get('image')
+            comments = request.POST.get('comments')
+            isbn = request.POST.get('isbn')
+            return HttpResponseRedirect('/')
+            # 9780131873254
     return render_to_response(
         'textchange/addposting.html',
         locals(),

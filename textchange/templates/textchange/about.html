@@ -1,6 +1,7 @@
 {% extends "textchange/base.html" %}
 
     {% block content %}
+    <div class="content_container">
       <h2>Contact Me!</h2>
       <p>Hello visitor!</p>
       <p>My name is Joe and I am a 3rd year software engineering student studying at the University of Victoria. Texchange was designed
@@ -23,7 +24,7 @@
         {% endif %}
       {% endfor %}
         <div class="form-actions">
-          <button type="submit">Send Feedback</button>
+          <button type="submit" class="feedback_submit">Send Feedback</button>
             {% if message %}<strong class="green">{{ message }}</strong>{% endif %}
             {% if badmessage %}<strong class="red">{{ badmessage }}</strong>{% endif %}
         </div>
@@ -32,14 +33,6 @@
 
     </br>
 
-        <p>If you would like to support the developer, donate using the button below.</p>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_s-xclick">
-          <input type="hidden" name="hosted_button_id" value="7LSB63BS4RL62">
-          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-          </form>
-
         <p>Honourable mentions go out to Konrad Schultz, Daniel Bolink, and Curtis St. Pierre for helping me on some of the problems I ran into.</p>
-
+</div>
       {% endblock %}

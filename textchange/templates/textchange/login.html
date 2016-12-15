@@ -2,12 +2,12 @@
 
     {% block content %}
 
-      <div class="login_container">
+      <div class="content_container login_container">
         <h2>Texchange</h2>
         <p>We don't like this part either but, this is to connect you with other great people on texchange.</p>
         <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">google</a>
         <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Facebook</a>
-        <span>\ (•◡•) /</span>
+        <p class="login_emoji">\ (•◡•) /</p>
       </div>
 
       {% endblock %}

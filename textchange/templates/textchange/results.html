@@ -2,23 +2,23 @@
 
     {% block content %}
 
-    <div class="results-search-form-container">
     <div class="results-search-form">
-    <form method="POST"> {% csrf_token %}
-      {% for field in form4 %}
-        {{ field }}
-      {% endfor %}
-    <input id="search" type="submit" value="Search Textbooks" name="Search"></input>
-    </form>
-  </div>
-</div>
+      <form method="POST"> {% csrf_token %}
+        {% for field in form4 %}
+          {{ field }}
+        {% endfor %}
+      <input id="search" type="submit" value="Search Textbooks" name="Search"></input>
+      </form>
+    </div>
 
+<div class="content_outer">
+    <div class="content_container">
     <div class="results_container">
       <!-- Default panel contents -->
       {% if curuser.is_authenticated %}
-        <div class=""><h4>Search Results</h4><p>{{numresults}} results were returned.</p></div>
+        <div class="results_returned"><p>Search Results</p><p>{{numresults}} results were returned.</p></div>
       {% else %}
-        <div class=""><h4>Search Results</h4><p>{{numresults}} results were returned.</p><p id="noresults">Login required to view textbooks.</p></div>
+        <div class="results_returned"><p>Search Results</p><p>{{numresults}} results were returned.</p><p id="noresults">Login required to view textbooks.</p></div>
       {% endif %}
 
       <!-- Table -->
@@ -28,28 +28,30 @@
           <a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">
             <div>
           <tr style="results_row1" >
-            <td class="results_top-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column1"><strong>{{items.textbook|title}}</strong></a></td>
-            <td class="results_top-middle"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column2">{{items.textbook.author|title}}</br></a></td>
-            <td class="results_top-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column3">{{items.user.first_name}} {{items.user.last_name}}</br></a></td>
+            <td class="results_top-left results_column1"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class=""><strong>{{items.textbook|title}}</strong></a></td>
+            <td class="results_top-right results_column2"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class=""><strong>${{items.price}}</strong></br></a></td>
           </tr>
           <tr style="results_row2">
-            <td class="results_bottom-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column1">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
-            <td class="results_bottom-middle"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column2">{{items.textbook.class_name}}</br></a></td>
-            <td class="results_bottom-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="column3">${{items.price}}</br></a></td>
+            <td class="results_bottom-left results_column1"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="">{{items.textbook.author|title}}</br></a></td>
+            <td class="results_bottom-right results_column2"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
           </tr>
         </div></a>
           {% endfor %}
         {% else %}
           {% for items in query %}
-          <tr>
-            <tr class="">
-              <td class=""><a href="#" class=""><div><strong>{{items.textbook}}</strong></div></a></td>
-              <td class=""><a href="#" class=""><div>{{items.user}}</br></div></a></td>
-              <td class=""><a href="#" title="Login Required."><img src="https://texchangedb.s3.amazonaws.com/textchange/nextarrow.png" class="nextbutton" id="resultsbutton"></a></td>
-            </tr>
+          <tr style="results_row1" >
+            <td class="results_top-left results_column1"><a href="#" class=""><strong>{{items.textbook|title}}</strong></a></td>
+            <td class="results_top-right results_column2"><a href="#" class=""><strong>${{items.price}}</strong></br></a></td>
+          </tr>
+          <tr style="results_row2">
+            <td class="results_bottom-left results_column1"><a href="#" class="">{{items.textbook.author|title}}</br></a></td>
+            <td class="results_bottom-right results_column2"><a href="#" class="">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
+          </tr>
           {% endfor %}
         {% endif %}
       </table>
     </div>
+    </div>
+  </div>
 
     {% endblock %}
