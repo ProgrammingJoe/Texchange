@@ -17,42 +17,46 @@ html, body {
 }
 
 .content_container {
-  min-height: calc(100%-50px);
-  height: calc(100%-50px);
-  float: middle;
   top: 20px;
   position: relative;
-  width: auto;
   display: inline-block;
   margin: auto;
-  padding: 30px 20px 30px 20px;
-  border-radius: 4px;
-  background-color: grey;
+  background-color: white;
 }
 
 .results_container {
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 460px;
+  width: 80vw;
+  min-width: 360px;
+  max-width: 660px;
 }
 .results_table {
   border-collapse: collapse;
   width: 100%;
 }
+.results_table a {
+  text-decoration: none;
+}
 .results_table td {
   background-color: white;
   height: 20px;
-}
-.results_table td a {
-  color: black;
-  text-decoration: none;
 }
 .results_table td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 200px;
+}
+.results_row1 a {
+  color: black;
+  font-size: 18px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+}
+.results_row2 a {
+  color: grey;
+  font-size: 15px;
+  padding-bottom: 6px;
+  padding-top: 2px;
 }
 .results_column1 {
   width: 70%;
@@ -60,7 +64,7 @@ html, body {
 }
 .results_column1 a {
   float: left;
-  padding: 2px;
+  padding-left: 9px;
 }
 .results_column2 {
   width: 30%;
@@ -68,9 +72,9 @@ html, body {
 }
 .results_column2 a {
   float: right;
-  padding: 2px;
+  padding-right: 9px;
 }
-.results_returned p {
+.results_returned span {
   float: left;
   clear: both;
 }
@@ -136,6 +140,10 @@ html, body {
 
 .login_container {
   background-color: white;
+  position: relative;
+  width: 80vw;
+  min-width: 360px;
+  max-width: 500px;
 }
 .login_container p {
   text-align: center;
@@ -204,7 +212,9 @@ html, body {
   top: 4px;
   position: relative;
   padding-left: 5px;
-  width: 260px;
+  width: 45vw;
+  max-width: 400px;
+  min-width: 180px;
   font-size: 15px;
 }
 .results-search-form .input_form_school {
@@ -214,7 +224,9 @@ html, body {
   position: relative;
   border: none;
   top: 4px;
-  width: 220px;
+  width: 30vw;
+  min-width: 140px;
+  max-width: 220px;
   font-size: 15px;
   border-left: 1px solid black;
 }
@@ -243,7 +255,6 @@ html, body {
   display: inline-flex;
 }
 .index-search-form {
-  width: 540px;
   display: block;
   text-align: center;
   margin: auto;
@@ -254,7 +265,9 @@ html, body {
   border-radius: 10px 10px 10px 10px;
   background-color: #ffffff;
   height: 42px;
-  width: 260px;
+  width: 45vw;
+  max-width: 400px;
+  min-width: 300px;
   padding-left: 10px;
   font-size: 15px;
 }
@@ -262,7 +275,9 @@ html, body {
   border-radius: 10px 0 0 10px;
   background-color: #ffffff;
   height: 44px;
-  width: 220px;
+  width: 25vw;
+  max-width: 200px;
+  min-width: 170px;
   font-size: 15px;
 }
 .index-search-form #search {

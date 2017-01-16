@@ -16,9 +16,9 @@
     <div class="results_container">
       <!-- Default panel contents -->
       {% if curuser.is_authenticated %}
-        <div class="results_returned"><p>Search Results</p><p>{{numresults}} results were returned.</p></div>
+        <div class="results_returned"><span>{{numresults}} Results</span></div>
       {% else %}
-        <div class="results_returned"><p>Search Results</p><p>{{numresults}} results were returned.</p><p id="noresults">Login required to view textbooks.</p></div>
+        <div class="results_returned"><span>{{numresults}} Results</span><p id="noresults">Login required to view textbooks.</p></div>
       {% endif %}
 
       <!-- Table -->
@@ -27,11 +27,11 @@
           {% for items in query %}
           <a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">
             <div>
-          <tr style="results_row1" >
+          <tr class="results_row1" >
             <td class="results_top-left results_column1"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class=""><strong>{{items.textbook|title}}</strong></a></td>
             <td class="results_top-right results_column2"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class=""><strong>${{items.price}}</strong></br></a></td>
           </tr>
-          <tr style="results_row2">
+          <tr class="results_row2">
             <td class="results_bottom-left results_column1"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="">{{items.textbook.author|title}}</br></a></td>
             <td class="results_bottom-right results_column2"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
           </tr>
@@ -39,11 +39,11 @@
           {% endfor %}
         {% else %}
           {% for items in query %}
-          <tr style="results_row1" >
+          <tr class="results_row1" >
             <td class="results_top-left results_column1"><a href="#" class=""><strong>{{items.textbook|title}}</strong></a></td>
             <td class="results_top-right results_column2"><a href="#" class=""><strong>${{items.price}}</strong></br></a></td>
           </tr>
-          <tr style="results_row2">
+          <tr class="results_row2">
             <td class="results_bottom-left results_column1"><a href="#" class="">{{items.textbook.author|title}}</br></a></td>
             <td class="results_bottom-right results_column2"><a href="#" class="">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
           </tr>
