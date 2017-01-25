@@ -1,52 +1,40 @@
 {% extends "textchange/base.html" %}
 
     {% block content %}
-    <div class="content_container">
-      <h1>Application Summary</h1>
-      <p>Texchange was designed to make searching for used textbooks easy for UVic students. All a user has to do
-      is search for their textbook by ISBN, textbook name, class name, or author. Once they find their textbook they
-      can view current postings and wishes. If they want to show interest in a book they can add their own posting
-      or wish. Users can contact other users through Facebook, links to Facebook profiles can be found on the contact
-      page for postings or wishes.</p>
-      <p>Below you can find more detailed instructions for how to use Texchange.</p>
-      <h2 id="toc">Table of Contents</h2>
-      <ul>
-        <li><a href="#Create">Logging In</a></li>
-        <li><a href="#Search">Searching</a></li>
-        <li><a href="#PostWish">Creating Postings and Wishes</a></li>
-        <li><a href="#Contact">Contacting Buyers and Sellers</a></li>
-        <li><a href="#Wishlisting">Managing Wishlist and Postings</a></li>
-        <li><a href="#QA">Frequently Asked Questions</a></li>
-      </ul>
-
+    <div class="content_outer">
+      <div class="content_container">
+        <div class="help_page">
+      <h1 id"#top">Help Centre</h1>
+      <span class="toc"><a href="#Create">Logging In</a></br></span>
+      <span class="toc"><a href="#Search">Searching</a></br></span>
+      <span class="toc"><a href="#PostWish">Creating Postings and Wishes</a></br></span>
+      <span class="toc"><a href="#Contact">Contacting Buyers and Sellers</a></br></span>
+      <span class="toc"><a href="#Wishlisting">Managing Wishlist and Postings</a></br></span>
+      <span class="toc"><a href="#QA">Frequently Asked Questions</a></br></span>
+      <hr noshade>
       <h2 id="Create">Logging In</h2>
       <p>In order to login simply click the Facebook login button in the top right corner of the screen. The reason we get you
         login with Facebook is so you can communicate with other users when you want to buy or sell textbooks.
       </p>
-      <a href="#toc">Back to Top</a>
       <h2 id="Search">Searching</h2>
       <p>In order to search for textbooks type keywords into the search box on the home page. You can search for your textbooks by typing your
         class name, class number, textbook name, textbook isbn, textbook author, or any combination of the options listed. Entering multiple words into the search field will refine your search to match
         both inputs. After searching you will be presented with a list of textbooks. Click on the row of any textbook you wish to view.      </p>
-      <a href="#toc">Back to Top</a>
       <h2 id="PostWish">Creating Postings and Wishes</h2>
       <p>In order to create a posting or add a book to your wishlist you must first search for the textbook and select it from the results page. Afterwards,
       you will be able to select the "Add a Posting" or "Add to Wishlist" buttons below the textbooks details. When you click "Add to Wishlist" the textbook
       will be added to your wishlist immediately. When you click "Add a Posting" you will be brought to page in which you can add a price, condition, and image to
       the posting. The price and condition fields are required. Below the textbook details and action buttons you can find lists of people who are looking for textbook
       and lists of people who are selling the textbook.</p>
-      <a href="#toc">Back to Top</a>
       <h2 id="Contact">Contacting Buyers and Sellers</h2>
       <p>In order to contact a buyer or seller you must first search for the textbook and select it from the results page.
       At the bottom of the textbook page you can see two lists, "Possible Buyers" and "Possible Sellers". "Possible Buyers" is a list
       of all the people who are currently looking to purchase that textbook. "Possible Sellers" is a list of people who are currently
       selling that textbook. Click on any of the rows in those columns to go to the contact page. On the contact page
       you can find a link to their Facebook profile. Message them there.</p>
-      <a href="#toc">Back to Top</a>
       <h2 id="Wishlisting">Managing Wishlist and Postings</h2>
       <p>You can manage your postings and wishes by clicking on the "Wishlists and Postings" button on the home page. From there
       you can view and delete all your postings and wishes. You can also click on the textbook name to go to it's page.</p>
-      <a href="#toc">Back to Top</a>
       <h2 id="QA">Frequently Asked Questions</h2>
       <p>Below are a number of frequently asked questions and their answers.</p>
       <ul>
@@ -68,7 +56,9 @@
         Make sure to set your settings so that "Anyone" can message you that people are not running into the same problem when messaging you.</li></br>
       </ul>
       <p><a href="{% url 'textchange:fbpolicy' %}">Facebook Privacy Policy</a></p>
-      <p><a href="#toc">Back to Top</a></p>
+      <p><a href="#top">Back to Top</a></p>
     </div>
+  </div>
+</div>
 
       {% endblock %}

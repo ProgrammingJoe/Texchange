@@ -5,21 +5,26 @@
     <div class="results-search-form">
       <form method="POST"> {% csrf_token %}
         {% for field in form4 %}
+          {% if field.name = "school" %}
+           <div class="school_form_wrapper">
+          {% endif %}
           {{ field }}
         {% endfor %}
-      <input id="search" type="submit" value="Search Textbooks" name="Search"></input>
+      <input id="search" type="submit" name="Search"></input>
+    </div>
       </form>
     </div>
 
 <div class="content_outer">
-    <div class="content_container">
-    <div class="results_container">
-      <!-- Default panel contents -->
+    <div class="content_container results_outer_content">
       {% if curuser.is_authenticated %}
         <div class="results_returned"><span>{{numresults}} Results</span></div>
       {% else %}
         <div class="results_returned"><span>{{numresults}} Results</span><p id="noresults">Login required to view textbooks.</p></div>
       {% endif %}
+    <div class="results_container">
+      <!-- Default panel contents -->
+
 
       <!-- Table -->
       <table class="results_table">

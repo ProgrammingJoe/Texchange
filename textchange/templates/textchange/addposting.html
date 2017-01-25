@@ -1,19 +1,31 @@
 {% extends "textchange/base.html" %}
 
     {% block content %}
-      <div class="posting_form content_container">
-        <span>Enter the isbn-13 with no dashes. Ex: 9238239328</span>
+  <div class="content_outer">
+    <div class="content_container">
+      <div class="posting_form">
+        <span>Add a textbook</span>
         <form action="{% url 'textchange:addposting' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+          <table class="add_posting_table">
           {% for field in form %}
-            <span style="color: red;">{{ field.errors }}</span>
-            {{ field.label_tag }}
             {% if field.name = 'comments' %}
+              </table>
+              {{ field.label_tag}}
               </br>
-            {% endif %}
-            {{ field }}
-            </br>
-            {% if field.name != 'image' %}
-              </br>
+              {{ field }}
+            {% else %}
+              <tr>
+                <td class="add_posting_labels">
+                  {{ field.label_tag }}
+                </td>
+                <td class="add_posting_fields">
+                  {{ field }}
+                  <span style="color: red;">{{ field.errors }}</span>
+                  </br>
+                {% if field.name != 'image' %}
+                  </br>
+                {% endif %}
+                </td>
             {% endif %}
           {% endfor %}
           <div class="add_posting_button_container">
@@ -21,5 +33,7 @@
           </div>
         </form>
       </div>
+    </div>
+  </div>
 
       {% endblock %}

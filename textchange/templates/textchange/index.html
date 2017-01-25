@@ -5,10 +5,16 @@
     <div class="index-search-form-container">
       <div class="index-search-form">
       <form method="POST"> {% csrf_token %}
+        <div class="index-search-form-wrapper">
         {% for field in form3 %}
+          {% if field.name = "school" %}
+           <div class="school_form_wrapper">
+          {% endif %}
           {{ field }}
         {% endfor %}
       <input id="search" type="submit" name="Search"></input>
+    </div>
+  </div>
       </form>
       <div class="booktosell"><p>Have a textbook that you want to <a href="{% url 'textchange:addposting' %}">Sell?</a></p></div>
     </div>
