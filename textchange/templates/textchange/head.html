@@ -18,23 +18,32 @@
   <meta name="wot-verification" content="dbc0d3681956a7bd2371"/>
 
   <link href="{% static "textchange/mycss.css" %}" rel="stylesheet">
+  <link href="{% static "textchange/browser.css" %}" media="screen and (min-width: 460px)" rel="stylesheet">
+  <link href="{% static "textchange/phonecss.css" %}" media="screen and (max-width: 460px)" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
   <link rel="shortcut icon" href="{% static "textchange/tabicon.png" %}">
 
   <script>
+  var globalCount = 0;
+
   function getColor() {
-  //   var rand = localStorage.getItem("funColor");
-  //   if(rand) {
-  //     document.getElementsByTagName("BODY")[0].style.background = rand;
-  //   }
-  // }
-  //
-  // function changeColor() {
-  //   colors = ["#DFF6A1", "#91DE91", "#7CBABD"];
-  //   var rand = colors[Math.floor(Math.random() * colors.length)];
-  //   document.getElementsByTagName("BODY")[0].style.background = rand;
-  //   localStorage.setItem("funColor", rand);
+    var oldcolor = localStorage.getItem("funColor");
+    if(oldcolor) {
+      document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + oldcolor[globalCount][0] + ', ' +  oldcolor[globalCount][1] + ')';
+    }
+  }
+
+  function changeColor() {
+    var colors = [["#DFF6A1", "#91DE91"], ['#4EA9F6' , '#3583D0']];
+
+    document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + colors[globalCount][0] + ', ' +  colors[globalCount][1] + ')';
+    if(globalCount === 1) {
+      globalCount = 0;
+    } else {
+      globalCount += 1;
+    }
+    localStorage.setItem("funColor", [colors[globalCount][0], colors[globalCount][0]]);
   }
   </script>
 

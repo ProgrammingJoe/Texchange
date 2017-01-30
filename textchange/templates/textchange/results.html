@@ -20,41 +20,30 @@
       {% if curuser.is_authenticated %}
         <div class="results_returned"><span>{{numresults}} Results</span></div>
       {% else %}
-        <div class="results_returned"><span>{{numresults}} Results</span><p id="noresults">Login required to view textbooks.</p></div>
+        <div class="results_returned"><span>{{numresults}} Results</span><span class="noresults">Login required to view postings</span></div>
       {% endif %}
     <div class="results_container">
       <!-- Default panel contents -->
 
 
       <!-- Table -->
-      <table class="results_table">
+      <div class="results_table">
         {% if curuser.is_authenticated %}
           {% for items in query %}
-          <a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">
-            <div>
-          <tr class="results_row1" >
-            <td class="results_top-left results_column1"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class=""><strong>{{items.textbook|title}}</strong></a></td>
-            <td class="results_top-right results_column2"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class=""><strong>${{items.price}}</strong></br></a></td>
-          </tr>
-          <tr class="results_row2">
-            <td class="results_bottom-left results_column1"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="">{{items.textbook.author|title}}</br></a></td>
-            <td class="results_bottom-right results_column2"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}" class="">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
-          </tr>
-        </div></a>
+            <div class="results_top-left results_column1"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>{{items.textbook|title}}</strong></a></div><!--
+            --><div class="results_top-right results_column2"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>${{items.price}}</strong></br></a></div><!--
+            --><div class="results_bottom-left results_column1"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.author|title}}</br></a></div><!--
+            --><div class="results_bottom-right results_column2"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></div>
           {% endfor %}
         {% else %}
           {% for items in query %}
-          <tr class="results_row1" >
-            <td class="results_top-left results_column1"><a href="#" class=""><strong>{{items.textbook|title}}</strong></a></td>
-            <td class="results_top-right results_column2"><a href="#" class=""><strong>${{items.price}}</strong></br></a></td>
-          </tr>
-          <tr class="results_row2">
-            <td class="results_bottom-left results_column1"><a href="#" class="">{{items.textbook.author|title}}</br></a></td>
-            <td class="results_bottom-right results_column2"><a href="#" class="">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></td>
-          </tr>
+            <span class="results_top-left results_column1"><a href="#" class="grey-text"><strong>{{items.textbook|title}}</strong></a></span>
+            <span class="results_top-right results_column2"><a href="#" class="grey-text"><strong>${{items.price}}</strong></br></a></span>
+            <span class="results_bottom-left results_column1"><a href="#" class="grey-text">{{items.textbook.author|title}}</br></a></span>
+            <span class="results_bottom-right results_column2"><a href="#" class="grey-text">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></span>
           {% endfor %}
         {% endif %}
-      </table>
+      </div>
     </div>
     </div>
   </div>

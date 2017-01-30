@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>mag-glass</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="texchange" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="landing-colour" transform="translate(-828.000000, -351.000000)">
+            <g id="mag-glass" transform="translate(829.000000, 352.000000)">
+                <circle id="Oval" stroke="#7D7D7D" stroke-width="2" cx="7.39404297" cy="7.39404297" r="6.5"></circle>
+                <rect id="Rectangle-9" fill="#7D7D7D" transform="translate(15.000000, 15.000000) rotate(135.000000) translate(-15.000000, -15.000000) " x="14" y="10" width="2" height="10" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

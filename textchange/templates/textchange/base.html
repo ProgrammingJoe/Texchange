@@ -2,7 +2,11 @@
 <html lang="en">
   {% include "textchange/head.html" %}
 
-  <body onload="getColor()">
+  {% if homepage %}
+  <body onload="getColor()" id="landing_page">
+    {% else %}
+  <body>
+  {% endif %}
 
     {% include "textchange/navbar.html" %}
       {% block content %}

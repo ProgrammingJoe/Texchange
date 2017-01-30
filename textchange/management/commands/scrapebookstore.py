@@ -80,10 +80,10 @@ class Command(BaseCommand):
             }
             bookmodels.append(object)
 
-        # for dic in bookmodels:
-        #     ltextbook = Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course']))
-        #     if ltextbook:
-        #         Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course'])).update(semester="FALL2016")
-        #     else:
-        #         new = Textbook(textbook_name=dic['book'], class_name=dic['course'], author=dic['author'], isbn=dic['isbn'], semester="FALL2016")
-        #         new.save()
+        for dic in bookmodels:
+            ltextbook = Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course']))
+            if ltextbook:
+                Textbook.objects.filter(Q(isbn=dic['isbn']) & Q(class_name=dic['course'])).update(semester="SPRING2017")
+            else:
+                new = Textbook(textbook_name=dic['book'], class_name=dic['course'], author=dic['author'], isbn=dic['isbn'], semester="FALL2016")
+                new.save()

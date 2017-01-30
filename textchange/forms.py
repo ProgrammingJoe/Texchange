@@ -5,8 +5,8 @@ from .models import Feedback
 
 # Form used as the input for the search bar
 class Search(forms.Form):
-    search = forms.CharField(required=False, max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Eg. PSYC 100A', 'class': 'input_form'}))
-    school = forms.ChoiceField(choices=[('UVic', 'University of Victoria'), ('UBC', 'University of British Columbia')], widget=forms.Select(attrs={'class': 'input_form_school'}))
+    search = forms.CharField(required=False, max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Search', 'class': 'input_form'}))
+    school = forms.ChoiceField(choices=[('', 'Choose Your School'), ('UVic', 'University of Victoria'), ('UBC', 'University of British Columbia')], widget=forms.Select(attrs={'class': 'input_form_school'}))
 
 
 # Form used to create a posting

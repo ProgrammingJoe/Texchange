@@ -7,11 +7,12 @@
 <div class="content_outer">
   <div class="content_container login_content_container">
       <div class="login_container">
-        <h2>Texchange</h2>
-        <p>We don't like this part either but, this is to connect you with other great people on texchange.</p>
-        <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">google</a>
-        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Facebook</a>
-        <p class="login_emoji">\ (•◡•) /</p>
+        <h2>texchange</h2>
+        <a class="close_login" href="{% url 'textchange:index' %}"></a>
+        <p class="grey-text">We don't like this part either but, this is to connect you with other great people on texchange.</p>
+        <span><a class="facebook_login" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><span class="primary_facebook">Continue with Facebook. </br><span class="secondary_facebook">We won't post without asking, promise.</span></span></a>
+      </span><span><a class="google_login" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}"><span>Continue with Google.</span></a>
+    </span><p class="login_emoji"></p>
       </div>
     </div>
   </div>
