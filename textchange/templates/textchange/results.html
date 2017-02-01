@@ -2,6 +2,7 @@
 
     {% block content %}
 
+  <div class="results-search-form-wrapper">
     <div class="results-search-form">
       <form method="POST"> {% csrf_token %}
         {% for field in form4 %}
@@ -14,6 +15,7 @@
     </div>
       </form>
     </div>
+  </div>
 
 <div class="content_outer">
     <div class="content_container results_outer_content">
@@ -22,7 +24,7 @@
       {% else %}
         <div class="results_returned"><span>{{numresults}} Results</span><span class="noresults">Login required to view postings</span></div>
       {% endif %}
-    <div class="results_container">
+    <div class="results_container standard_container">
       <!-- Default panel contents -->
 
 
@@ -30,17 +32,17 @@
       <div class="results_table">
         {% if curuser.is_authenticated %}
           {% for items in query %}
-            <div class="results_top-left results_column1"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>{{items.textbook|title}}</strong></a></div><!--
-            --><div class="results_top-right results_column2"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>${{items.price}}</strong></br></a></div><!--
-            --><div class="results_bottom-left results_column1"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.author|title}}</br></a></div><!--
-            --><div class="results_bottom-right results_column2"><a class="grey-text" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></div>
+            <div class="results_top-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>{{items.textbook|title}}</strong></a></div><!--
+            --><div class="results_top-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>${{items.price}}</strong></br></a></div><!--
+            --><div class="results_bottom-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.author|title}}</br></a></div><!--
+            --><div class="results_bottom-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></div>
           {% endfor %}
         {% else %}
           {% for items in query %}
-            <span class="results_top-left results_column1"><a href="#" class="grey-text"><strong>{{items.textbook|title}}</strong></a></span>
-            <span class="results_top-right results_column2"><a href="#" class="grey-text"><strong>${{items.price}}</strong></br></a></span>
-            <span class="results_bottom-left results_column1"><a href="#" class="grey-text">{{items.textbook.author|title}}</br></a></span>
-            <span class="results_bottom-right results_column2"><a href="#" class="grey-text">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></span>
+            <span class="results_top-left"><a href="#"><strong>{{items.textbook|title}}</strong></a></span>
+            <span class="results_top-right"><a href="#"><strong>${{items.price}}</strong></br></a></span>
+            <span class="results_bottom-left"><a href="#">{{items.textbook.author|title}}</br></a></span>
+            <span class="results_bottom-right"><a href="#">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></span>
           {% endfor %}
         {% endif %}
       </div>

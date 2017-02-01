@@ -1,0 +1,18 @@
+{% extends "textchange/base.html" %}
+
+    {% block content %}
+  <div class="content_outer">
+    <div class="content_container">
+      <div class="standard_container">
+        <span class="add_a_textbook">Add a textbook</span>
+          <div class="add_posting_button_container">
+            <div class="add_posting_submit">
+            <a class="cancel_button" href="{% url 'textchange:index' %}">Cancel</a>
+            <a type="submit" value="Next" class="add_posting_button"></a>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+      {% endblock %}

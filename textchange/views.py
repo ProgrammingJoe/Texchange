@@ -18,24 +18,28 @@ def index(request):
     homepage = "homepage"
     curuser = request.user
     form3 = Search(request.POST or None)
-    if request.method == 'POST' and form3:
-        print("boop2")
-        if request.POST.get("Search"):
-            print("boop")
-            query = request.POST.get('search')
-            school = request.POST.get('school')
-            keywords = []
-            if query:
-                keywords = query.split()
-                urlstring = "query="
-                for word in keywords:
-                    if word == keywords[0]:
-                        urlstring += word
-                    else:
-                        urlstring += "_" + word
-                return HttpResponseRedirect("/%s" % urlstring)
-            else:
-                print("You're supposed to type something idiot\n")
+    query = request.POST.get('search')
+    school = request.POST.get('school')
+
+    if form3.is_valid() and request.POST:
+        keywords = []
+        if query and school:
+            keywords = query.split()
+            urlstring = "query="
+            for word in keywords:
+                if word == keywords[0]:
+                    urlstring += word
+                else:
+                    urlstring += "_" + word
+            return HttpResponseRedirect("/%s" % urlstring)
+        else:
+            print("You're supposed to type something idiot\n")
+    else:
+        return render_to_response(
+            'textchange/index.html',
+            locals(),
+            context_instance=RequestContext(request)
+            )
 
     return render_to_response(
         'textchange/index.html',
@@ -169,11 +173,9 @@ def addposting(request):
     curuser = request.user
 
     isbn = request.POST.get('isbn')
-    print(isbn)
     school = request.POST.get('school')
-    print(school)
+
     if(isbn and school):
-        print("bloop")
         file_s = Textbook.objects.filter(shortschool=school).values_list('isbn', flat=True)
         if(isbn in file_s and form.is_valid() and request.POST):
             condition = request.POST.get('condition')
@@ -181,13 +183,37 @@ def addposting(request):
             image = request.FILES.get('image')
             comments = request.POST.get('comments')
             isbn = request.POST.get('isbn')
-            return HttpResponseRedirect('/')
+            return render_to_response(
+                'textchange/addpostingconfirm.html',
+                locals(),
+                context_instance=RequestContext(request)
+                )
+        else:
+            if(isbn not in file_s and len(str(isbn)) == 13):
+                notexisting = True
+
+            return render_to_response(
+                'textchange/addposting.html',
+                locals(),
+                context_instance=RequestContext(request)
+                )
             # 9780131873254
     return render_to_response(
         'textchange/addposting.html',
         locals(),
         context_instance=RequestContext(request)
         )
+
+
+@login_required
+def postingconfirm(request):
+
+    return render_to_response(
+        'textchange/addpostingconfirm.html',
+        locals(),
+        context_instance=RequestContext(request)
+        )
+
 
 
 # Used to delete wishes or postings from the wishlisting page

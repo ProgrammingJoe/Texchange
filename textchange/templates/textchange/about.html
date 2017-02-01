@@ -1,28 +1,33 @@
 {% extends "textchange/base.html" %}
 
     {% block content %}
+
     <div class="content_outer">
       <div class="content_container">
-        <div class="about_page">
+        <div class="about_page standard_container">
       <h2>Contact Me!</h2>
       <p>Hello visitor!</p>
-      <p>My name is Joe and I am a 3rd year software engineering student studying at the University of Victoria. Texchange was designed
-        to make exchanging textbooks easier at the University of Victoria. If you have any concerns or recommendations about the application,
-        you would just like to contact the developer, or you have other application ideas that you want developed for students at UVic
-        please feel welcome to send a message with the form below. If you would like to stay anonymous simply enter "texchange@gmail.com" into the e-mail field.
-      </p>
+      <p>If you wish to give feedback on the application or if you wish to contact the developer, Joe Czepil, or the designer, Spencer Marsh
+      please use the form below.</p>
       <div class="feedback" style="margin-left: auto; margin-right: auto; display: block;">
       <form method="post">
       {% csrf_token %}
       {% for field in form %}
-        {{ field.errors }}
+        {% if field.name != 'content' %}
+        <div class="feedback_basic_wrapper">
+        {% endif %}
+        <span class="feedback_label">
         {{ field.label_tag }}
+      </span>
+        {% if field.name = 'content' %}
+        {{ field.errors }}
+        {% endif %}
         {% if field.name = 'content' %}
           </br>
         {% endif %}
         {{ field }}
-        {% if field.name = 'subject' %}
-          </br>
+        {% if field.name != 'content' %}
+      </div>
         {% endif %}
       {% endfor %}
         <div class="form-actions">

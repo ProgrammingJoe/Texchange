@@ -3,7 +3,7 @@
     {% block content %}
   <div class="content_outer">
     <div class="content_container">
-      <div class="posting_form">
+      <div class="standard_container">
         <span class="add_a_textbook">Add a textbook</span>
         <form action="{% url 'textchange:addposting' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
           <div class="add_posting_table">
@@ -21,18 +21,17 @@
                 </div>
                 <div class="add_posting_fields">
                   {{ field }}
+                  {% if field.name = 'isbn' and notexisting %}
+                   <span class="yafuckedup">That textbook does not exist at this school.</span>
+                  {% endif %}
                   <span style="color: red;">{{ field.errors }}</span>
-                  </br>
-                {% if field.name != 'image' %}
-                  </br>
-                {% endif %}
                 </div>
             {% endif %}
           {% endfor %}
           <div class="add_posting_button_container">
             <div class="add_posting_submit">
             <a class="cancel_button" href="{% url 'textchange:index' %}">Cancel</a>
-            <input type="submit" value="Add a Posting" class="add_posting_button"></input>
+            <input type="submit" value="Next" class="add_posting_button"></input>
           </div>
           </div>
         </form>
