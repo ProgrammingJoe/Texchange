@@ -25,13 +25,18 @@
   border: 1px solid #E3E3E3;
   box-shadow: 0px 2px 3px 0px rgba(166, 166, 166, 0.20);
 }
-
-.yafuckedupschool {
-  color: red;
-  font-size: 12px;
+.results_table div:first-child {
+  border-radius: 6px 0 0 0;
 }
-
-
+.results_table div:nth-child(2) {
+  border-radius: 0 6px 0 0;
+}
+.results_table div:last-child {
+  border-radius: 0 0 6px 0;
+}
+.results_table div:nth-last-child(2) {
+  border-radius: 0 0 0 6px;
+}
 .search_wrapper {
   width: 30vw;
   background-color: white;
@@ -96,12 +101,20 @@
   border-left: 1px solid #DBDBDB;
   padding-bottom: 0px;
   background-image: url("mag-glass.svg");
+  font-size: 16px;
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: 10px 11px;
-  text-indent: -90px;
+  text-indent: -100px;
 }
 
+.results_outer_content.content_container {
+  background-color: #FBFBFB;
+  border: none;
+  padding-top: 10px;
+  top: 110px;
+  box-shadow: none;
+}
 
 .results-search-form {
   margin: auto;
@@ -117,9 +130,6 @@
   z-index: 1;
   position: fixed;
   width: 100vw;
-}
-.results_outer_content {
-  top: 108px;
 }
 .results-search-form .input_form {
   border: none;
@@ -164,9 +174,10 @@
   position: relative;
   display: inline-block;
   background-image: url("mag-glass.svg");
+  font-size: 16px;
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: 10px 9px;
   line-height: 0px;
-  text-indent: -90px;
+  text-indent: -100px;
 }

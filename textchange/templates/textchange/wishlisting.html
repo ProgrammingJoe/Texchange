@@ -17,21 +17,22 @@
       <div class="">
         <div class="">
           <h3>Your Postings</h3>
-          <table class="">
-            {% if not listings %}
-              <tr><td><p>You do not currently have any postings.</td></tr>
+          <div class="">
+            {% if not postings %}
+              <div><div><p>You do not currently have any postings.</p></div></div>
             {% endif %}
-            {% for posts in listings %}
+            {% for posts in postings %}
             {% with "query="|add:posts.textbook.isbn as urlstring %}
-            <tr><td class=""><a href="{% url 'textchange:textbook' urlstring=urlstring uisbn=posts.textbook.isbn %}" class="blacklink">{{posts.textbook}}</a></td><td class="width75">${{posts.price}}</td>
+            <div>
+            <div class=""><a href="{% url 'textchange:contactpost' urlstring=urlstring uid=posts.id %}">{{posts.textbook}}</a></div>
             {% endwith %}
-              <td class="">
+              <div class="">
               <form action="{% url 'textchange:removewishlisting' uisbn=posts.textbook.isbn %}" method="post"> {% csrf_token %}
               <input class="" type="submit" name="DeletePosting"  onclick="return confirm('Are you sure you want to delete {{posts}} from your postings?')" value="Delete"></input>
               </form>
-              </td></tr>
+            </div></div>
             {% endfor %}
-          </table>
+          </div>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@
                 </div>
                 <div class="add_posting_fields">
                   {{ field }}
-                  {% if field.name = 'isbn' and notexisting %}
+                  {% if field.name = 'ISBN' and notexisting %}
                    <span class="yafuckedup">That textbook does not exist at this school.</span>
                   {% endif %}
                   <span style="color: red;">{{ field.errors }}</span>

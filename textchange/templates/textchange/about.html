@@ -5,7 +5,7 @@
     <div class="content_outer">
       <div class="content_container">
         <div class="about_page standard_container">
-      <h2>Contact Me!</h2>
+      <p>Contact Me!</p>
       <p>Hello visitor!</p>
       <p>If you wish to give feedback on the application or if you wish to contact the developer, Joe Czepil, or the designer, Spencer Marsh
       please use the form below.</p>
@@ -13,22 +13,13 @@
       <form method="post">
       {% csrf_token %}
       {% for field in form %}
-        {% if field.name != 'content' %}
-        <div class="feedback_basic_wrapper">
-        {% endif %}
-        <span class="feedback_label">
+        <span class="feedback_label_wrap">
         {{ field.label_tag }}
       </span>
-        {% if field.name = 'content' %}
+      </br>
         {{ field.errors }}
-        {% endif %}
-        {% if field.name = 'content' %}
-          </br>
-        {% endif %}
         {{ field }}
-        {% if field.name != 'content' %}
-      </div>
-        {% endif %}
+      </br>
       {% endfor %}
         <div class="form-actions">
           <button type="submit" class="feedback_submit">Send Feedback</button>
@@ -37,6 +28,25 @@
         </div>
       </form>
     </div>
+
+    <div class="contact_profile">
+      <div class="codecruncher">
+      <img class="contactpic" src="../../static/textchange/Sharepic.png">
+        <div class="contactdescription">
+          <p>Joe Czepil</p>
+          <p class="description_text">Code Cruncher</p>
+        </div>
+      </div>
+      <div class="pixelninja">
+      <img class="contactpic" src="../../static/textchange/Sharepic.png">
+        <div class="contactdescription">
+          <p>Spencer Marsh</p>
+          <p class="description_text">Pixel Ninja</p>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
 </div>
       {% endblock %}

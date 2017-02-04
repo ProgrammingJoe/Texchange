@@ -155,7 +155,7 @@ def results(request, urlstring):
 def wishlisting(request):
     # Creates lists of postings and wishes for that user
     curuser = request.user
-    listings = Posting.objects.filter(user=curuser)
+    postings = Posting.objects.filter(user=curuser)
 
     return render_to_response(
         'textchange/wishlisting.html',
@@ -172,7 +172,7 @@ def addposting(request):
     # Get textbook with isbn equal to usibn
     curuser = request.user
 
-    isbn = request.POST.get('isbn')
+    isbn = request.POST.get('ISBN')
     school = request.POST.get('school')
 
     if(isbn and school):
@@ -182,12 +182,21 @@ def addposting(request):
             price = request.POST.get('price')
             image = request.FILES.get('image')
             comments = request.POST.get('comments')
-            isbn = request.POST.get('isbn')
-            return render_to_response(
-                'textchange/addpostingconfirm.html',
-                locals(),
-                context_instance=RequestContext(request)
-                )
+            isbn = request.POST.get('ISBN')
+            text = Textbook.objects.get(isbn=isbn)
+            querystring = "query=" + isbn
+            print(querystring)
+            print(text)
+            if image:
+                if (not (Posting.objects.filter(user=curuser, textbook=text))):
+                    new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
+                    new.save()
+                    return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
+            else:
+                if (not (Posting.objects.filter(user=curuser, textbook=text))):
+                    new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
+                    new.save()
+                    return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
         else:
             if(isbn not in file_s and len(str(isbn)) == 13):
                 notexisting = True
@@ -203,17 +212,6 @@ def addposting(request):
         locals(),
         context_instance=RequestContext(request)
         )
-
-
-@login_required
-def postingconfirm(request):
-
-    return render_to_response(
-        'textchange/addpostingconfirm.html',
-        locals(),
-        context_instance=RequestContext(request)
-        )
-
 
 
 # Used to delete wishes or postings from the wishlisting page
@@ -239,12 +237,15 @@ def contactpost(request, uid, urlstring):
     # Get the textbook and user for the posting selected
     posting = Posting.objects.get(id=uid)
     quser = User.objects.get(id=posting.user_id)
+    curuser = request.user
+
+    if(quser == curuser):
+        bookowner = True
 
     if quser.social_auth.filter(provider='facebook'):
         social = quser.social_auth.get(provider='facebook')
     elif quser.social_auth.filter(provider='google-oauth2'):
         social = quser.social_auth.get(provider='google-oauth2')
-    social = quser.social_auth.get(provider='facebook')
 
     return render_to_response(
         'textchange/contactpost.html',

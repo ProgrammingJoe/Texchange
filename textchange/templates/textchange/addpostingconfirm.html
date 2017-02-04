@@ -7,8 +7,18 @@
         <span class="add_a_textbook">Add a textbook</span>
           <div class="add_posting_button_container">
             <div class="add_posting_submit">
+              {{ isbn }}
+              {{ school }}
+              {{ price }}
+              {{ condition }}
+              {{ thebook }}
+              {{ thebook.author }}
+              {{ thebook.class_name }}
+              {{request.user.first_name}}
+              {{ social.uid }}
+
             <a class="cancel_button" href="{% url 'textchange:index' %}">Cancel</a>
-            <a type="submit" value="Next" class="add_posting_button"></a>
+            <a href="{% url 'textchange:addposting' %}" value="Next" class="add_posting_button"></a>
           </div>
           </div>
       </div>

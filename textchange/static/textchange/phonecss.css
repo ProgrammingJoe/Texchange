@@ -5,7 +5,9 @@
   min-height: calc(100vh - 70px);
   border-radius: 0px;
 }
-
+.results_container.standard_container {
+  width: calc(100vw);
+}
 
 .content_container.login_content_container {
   top: 0px;
@@ -26,7 +28,6 @@
   background-color: white;
   min-height: calc(100vh - 70px);
   border: 1px solid #E3E3E3;
-  box-shadow: 0px 2px 3px 0px rgba(166, 166, 166, 0.20);
 }
 
 
@@ -93,9 +94,10 @@
   padding-bottom: 0px;
   background-image: url("mag-glass.svg");
   background-size: 20px 20px;
+  font-size: 16px;
   background-repeat: no-repeat;
   background-position: 10px 11px;
-  text-indent: -90px;
+  text-indent: -100px;
 }
 
 
@@ -116,6 +118,13 @@
   z-index: 1;
   position: fixed;
   -webkit-backface-visibility: hidden;
+}
+.results_outer_content.content_container {
+  background-color: #FBFBFB;
+  border: none;
+  padding-top: 10px;
+  top: 170px;
+  box-shadow: none;
 }
 .results-search-form .input_form {
   border: none;
@@ -150,11 +159,12 @@
   margin-left: -5px;
   border-left: 1px solid #DBDBDB;
   position: relative;
+  font-size: 16px;
   display: inline-block;
   background-image: url("mag-glass.svg");
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: 10px 9px;
   line-height: 0px;
-  text-indent: -90px;
+  text-indent: -100px;
 }
