@@ -9,6 +9,9 @@
       <p>Hello visitor!</p>
       <p>If you wish to give feedback on the application or if you wish to contact the developer, Joe Czepil, or the designer, Spencer Marsh
       please use the form below.</p>
+      {% if message %}
+        Thanks for the feedback :) The two knobs down below appreciate it
+      {% else %}
       <div class="feedback" style="margin-left: auto; margin-right: auto; display: block;">
       <form method="post">
       {% csrf_token %}
@@ -17,9 +20,8 @@
         {{ field.label_tag }}
       </span>
       </br>
-        {{ field.errors }}
         {{ field }}
-      </br>
+        {{ field.errors }}
       {% endfor %}
         <div class="form-actions">
           <button type="submit" class="feedback_submit">Send Feedback</button>
@@ -28,6 +30,7 @@
         </div>
       </form>
     </div>
+    {% endif %}
 
     <div class="contact_profile">
       <div class="codecruncher">
@@ -35,6 +38,9 @@
         <div class="contactdescription">
           <p>Joe Czepil</p>
           <p class="description_text">Code Cruncher</p>
+          <p><a><img class="contacticon" src="../../static/textchange/Sharepic.png"></a>
+            <a><img class="contacticon" src="../../static/textchange/Sharepic.png"></a>
+            <a><img class="contacticon" src="../../static/textchange/Sharepic.png"></a></p>
         </div>
       </div>
       <div class="pixelninja">
@@ -42,6 +48,9 @@
         <div class="contactdescription">
           <p>Spencer Marsh</p>
           <p class="description_text">Pixel Ninja</p>
+          <p><a><img class="contacticon" src="../../static/textchange/Sharepic.png"></a>
+            <a><img class="contacticon" src="../../static/textchange/Sharepic.png"></a>
+            <a><img class="contacticon" src="../../static/textchange/Sharepic.png"></a></p>
         </div>
       </div>
     </div>

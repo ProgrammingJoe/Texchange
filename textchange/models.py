@@ -9,6 +9,7 @@ class Feedback(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=200)
     content = models.CharField(max_length=1000)
+    name = models.CharField(max_length=200, default="Joe")
     # Default user is Joe because I couldn't figure out how to remove this attribute (Bad practice :()
     user = models.ForeignKey(User, default=20)
 
@@ -50,7 +51,7 @@ class Posting(models.Model):
     condition = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     user = models.ForeignKey(User)
-    image = models.ImageField(upload_to='postingpics/%Y/%m/%d', default="/textchange/nophoto.png")
+    image = models.ImageField(upload_to='postingpics/%Y/%m/%d', default=False)
     post_date = models.DateTimeField('date_posted')
     comments = models.CharField(max_length=50, default="")
 

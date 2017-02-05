@@ -6,14 +6,14 @@ from .models import Feedback
 # Form used as the input for the search bar
 class Search(forms.Form):
     search = forms.CharField(required=True, max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Search', 'class': 'input_form'}))
-    CHOICES = (('', 'All Schools'), ('UVic', 'University of Victoria'), ('UBC', 'University of British Columbia'))
+    CHOICES = (('UVic', 'University of Victoria'), ('-', 'More Schools Soon'))
     school = forms.ChoiceField(required=True, choices=CHOICES, widget=forms.Select(attrs={'class': 'input_form_school'}))
 
 
 # Form used to create a posting
 class PostCreate(forms.Form):
     ISBN = forms.CharField(max_length=13, min_length=13, required=True, widget=forms.TextInput(attrs={'class': 'add_posting_field'}))
-    SCHOOLS = (('', 'School Name'), ('UVic', 'University of Victoria'), ('UBC', 'University of British Columbia'))
+    SCHOOLS = (('UVic', 'University of Victoria'), ('-', 'More Schools Soon'))
     school = forms.ChoiceField(choices=SCHOOLS, widget=forms.Select(attrs={'class': 'add_posting_field'}))
     CHOICES = (('', 'Condition'), ('New', 'New'), ('Like New', 'Like New'), ('Used', 'Used'), ('Usable', 'Usable'))
     price = forms.DecimalField(max_digits=5, decimal_places=2, widget=forms.TextInput(attrs={'class': 'add_posting_field'}), error_messages={'Invalid': 'Price must be of a max of 5 numbers', 'required': 'A price is required to post.'})

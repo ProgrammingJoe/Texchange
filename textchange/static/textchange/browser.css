@@ -2,7 +2,7 @@
   position: relative;
   width: 80vw;
   max-width: 640px;
-  padding: 0px 20px 0px 20px;
+  padding: 0px 35px 0px 35px;
   min-height: calc(100vh - 70px);
 }
 .content_container.login_content_container {
@@ -13,7 +13,7 @@
   position: relative;
   width: 80vw;
   max-width: 640px;
-  padding: 0px 20px 0px 20px;
+  padding: 0px 35px 0px 35px;
 }
 .content_container {
   top: 65px;
@@ -180,4 +180,17 @@
   background-position: 10px 9px;
   line-height: 0px;
   text-indent: -100px;
+}
+
+.codecruncher, .pixelninja {
+  display: inline-block;
+}
+.codecruncher {
+  width: calc(50% - 10px);
+  float: left;
+  margin-left: 10px;
+}
+.pixelninja {
+  width: 50%;
+  float: right;
 }

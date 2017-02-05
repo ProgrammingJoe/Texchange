@@ -63,15 +63,16 @@ def about(request):
     else:
         form = Contact(request.POST)
         if form.is_valid():
+            name = form.cleaned_data['name']
             subject = form.cleaned_data['subject']
             content = form.cleaned_data['content']
             email = form.cleaned_data['email']
             try:
-                new = Feedback(email=email, content=content, subject=subject)
+                new = Feedback(email=email, content=content, subject=subject, name=name)
                 new.save()
                 message = "Message Sent Successfully"
                 return render_to_response(
-                    'textchange/thanks.html',
+                    'textchange/about.html',
                     locals(),
                     context_instance=RequestContext(request)
                     )

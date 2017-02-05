@@ -6,31 +6,30 @@
     <div class="content_container">
       <div class="manage_container standard_container">
       <div class="">
-      <h2>Your Postings and Wishlist</h2>
-      <span>You can manage your postings and wishes here...</span><br />
-        <ol>
-          <li type="">Press the delete button to delete wishes and postings.</li>
-          <li type="">You can click the textbook name to go to it's page.</li>
-        </ol>
+      <h2>Your Postings</h2>
+      <span>Click on the book to view more details.</span><br />
       </div>
 
       <div class="">
         <div class="">
           <h3>Your Postings</h3>
-          <div class="">
+          <div class="wishlisting_table">
             {% if not postings %}
               <div><div><p>You do not currently have any postings.</p></div></div>
             {% endif %}
             {% for posts in postings %}
             {% with "query="|add:posts.textbook.isbn as urlstring %}
             <div>
-            <div class=""><a href="{% url 'textchange:contactpost' urlstring=urlstring uid=posts.id %}">{{posts.textbook}}</a></div>
+              <div class="wishlisting_book">
+                <a href="{% url 'textchange:contactpost' urlstring=urlstring uid=posts.id %}">{{posts.textbook}}</a>
+              </div>
             {% endwith %}
-              <div class="">
+              <div class="wishlisting_delete">
               <form action="{% url 'textchange:removewishlisting' uisbn=posts.textbook.isbn %}" method="post"> {% csrf_token %}
               <input class="" type="submit" name="DeletePosting"  onclick="return confirm('Are you sure you want to delete {{posts}} from your postings?')" value="Delete"></input>
               </form>
-            </div></div>
+              </div>
+            </div>
             {% endfor %}
           </div>
         </div>

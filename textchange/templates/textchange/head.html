@@ -29,21 +29,27 @@
 
   function getColor() {
     var oldcolor = localStorage.getItem("funColor");
+    var oldcolor2 = localStorage.getItem("funColor2");
+
+    console.log(oldcolor)
+    console.log(oldcolor2)
     if(oldcolor) {
-      document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + oldcolor[globalCount][0] + ', ' +  oldcolor[globalCount][1] + ')';
+      document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + oldcolor + ', ' +  oldcolor2 + ')';
     }
   }
 
   function changeColor() {
     var colors = [["#DFF6A1", "#91DE91"], ['#4EA9F6' , '#3583D0']];
 
-    document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + colors[globalCount][0] + ', ' +  colors[globalCount][1] + ')';
     if(globalCount === 1) {
       globalCount = 0;
     } else {
       globalCount += 1;
     }
-    localStorage.setItem("funColor", [colors[globalCount][0], colors[globalCount][0]]);
+    document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + colors[globalCount][0] + ', ' +  colors[globalCount][1] + ')';
+
+    localStorage.setItem("funColor", colors[globalCount][0]);
+    localStorage.setItem("funColor2",  colors[globalCount][1])
   }
   </script>
 

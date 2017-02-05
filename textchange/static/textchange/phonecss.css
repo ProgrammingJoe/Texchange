@@ -168,3 +168,10 @@
   line-height: 0px;
   text-indent: -100px;
 }
+
+
+.codecruncher, .pixelninja {
+  height: 90px;
+  width: 200px;
+  margin: auto;
+}

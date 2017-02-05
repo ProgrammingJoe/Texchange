@@ -5,7 +5,7 @@
     <div class="content_container">
       <div class="standard_container">
       <div class="post_info">
-        <h3>Textbook Info</h3>
+        <p>Textbook Info</p>
           <p><strong>Textbook: </strong>{{ posting.textbook.textbook_name|title }}</p>
           <p><strong>Condition: </strong>{{ posting.condition }}</p>
           <p><strong>Price: </strong>{{ posting.price }}</p>
@@ -13,7 +13,7 @@
           <p><strong>ISBN: </strong>{{posting.textbook.isbn|slice:":3"}}-{{posting.textbook.isbn|slice:"3:4"}}-{{posting.textbook.isbn|slice:"4:7"}}-{{posting.textbook.isbn|slice:"7:12"}}-{{posting.textbook.isbn|slice:"12:13"}}</p>
           <p><strong>Author: </strong>{{ posting.textbook.author|title }}</p>
           <p><strong>Additional Comments: </strong>{{ posting.comments }}</p>
-        <h3>Contact Info</h3>
+        <p>Contact Info</p>
         <p><strong>User: </strong>{{ posting.user.first_name }}</p>
           {% if social.provider == 'google-oauth2' %}
           <p>{{social.uid}}<p>
@@ -23,7 +23,11 @@
       </div>
 
       <div class="post_image">
+        {% if posting.image.url %}
           <img src="{{ posting.image.url }}" id="">
+          {% else %}
+          <p>No image</p>  
+        {% endif %}
       </div>
     </div>
   </div>
