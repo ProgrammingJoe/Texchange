@@ -185,6 +185,14 @@ p {
 .help_page span {
   display: block;
 }
+.help_page .backtotop {
+  float: right;
+  padding-bottom: 25px;
+  color: var(--grey);
+}
+.backtotop:hover {
+  color: var(--darknight);
+}
 .help_page span a {
   color: var(--grey);
   text-decoration: none;

@@ -56,8 +56,10 @@ def navbar(request):
 
 # Renders the about page
 def about(request):
-    # Handles feedback form and checks if the user has sent too much feedback
-    # If the user has already sent more than 3 feedbacks, don't save feedback
+    curuser = request.user
+    print(curuser)
+    if(curuser != 'AnonymousUser'):
+        friendly = True
     if request.method == 'GET':
         form = Contact()
     else:

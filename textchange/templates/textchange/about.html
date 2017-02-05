@@ -6,9 +6,13 @@
       <div class="content_container">
         <div class="about_page standard_container">
       <p>Contact Me!</p>
+      {% if request.user.is_authenticated %}
+      <p>Hello {{curuser.first_name}}!</p>
+      {% else %}
       <p>Hello visitor!</p>
-      <p>If you wish to give feedback on the application or if you wish to contact the developer, Joe Czepil, or the designer, Spencer Marsh
-      please use the form below.</p>
+      {% endif %}
+      <p>If you wish to give feedback on the application or if there is a feature you would like to request, use the form below.
+      If you would like to contact the developer or designer check out their contact information below the form.</p>
       {% if message %}
         Thanks for the feedback :) The two knobs down below appreciate it
       {% else %}
