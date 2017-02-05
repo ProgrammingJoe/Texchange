@@ -8,6 +8,22 @@
 .content_container.login_content_container {
   top: 90px;
 }
+
+.header .leftheader {
+  float: left;
+  padding: 15px 0 0 50px;
+}
+.header .rightheader {
+  float: right;
+  display: inline-block;
+  padding: 17px 50px 0 0;
+}
+.header_invisible .rightheader {
+  float: right;
+  padding: 5% 4% 0 0;
+  display: inline-block;
+}
+
 .login_container {
   height: 400px;
   position: relative;
@@ -101,10 +117,10 @@
   border-left: 1px solid #DBDBDB;
   padding-bottom: 0px;
   background-image: url("mag-glass.svg");
-  font-size: 16px;
+  font-size: 15px;
   background-size: 20px 20px;
   background-repeat: no-repeat;
-  background-position: 10px 11px;
+  background-position: 11px 10px;
   text-indent: -100px;
 }
 
@@ -120,7 +136,7 @@
   margin: auto;
   display: block;
   text-align: center;
-  padding: 0px 0px 6px 0px;
+  padding: 0px 2px 16px 0px;
   vertical-align: middle;
   background-color: white;
   border-bottom: 1px solid #E3E3E3;
@@ -134,40 +150,38 @@
 .results-search-form .input_form {
   border: none;
   background-color: #ffffff;
-  height: 34px;
-  top: 4px;
+  height: 26px;
+  top: 9px;
   color: #7D7D7D;
   position: relative;
   padding-left: 14px;
   width: 45vw;
-  max-width: 400px;
+  max-width: 370px;
   min-width: 207px;
-  font-size: 16px;
   border-left: 1px solid #DBDBDB;
   border-right: 1px solid #DBDBDB;
 }
 .results-search-form .input_form_school {
   background-color: #ffffff;
-  height: 36px;
+  height: 28px;
   margin-left: -5px;
   position: relative;
   border: none;
-  top: 4px;
+  top: 9px;
   width: 30vw;
   padding-left: 16px;
   min-width: 160px;
   max-width: 220px;
-  font-size: 14px;
   border-left: 1px solid #DBDBDB;
   border-right: 1px solid #DBDBDB;
 }
 .results-search-form #search {
   border: none;
   background-color: #ffffff;
-  height: 36px;
+  height: 28px;
   color: #7D7D7D;
   width: 42px;
-  top: 3px;
+  top: 8px;
   border-left: 1px solid #DBDBDB;
   margin-left: -5px;
   border-right: 1px solid #DBDBDB;
@@ -177,9 +191,22 @@
   font-size: 16px;
   background-size: 20px 20px;
   background-repeat: no-repeat;
-  background-position: 10px 9px;
+  background-position: 10px 4px;
   line-height: 0px;
   text-indent: -100px;
+}
+
+.post_info {
+  width: 50%;
+  float: left;
+}
+.post_image {
+  width: 50%;
+  float: right;
+}
+.post_image img {
+  width: 100%;
+  margin-top: 25px;
 }
 
 .codecruncher, .pixelninja {

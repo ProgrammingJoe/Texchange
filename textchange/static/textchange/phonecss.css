@@ -9,6 +9,21 @@
   width: calc(100vw);
 }
 
+.header .leftheader {
+  float: left;
+  padding: 15px 0 0 20px;
+}
+.header .rightheader {
+  float: right;
+  display: inline-block;
+  padding: 19px 20px 0 0;
+}
+.header_invisible .rightheader {
+  float: right;
+  padding: 6% 4% 0 0;
+  display: inline-block;
+}
+
 .content_container.login_content_container {
   top: 0px;
 }
@@ -50,7 +65,6 @@
 }
 .school_form_wrapper {
   display: inline-block;
-  border-top: 1px solid #DBDBDB;
   width: 100%;
   border-radius: 0px 0px 0px 4px;
 }
@@ -73,14 +87,16 @@
   border-radius: 0px 0px 0px 4px;
   background-color: #ffffff;
   height: 42px;
+  margin-left: 1px;
   width: calc(100% - 44px);
+  width: -webkit-calc(100% - 44px);
+  width: -moz-calc(100% - 44px);
   -webkit-appearance: none;
   -webkit-border-radius: 0px 0px 0px 4px;
   color: #7D7D7D;
-  min-width: 148px;
   padding-left: 14px;
-  font-size: 16px;
   border: none;
+  border-top: 1px solid #DBDBDB;
 }
 .index-search-form #search {
   border: none;
@@ -91,13 +107,11 @@
   display: inline-block;
   margin-left: -4px;
   border-left: 1px solid #DBDBDB;
-  padding-bottom: 0px;
   background-image: url("mag-glass.svg");
-  background-size: 20px 20px;
-  font-size: 16px;
   background-repeat: no-repeat;
-  background-position: 10px 11px;
+  background-position: 11px 10px;
   text-indent: -100px;
+  border-top: 1px solid #DBDBDB;
 }
 
 
@@ -129,10 +143,11 @@
 .results-search-form .input_form {
   border: none;
   background-color: #ffffff;
-  height: 40px;
+  height: 44px;
   margin-left: -5px;
+  border-bottom: 1px solid #DBDBDB;
   position: relative;
-  padding-left: 14px;
+  padding: 2px 0px 0px 20px;
   color: #7D7D7D;
   width: 100vw;
   font-size: 16px;
@@ -141,8 +156,9 @@
   position: relative;
   background-color: #ffffff;
   height: 42px;
-  width: calc(100% - 44px);
+  width: calc(100% - 64px);
   -webkit-appearance: none;
+  float: left;
   -webkit-border-radius: 0px 0px 0px 4px;
   color: #7D7D7D;
   min-width: 148px;
@@ -162,13 +178,26 @@
   font-size: 16px;
   display: inline-block;
   background-image: url("mag-glass.svg");
-  background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: 10px 9px;
   line-height: 0px;
   text-indent: -100px;
 }
 
+
+.post_info {
+  width: 100%;
+  display: block;
+}
+.post_image {
+  width: 100%;
+  display: block;
+  min-width: 230px;
+}
+.post_image img {
+  width: 100%;
+  margin-top: 10px;
+}
 
 .codecruncher, .pixelninja {
   height: 90px;

@@ -39,9 +39,13 @@
   }
 
   function changeColor() {
-    var colors = [["#DFF6A1", "#91DE91"], ['#4EA9F6' , '#3583D0']];
+    var colors = [['rgb(255, 96, 115)', 'rgb(234, 56, 77)'],
+    ['rgb(139, 223, 181)', 'rgb(145, 222, 145)'],
+    ['#4EA9F6' , '#3583D0'],
+    ['rgb(255, 162, 102)', 'rgb(234, 107, 107)'],
+    ['rgb(127, 139, 144)', 'rgb(78, 83, 96)']];
 
-    if(globalCount === 1) {
+    if(globalCount === 4) {
       globalCount = 0;
     } else {
       globalCount += 1;

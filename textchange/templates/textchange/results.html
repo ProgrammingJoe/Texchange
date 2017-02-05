@@ -32,15 +32,15 @@
       <div class="results_table">
         {% if curuser.is_authenticated %}
           {% for items in query %}
-            <div class="results_top-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>{{items.textbook|title}}</strong></a></div><!--
-            --><div class="results_top-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><strong>${{items.price}}</strong></br></a></div><!--
+            <div class="results_top-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><span class="semibold">{{items.textbook|title}}</span></a></div><!--
+            --><div class="results_top-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><span class="semibold">${{items.price}}</span></br></a></div><!--
             --><div class="results_bottom-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.author|title}}</br></a></div><!--
             --><div class="results_bottom-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></div>
           {% endfor %}
         {% else %}
           {% for items in query %}
-            <span class="results_top-left"><a href="#"><strong>{{items.textbook|title}}</strong></a></span>
-            <span class="results_top-right"><a href="#"><strong>${{items.price}}</strong></br></a></span>
+            <span class="results_top-left"><a href="#"><span class="semibold">{{items.textbook|title}}</span></a></span>
+            <span class="results_top-right"><a href="#"><span class="semibold">${{items.price}}</span></br></a></span>
             <span class="results_bottom-left"><a href="#">{{items.textbook.author|title}}</br></a></span>
             <span class="results_bottom-right"><a href="#">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></span>
           {% endfor %}

@@ -5,28 +5,30 @@
     <div class="content_container">
       <div class="standard_container">
       <div class="post_info">
-        <p>Textbook Info</p>
-          <p><strong>Textbook: </strong>{{ posting.textbook.textbook_name|title }}</p>
-          <p><strong>Condition: </strong>{{ posting.condition }}</p>
-          <p><strong>Price: </strong>{{ posting.price }}</p>
-          <p><strong>Class: </strong>{{ posting.textbook.class_name }}</p>
-          <p><strong>ISBN: </strong>{{posting.textbook.isbn|slice:":3"}}-{{posting.textbook.isbn|slice:"3:4"}}-{{posting.textbook.isbn|slice:"4:7"}}-{{posting.textbook.isbn|slice:"7:12"}}-{{posting.textbook.isbn|slice:"12:13"}}</p>
-          <p><strong>Author: </strong>{{ posting.textbook.author|title }}</p>
-          <p><strong>Additional Comments: </strong>{{ posting.comments }}</p>
-        <p>Contact Info</p>
-        <p><strong>User: </strong>{{ posting.user.first_name }}</p>
+        <p class="topheader2">Textbook Info</p>
+          <p class="basic-text--space"><span class="semibold">Textbook:</span> {{ posting.textbook.textbook_name|title }}</p>
+          <p class="basic-text--space"><span class="semibold">Author:</span> {{ posting.textbook.author|title }}</p>
+          <p class="basic-text--space"><span class="semibold">Price:</span> {{ posting.price }}</p>
+          <p class="basic-text--space"><span class="semibold">Condition:</span> {{ posting.condition }}</p>
+          {% if posting.comments != '' %}
+          <p class="basic-text--space"><span class="semibold">Additional Comments:</span> {{ posting.comments }}</p>
+          {% endif %}
+          <p class="basic-text--space"><span class="semibold">Class:</span> {{ posting.textbook.class_name }}</p>
+          <p class="basic-text--space"><span class="semibold">ISBN:</span> {{posting.textbook.isbn|slice:":3"}}-{{posting.textbook.isbn|slice:"3:4"}}-{{posting.textbook.isbn|slice:"4:7"}}-{{posting.textbook.isbn|slice:"7:12"}}-{{posting.textbook.isbn|slice:"12:13"}}</p>
+        <p class="header2">Contact Info</p>
+        <p class="basic-text--space"><span class="semibold">User:</span> {{ posting.user.first_name }}</p>
           {% if social.provider == 'google-oauth2' %}
-          <p>{{social.uid}}<p>
+          <p class="basic-text--space">{{social.uid}}<p>
           {% elif social.provider == 'facebook' %}
-          <p><a href="http://facebook.com/{{ social.uid }}">Visit their Facebook and send them a message!</a> </p>
+          <p class="basic-text--space"><a href="http://facebook.com/{{ social.uid }}">Visit their Facebook and send them a message!</a> </p>
           {% endif %}
       </div>
 
       <div class="post_image">
         {% if posting.image.url %}
-          <img src="{{ posting.image.url }}" id="">
+          <img src="../../static/textchange/Sharepic.png" id="">
           {% else %}
-          <p>No image</p>  
+          <p>No image</p>
         {% endif %}
       </div>
     </div>

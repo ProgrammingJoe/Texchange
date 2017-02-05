@@ -4,7 +4,7 @@
   <div class="content_outer">
     <div class="content_container">
       <div class="standard_container">
-        <span class="add_a_textbook">Add a textbook</span>
+        <span class="add_a_textbook header2">Add a textbook</span>
         <form action="{% url 'textchange:addposting' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
           <div class="add_posting_table">
           {% for field in form %}
