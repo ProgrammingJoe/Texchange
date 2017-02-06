@@ -20,11 +20,13 @@
         {{ field.label_tag }}
       </span>
       </br>
+      <div class="feedback_wrapper">
         {{ field }}
         {{ field.errors }}
+      </div>
       {% endfor %}
         <div class="form-actions">
-          <button type="submit" class="feedback_submit">Send Feedback</button>
+          <button type="submit" class="feedback_submit button">Send</button>
             {% if message %}<strong class="green">{{ message }}</strong>{% endif %}
             {% if badmessage %}<strong class="red">{{ badmessage }}</strong>{% endif %}
         </div>

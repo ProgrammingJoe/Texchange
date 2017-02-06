@@ -40,6 +40,7 @@ a:hover {
   --emperor: #2e2e2e;
   --concrete: #E3E3E3;
   --inputborder: #CFCFCF;
+  --successgreen: #55BF71;
   --grey: #7D7D7D;
   --branding: 25px;
   --header: 20px;
@@ -74,6 +75,10 @@ a:hover {
   font-family: 'SourceSansPro-SemiBold';
   font-size: var(--header2);
   color: var(--emperor);
+}
+.button {
+  font-family: 'SourceSansPro-SemiBold';
+  font-size: var(--header3);
 }
 .basic-text {
   font-size: var(--header3);
@@ -148,7 +153,7 @@ a:hover {
   text-align: left;
   padding-bottom: 4px;
   font-size: var(--header2);
-  padding-left: 8px;
+  padding-left: 15px;
 }
 .noresults {
   float: right;
@@ -220,7 +225,7 @@ a:hover {
   height: 15px;
   display: block;
   position: absolute;
-  top: -8px;
+  top: -12px;
   right: 12px;
   background-image: url("lightgreyx.svg");
   background-repeat: no-repeat;
@@ -231,7 +236,7 @@ a:hover {
   height: 15px;
   display: block;
   position: absolute;
-  top: -8px;
+  top: -12px;
   right: 12px;
   background-image: url("greyx.svg");
   background-repeat: no-repeat;
@@ -289,12 +294,16 @@ a:hover {
 }
 .feedback_field {
   border-radius: 4px;
-  height: 22px;
-  padding: 5px;
-  margin-bottom: 15px;
+  height: 30px;
+  padding: 5px 0px 5px 5px;
   border: 1px solid var(--inputborder);
   width: calc(100% - 5px);
   color: var(--emperor);
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.feedback_wrapper {
+  margin-bottom: 15px;
 }
 .feedback_label_wrap label {
   float: left;
@@ -302,7 +311,7 @@ a:hover {
 }
 .feedback_textarea {
   left: 0px;
-  width: 100%;
+  width: calc(100% - 5px);
   border: 1px solid var(--inputborder);
   border-radius: 4px;
   background-color: #ffffff;
@@ -313,16 +322,18 @@ a:hover {
 .feedback_submit {
   float: right;
   height: 30px;
-  margin-top: 8px;
+  color: white;
   border-radius: 4px;
-  background-color: lightgreen;
+  padding: 0px 20px 0px 20px;
+  background-color: var(--successgreen);
   border: none;
+  box-shadow: 0px 1px 3px 0px rgba(166, 166, 166, 0.20);
 }
 .contact_profile {
   width: 100%;
   display: inline-block;
-  margin-top: 35px;
-  margin-bottom: 5px;
+  margin-top: 40px;
+  margin-bottom: 45px;
 }
 .contactpic {
   height: 80px;
@@ -358,15 +369,18 @@ a:hover {
 }
 
 .login_container .login_shit {
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   display: block;
   position: absolute;
-  background-image: url("smiley-global.svg");
+  background-image: url("smile.png");
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 25px 24px;
   bottom: 0px;
   left: calc(50% - 11px);
+}
+.facebook_login:hover {
+  opacity: 0.9;
 }
 .facebook_login {
   background-color: #4267B2;
@@ -391,13 +405,9 @@ a:hover {
   color: white;
   position: relative;
   left: 58px;
-  top: 10px;
+  top: 19px;
   float: left;
   text-align: left;
-}
-.secondary_facebook {
-   font-size: 15px;
-   color: #D2D2D2;
 }
 .login_sorry {
   color: var(--grey);
@@ -407,7 +417,7 @@ a:hover {
   position: relative;
   left: 54px;
   float: left;
-  top: 10px;
+  top: 19px;
 }
 .google_login {
   margin-bottom: 3px;
@@ -443,8 +453,12 @@ a:hover {
   max-width: 400px;
   margin: 0 auto;
 }
+.add_posting_image_field {
+  padding-left: 0px;
+  margin-left: -6px;
+}
 .add_posting_fields {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 .add_posting_labels {
   width: 80px;
@@ -469,13 +483,13 @@ a:hover {
   position: absolute;
   font-family: 'SourceSansPro-SemiBold';
   font-size: var(--header3);
-  padding-left: 20px;
+  padding-left: 35px;
   margin-top: 15px;
 }
 .add_posting_field {
   border-radius: 4px;
   box-sizing: border-box;
-  height: 28px;
+  height: 30px;
   width: calc(100% - 82px);
   background-color: white;
   border: 1px solid var(--inputborder);
@@ -485,12 +499,13 @@ a:hover {
 }
 .add_posting_submit {
   float: right;
+  margin-top: 10px;
   display: inline-block;
 }
 .cancel_button {
   padding-top: 4px;
   padding-bottom: 8px;
-  width: 100px;
+  width: 80px;
   color: var(--emperor);
   display: inline-block;
   text-decoration: none;
@@ -498,13 +513,15 @@ a:hover {
 }
 .add_posting_button {
   margin-left: auto;
-  border: none;
-  height: 34px;
   margin-top: 5px;
   display: inline-block;
-  width: 100px;
-  background-color: green;
-  border-radius: 6px;
+  color: white;
+  border-radius: 4px;
+  height: 30px;
+  padding: 0px 20px 0px 20px;
+  background-color: var(--successgreen);
+  border: none;
+  box-shadow: 0px 1px 3px 0px rgba(166, 166, 166, 0.20);
 }
 .add_posting_button_container {
   text-align: center;
@@ -721,7 +738,10 @@ a:hover {
   border-radius: 4px;
 }
 .header_invisible .dropdown-content {
-  border: none;
+  border: 1px solid white;
+}
+.header_invisible .dropdown-content:hover {
+  border: 1px solid #f1f1f1;
 }
 
 /* Links inside the dropdown */
@@ -733,7 +753,10 @@ a:hover {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  opacity: 1;
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}

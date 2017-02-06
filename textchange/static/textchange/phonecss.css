@@ -26,11 +26,11 @@
 
 .content_container.login_content_container {
   top: 0px;
+  height: calc(100vh - 5px);
 }
 .login_container {
-  min-height: calc(100vh - 40px);
+  height: 350px;
   position: relative;
-  min-width: 355px;
   top: 0;
   padding: 0px 20px 0px 20px;
 }
@@ -107,9 +107,10 @@
   display: inline-block;
   margin-left: -4px;
   border-left: 1px solid #DBDBDB;
+  cursor: pointer;
   background-image: url("mag-glass.svg");
   background-repeat: no-repeat;
-  background-position: 11px 10px;
+  background-position: 10px 10px;
   text-indent: -100px;
   border-top: 1px solid #DBDBDB;
 }
@@ -176,6 +177,7 @@
   border-left: 1px solid #DBDBDB;
   position: relative;
   font-size: 16px;
+  cursor: pointer;
   display: inline-block;
   background-image: url("mag-glass.svg");
   background-repeat: no-repeat;
