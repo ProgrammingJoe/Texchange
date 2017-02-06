@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^posting$', views.addposting, name="addposting"),
     url(r'^(?P<urlstring>(query=(\w)+(_(\w)+)*))/(?P<uid>(\w)+)$', views.contactpost, name="contactpost"),
     url(r'^navbar$', views.navbar, name="navbar"),
-    url(r'^thanks$', views.thanks, name="thanks"),
     url(r'^contact$', views.about, name="about"),
     url(r'^help$', views.help, name="help"),
     url(r'^help/privacypolicy$', views.fbpolicy, name="fbpolicy"),

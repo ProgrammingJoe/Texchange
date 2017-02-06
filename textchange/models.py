@@ -49,7 +49,7 @@ class Textbook(models.Model):
 class Posting(models.Model):
     textbook = models.ForeignKey(Textbook, on_delete=models.CASCADE)
     condition = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
     user = models.ForeignKey(User)
     image = models.ImageField(upload_to='postingpics/%Y/%m/%d', default=False)
     post_date = models.DateTimeField('date_posted')

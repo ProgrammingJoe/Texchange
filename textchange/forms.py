@@ -12,7 +12,7 @@ class Search(forms.Form):
 
 # Form used to create a posting
 class PostCreate(forms.Form):
-    ISBN = forms.CharField(max_length=13, min_length=13, required=True, widget=forms.TextInput(attrs={'class': 'add_posting_field'}))
+    ISBN = forms.CharField(min_length=13, required=True, widget=forms.TextInput(attrs={'class': 'add_posting_field'}))
     SCHOOLS = (('UVic', 'University of Victoria'), ('-', 'More Schools Soon'))
     school = forms.ChoiceField(choices=SCHOOLS, widget=forms.Select(attrs={'class': 'add_posting_field'}))
     CHOICES = (('', 'Condition'), ('New', 'New'), ('Like New', 'Like New'), ('Used', 'Used'), ('Usable', 'Usable'))

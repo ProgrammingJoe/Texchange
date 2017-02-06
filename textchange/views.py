@@ -186,20 +186,19 @@ def addposting(request):
             image = request.FILES.get('image')
             comments = request.POST.get('comments')
             isbn = request.POST.get('ISBN')
-            text = Textbook.objects.get(isbn=isbn)
+            texts = Textbook.objects.filter(isbn=isbn)
             querystring = "query=" + isbn
-            print(querystring)
-            print(text)
-            if image:
-                if (not (Posting.objects.filter(user=curuser, textbook=text))):
-                    new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
-                    new.save()
-                    return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
-            else:
-                if (not (Posting.objects.filter(user=curuser, textbook=text))):
-                    new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
-                    new.save()
-                    return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
+            for text in texts:
+                if image:
+                    if (not (Posting.objects.filter(user=curuser, textbook=text))):
+                        new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
+                        new.save()
+                        return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
+                else:
+                    if (not (Posting.objects.filter(user=curuser, textbook=text))):
+                        new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
+                        new.save()
+                        return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
         else:
             if(isbn not in file_s and len(str(isbn)) == 13):
                 notexisting = True

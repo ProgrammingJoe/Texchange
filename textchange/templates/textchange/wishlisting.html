@@ -9,14 +9,14 @@
 
       <div class="">
         <div class="">
-          <p class="header2">Your Postings</p>
-          <div class="wishlisting_table">
+          <p class="branding">Your Postings</p>
             {% if not postings %}
-              <div><div><p>You do not currently have any postings.</p></div></div>
+            <div><div><p>You do not currently have any postings.</p></div></div>
             {% endif %}
+            <div class="wishlisting_table">
             {% for posts in postings %}
             {% with "query="|add:posts.textbook.isbn as urlstring %}
-            <div>
+            <div class="wishlisting_row">
               <div class="wishlisting_book">
                 <a href="{% url 'textchange:contactpost' urlstring=urlstring uid=posts.id %}">{{posts.textbook}}</a>
               </div>

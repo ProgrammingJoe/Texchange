@@ -18,6 +18,7 @@ label {
   font-family: 'SourceSansPro-SemiBold';
   font-size: var(--header3);
   padding-right: 8px;
+  color: var(--emperor);
 }
 input::-webkit-input-placeholder{
   color:#7D7D7D;
@@ -28,8 +29,12 @@ input:-moz-placeholder {
 p {
   color: var(--emperor);
 }
+a {
+  text-decoration: none;
+}
 :root {
   --emperor: #2e2e2e;
+  --concrete: #E3E3E3;
   --grey: #7D7D7D;
   --branding: 25px;
   --header: 20px;
@@ -201,7 +206,18 @@ p {
   position: absolute;
   top: -8px;
   right: 12px;
-  background-image: url("close-global.svg");
+  background-image: url("lightgreyx.svg");
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+.close_login:hover {
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  background-image: url("greyx.svg");
   background-repeat: no-repeat;
   background-position: top right;
 }
@@ -295,14 +311,14 @@ p {
 .contacticon {
   height: 18px;
   width: 18px;
-  border-radius: 9px;
 }
 .contactdescription {
   padding-left: 90px;
-  padding-top: 15px;
+  padding-top: 0px;
 }
 .contactdescription p {
-  margin: 0px;
+  padding-top: 4px;
+  margin: 0;
 }
 
 .login_container p {
@@ -334,7 +350,6 @@ p {
   color: #ffffff;
   height: 60px;
   max-width: 400px;
-  width: 100%;
   border-radius: 6px;
   position: relative;
   top: 10px;
@@ -377,7 +392,6 @@ p {
   color: #ffffff;
   height: 60px;
   max-width: 400px;
-  width: 100%;
   border-radius: 6px;
   border: 1px solid #E6E6E6;
   position: relative;
@@ -482,6 +496,9 @@ p {
   text-decoration: none;
   color: #fff;
 }
+.booktosell p {
+  color: white;
+}
 
 
 .footer {
@@ -569,26 +586,75 @@ p {
 
 
 
-
+.manage_container .branding {
+  text-align: left;
+}
 .wishlisting_table {
   display: inline-block;
-  border: 1px solid #E3E3E3;
+  width: 100%;
+  border-radius: 5px;
+}
+.wishlisting_table .wishlisting_row {
+  border-width: 1px 1px 0px 1px;
+  border-color: #E3E3E3;
+  border-style: solid;
+  height: 30px;
+}
+.wishlisting_table .wishlisting_row:first-child {
+  border-radius: 6px 6px 0 0;
+}
+.wishlisting_table .wishlisting_row:last-child {
+  border-radius: 0 0 6px 6px;
+  border-bottom: 1px solid #E3E3E3;
+}
+.wishlisting_table .wishlisting_row div:first-child {
+  border-radius: 6px 0 0 0;
+}
+.wishlisting_table .wishlisting_row div:nth-child(2) {
+  border-radius: 0 6px 0 0;
+}
+.wishlisting_table .wishlisting_row div:last-child {
+  border-radius: 0 0 6px 0;
+}
+.wishlisting_table .wishlisting_row div:nth-last-child(2) {
+  border-radius: 0 0 0 6px;
 }
 .wishlisting_book {
   display: inline-block;
-  padding: 5px 25px 5px 5px;
- }
+  padding: 5px 5px 5px 5px;
+  float: left;
+  width: calc(100% - 36px);
+  text-align: left;
+}
+.wishlisting_book a {
+  color: var(--grey);
+}
+.wishlisting_book a:hover {
+  color: var(--emperor);
+}
 .wishlisting_delete {
-  border-left: 1px solid #E3E3E3;
   display: inline-block;
-  padding: 5px;
+  margin-top: 7px;
 }
 .wishlisting_delete input {
-  height: 30px;
-  width: 65px;
-  background-color: red;
+  width: 18px;
+  height: 15px;
+  display: block;
+  background-image: url("lightgreyx.svg");
+  background-repeat: no-repeat;
+  background-color: white;
   border: none;
-  border-radius: 4px;
+  text-indent: -100px;
+}
+.wishlisting_delete input:hover {
+  width: 18px;
+  height: 15px;
+  display: block;
+  background-image: url("redx.svg");
+  background-repeat: no-repeat;
+  background-color: white;
+  border: none;
+  text-indent: -100px;
 }
 
 
@@ -596,6 +662,9 @@ p {
 /* ############ DROPDOWN ################## */
 
 /* Dropdown Button */
+.logout {
+  border-top: 1px solid var(--concrete);
+}
 .dropbtn {
     font-size: 16px;
     cursor: pointer;
@@ -603,9 +672,6 @@ p {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus, .dropbtn:active {
-    background-color: #f1f1f1;
-    border-radius: 6px;
-    padding: 2px;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -618,12 +684,15 @@ p {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    right: 0;
+  display: none;
+  margin-top: 7px;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 1px 6px 0px rgba(166, 166, 166, 0.20);
+  right: 0;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
 }
 
 /* Links inside the dropdown */
