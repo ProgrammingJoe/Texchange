@@ -32,6 +32,10 @@ p {
 a {
   text-decoration: none;
 }
+a:hover {
+  opacity: var(--hoveropacity);
+  transition: var(--hovertransition);
+}
 :root {
   --emperor: #2e2e2e;
   --concrete: #E3E3E3;
@@ -41,6 +45,9 @@ a {
   --header2: 18px;
   --header3: 16px;
   --std-text: 14px;
+  --hoveropacity: 0.7;
+  --transition: 0.2s;
+
 }
 .branding {
   font-size: var(--branding);
@@ -60,6 +67,11 @@ a {
   font-size: var(--header2);
   font-family: 'SourceSansPro-SemiBold';
   margin: 20px 0px 5px 0px;
+  color: var(--emperor);
+}
+.name {
+  font-family: 'SourceSansPro-SemiBold';
+  font-size: var(--header2);
   color: var(--emperor);
 }
 .basic-text {
@@ -82,7 +94,7 @@ a {
 }
 .description_text {
   color: var(--grey);
-  font-size: var(--std-text);
+  font-size: var(--header3);
 }
 .description_text {
   color: var(--grey) !important;
@@ -152,6 +164,9 @@ a {
   width: 100%;
   text-align: left;
   text-decoration: none;
+}
+.results_table a:hover {
+  opacity: 1;
 }
 .results_top-left {
   float: left;
@@ -247,7 +262,8 @@ a {
   font-size: var(--header3);
 }
 .help_page a:hover {
-  color: var(--emperor);
+  color: var(--emperor) !important;
+  opacity: 1;
 }
 .help_page hr {
   margin-top: 20px;
@@ -271,22 +287,26 @@ a {
   font-size: 12px;
 }
 .feedback_field {
-  border-radius: 6px;
+  border-radius: 4px;
   height: 22px;
   padding: 5px;
+  margin-bottom: 15px;
   border: 1px solid #BDBDBD;
   width: calc(100% - 5px);
+  color: var(--emperor);
 }
 .feedback_label_wrap label {
   float: left;
+  margin-bottom: 2px;
 }
 .feedback_textarea {
   left: 0px;
   width: 100%;
   border: 1px solid #BDBDBD;
-  border-radius: 6px;
+  border-radius: 4px;
   background-color: #ffffff;
   height: 60px;
+  color: var(--emperor);
   max-width: 100%;
 }
 .feedback_submit {
@@ -300,7 +320,8 @@ a {
 .contact_profile {
   width: 100%;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 35px;
+  margin-bottom: 5px;
 }
 .contactpic {
   height: 80px;
@@ -311,13 +332,15 @@ a {
 .contacticon {
   height: 18px;
   width: 18px;
+  padding-right: 2px;
+  padding-top: 3px;
 }
 .contactdescription {
   padding-left: 90px;
   padding-top: 0px;
 }
 .contactdescription p {
-  padding-top: 4px;
+  padding-top: 2px;
   margin: 0;
 }
 
@@ -672,6 +695,8 @@ a {
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus, .dropbtn:active {
+  opacity: 0.7;
+  transition: .2s;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -693,6 +718,9 @@ a {
   right: 0;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
+}
+.header_invisible .dropdown-content {
+  border: none;
 }
 
 /* Links inside the dropdown */

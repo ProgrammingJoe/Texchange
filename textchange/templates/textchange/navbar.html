@@ -37,8 +37,8 @@ window.onclick = function(event) {
         <div class="dropdown">
           <span onclick="myFunction()" class="dropbtn">Hi, {{request.user.first_name}}!</span>
           <div id="myDropdown" class="dropdown-content">
-              <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Manage Postings</a>
               <a class="btn btn-lg btn-success option" href="{% url 'textchange:addposting' %}" role="button">Sell a Book</a>
+              <a class="btn btn-lg btn-success option" href="{% url 'textchange:wishlisting' %}" role="button">Manage Postings</a>
               <a class="btn btn-lg btn-success option" href="{% url 'textchange:about' %}" role="button">Contact</a>
               <a class="btn btn-lg btn-success option" href="{% url 'textchange:help' %}" role="button">Help</a>
               <a href="{% url 'textchange:navbar' %}" class="logout">Logout</a>

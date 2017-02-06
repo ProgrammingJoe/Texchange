@@ -1,16 +1,12 @@
 {% extends "textchange/base.html" %}
 
     {% block content %}
+    {% load staticfiles%}
 
     <div class="content_outer">
       <div class="content_container">
         <div class="about_page standard_container">
-      <p class="header2">Contact Us</p>
-      {% if request.user.is_authenticated %}
-      <p>Hello {{curuser.first_name}}!</p>
-      {% else %}
-      <p>Hello visitor!</p>
-      {% endif %}
+      <p class="branding">Contact Us</p>
       <p>If you wish to give feedback on the application or if there is a feature you would like to request, use the form below.
       If you would like to contact the developer or designer check out their contact information below the form.</p>
       {% if message %}
@@ -40,7 +36,7 @@
       <div class="codecruncher">
       <img class="contactpic" src="../../static/textchange/joe.jpg">
         <div class="contactdescription">
-          <p>Joe Czepil</p>
+          <p class="name">Joe Czepil</p>
           <p class="description_text">Code Cruncher</p>
           <p><a target="_blank" href="https://www.linkedin.com/in/joeczepil"><img class="contacticon" src="../../static/textchange/linkedin.svg"></a>
             <a target="_blank" href="https://github.com/ProgrammingJoe"><img class="contacticon" src="../../static/textchange/github.svg"></a>
@@ -50,11 +46,11 @@
       <div class="pixelninja">
       <img class="contactpic" src="../../static/textchange/IMG_0574.png">
         <div class="contactdescription">
-          <p>Spencer Marsh</p>
+          <p class="name">Spencer Marsh</p>
           <p class="description_text">Pixel Ninja</p>
           <p><a target="_blank" href="https://www.linkedin.com/in/spencer-marsh-869b6770"><img class="contacticon" src="../../static/textchange/linkedin.svg"></a>
             <a target="_blank" href="https://dribbble.com/spencermarsh"><img class="contacticon" src="../../static/textchange/dribbble.svg"></a>
-            <a target="_blank" href="https://www.instagram.com/spencermarsh/"><img class="contacticon" src="../../static/textchange/instagram.svg"></a></p>
+            <a target="_blank" href="https://www.instagram.com/spencermarsh/"><img class="contacticon" src="{% static '/textchange/instagram.svg' %}"></a></p>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 .standard_container {
   position: relative;
   width: 80vw;
-  max-width: 640px;
+  max-width: 600px;
   padding: 0px 35px 0px 35px;
   min-height: calc(100vh - 70px);
 }
@@ -28,7 +28,7 @@
   height: 340px;
   position: relative;
   width: 80vw;
-  max-width: 640px;
+  max-width: 600px;
   padding: 0px 35px 0px 35px;
 }
 .content_container {
