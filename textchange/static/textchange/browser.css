@@ -220,6 +220,9 @@
   width: 100%;
   margin-top: 25px;
 }
+.post_image p {
+  margin-top: 78px;
+}
 
 .codecruncher, .pixelninja {
   display: inline-block;

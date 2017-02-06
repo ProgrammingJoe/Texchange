@@ -25,10 +25,10 @@
       </div>
 
       <div class="post_image">
-        {% if posting.image.url %}
+        {% if 'postingpics/2016' not in posting.image.url %}
           <img src="{{ posting.image.url }}" id="">
           {% else %}
-          <p>No image</p>
+          <p>I am afraid the user did not attach an image of the textbook or the image is from a date before 2017.</p>
         {% endif %}
       </div>
     </div>

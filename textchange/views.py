@@ -249,6 +249,8 @@ def contactpost(request, uid, urlstring):
     elif quser.social_auth.filter(provider='google-oauth2'):
         social = quser.social_auth.get(provider='google-oauth2')
 
+    print(posting.image.url)
+
     return render_to_response(
         'textchange/contactpost.html',
         locals(),
