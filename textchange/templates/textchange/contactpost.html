@@ -25,7 +25,7 @@
       </div>
 
       <div class="post_image">
-        {% if 'postingpics/2016' not in posting.image.url %}
+        {% if 'postingpics/2016' not in posting.image.url and posting.image.url %}
           <img src="{{ posting.image.url }}" id="">
           {% else %}
           <p>No Image</p>
