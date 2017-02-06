@@ -39,6 +39,7 @@ a:hover {
 :root {
   --emperor: #2e2e2e;
   --concrete: #E3E3E3;
+  --inputborder: #CFCFCF;
   --grey: #7D7D7D;
   --branding: 25px;
   --header: 20px;
@@ -291,7 +292,7 @@ a:hover {
   height: 22px;
   padding: 5px;
   margin-bottom: 15px;
-  border: 1px solid #BDBDBD;
+  border: 1px solid var(--inputborder);
   width: calc(100% - 5px);
   color: var(--emperor);
 }
@@ -302,7 +303,7 @@ a:hover {
 .feedback_textarea {
   left: 0px;
   width: 100%;
-  border: 1px solid #BDBDBD;
+  border: 1px solid var(--inputborder);
   border-radius: 4px;
   background-color: #ffffff;
   height: 60px;
@@ -460,7 +461,7 @@ a:hover {
   width: 98%;
   max-width: 98%;
   padding: 5px;
-  border: 1px solid #BDBDBD;
+  border: 1px solid var(--inputborder);
   margin-top: 15px;
 }
 .posting_comments label {
@@ -477,7 +478,7 @@ a:hover {
   height: 28px;
   width: calc(100% - 82px);
   background-color: white;
-  border: 1px solid #BDBDBD;
+  border: 1px solid var(--inputborder);
 }
 .add_posting_image_field {
   width: calc(100% - 90px);
