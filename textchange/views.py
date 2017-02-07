@@ -103,16 +103,6 @@ def help(request):
         )
 
 
-# Renders the thank you for creating an account page
-@login_required
-def thanks(request):
-    return render_to_response(
-        'textchange/thanks.html',
-        locals(),
-        context_instance=RequestContext(request)
-        )
-
-
 # Renders the results of a textbook search
 def results(request, urlstring):
     curuser = request.user
@@ -234,7 +224,6 @@ def removewishlisting(request, uisbn):
 
 # Renders the page used to view textbook and contact info
 # for a specific book and user
-@login_required
 def contactpost(request, uid, urlstring):
     # Get the textbook and user for the posting selected
     posting = Posting.objects.get(id=uid)

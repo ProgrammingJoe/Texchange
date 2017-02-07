@@ -17,7 +17,11 @@
 
   </div>
       </form>
+      {% if curuser.is_authenticated %}
       <div class="booktosell"><p>Have a textbook that you want to <a href="{% url 'textchange:addposting' %}">Sell?</a></p></div>
+      {% else %}
+      <div class="booktosell booktosellnope"><p>Have a textbook that you want to <a href="#">Sell?</a></p></div>
+      {% endif %}
     </div>
       </br>
     </div>

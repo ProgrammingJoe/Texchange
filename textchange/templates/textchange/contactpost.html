@@ -17,10 +17,12 @@
           <p class="basic-text--space"><span class="semibold">ISBN:</span> {{posting.textbook.isbn|slice:":3"}}-{{posting.textbook.isbn|slice:"3:4"}}-{{posting.textbook.isbn|slice:"4:7"}}-{{posting.textbook.isbn|slice:"7:12"}}-{{posting.textbook.isbn|slice:"12:13"}}</p>
         <p class="header2">Contact Info</p>
         <p class="basic-text--space"><span class="semibold">User:</span> {{ posting.user.first_name }}</p>
-          {% if social.provider == 'google-oauth2' %}
+          {% if social.provider == 'google-oauth2' and curuser.is_authenticated %}
           <p class="basic-text--space">{{social.uid}}<p>
-          {% elif social.provider == 'facebook' %}
+          {% elif social.provider == 'facebook' and curuser.is_authenticated %}
           <p class="basic-text--space"><a href="http://facebook.com/{{ social.uid }}">Visit their Facebook and send them a message!</a> </p>
+          {% else %}
+          <p class="cantcontact">You must be logged in in order to view the users contact information.</p>
           {% endif %}
       </div>
 

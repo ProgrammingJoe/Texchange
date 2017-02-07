@@ -116,7 +116,7 @@ a:hover {
 }
 
 #landing_page {
-  background: linear-gradient(180deg, #4EA9F6 , #3583D0);
+  background: linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
   -moz-transition: all .2s ease-in;
   -o-transition: all .2s ease-in;
   -webkit-transition: all .2s ease-in;
@@ -541,7 +541,10 @@ a:hover {
   color: white;
 }
 
-
+.cantcontact {
+  color: red;
+  font-family: 'SourceSansPro-SemiBold';
+}
 .footer {
   bottom: 0px;
   height: 12%;
@@ -703,7 +706,7 @@ a:hover {
 /* ############ DROPDOWN ################## */
 
 /* Dropdown Button */
-.logout {
+a.bottomdropdown {
   border-top: 1px solid var(--concrete);
 }
 .dropbtn {
