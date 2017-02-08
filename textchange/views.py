@@ -69,7 +69,7 @@ def about(request):
             try:
                 new = Feedback(email=email, content=content, subject=subject, name=name)
                 new.save()
-                message = "Message Sent Successfully"
+                message = True
                 return render_to_response(
                     'textchange/about.html',
                     locals(),
