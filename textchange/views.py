@@ -33,7 +33,7 @@ def index(request):
                     urlstring += "_" + word
             return HttpResponseRedirect("/%s" % urlstring)
         else:
-            print("You're supposed to type something idiot\n")
+            print("You're supposed to type something\n")
     else:
         return render_to_response(
             'textchange/index.html',
@@ -57,9 +57,6 @@ def navbar(request):
 # Renders the about page
 def about(request):
     curuser = request.user
-    print(curuser)
-    if(curuser != 'AnonymousUser'):
-        friendly = True
     if request.method == 'GET':
         form = Contact()
     else:
@@ -122,7 +119,7 @@ def results(request, urlstring):
                         urlstring += "_" + word
                 return HttpResponseRedirect("/%s" % urlstring)
             else:
-                print("You're supposed to type something idiot\n")
+                print("You're supposed to type something\n")
 
     urlstring = urlstring[6:]
     results = []
@@ -237,8 +234,6 @@ def contactpost(request, uid, urlstring):
         social = quser.social_auth.get(provider='facebook')
     elif quser.social_auth.filter(provider='google-oauth2'):
         social = quser.social_auth.get(provider='google-oauth2')
-
-    print(posting.image.url)
 
     return render_to_response(
         'textchange/contactpost.html',

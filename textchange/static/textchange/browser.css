@@ -56,9 +56,11 @@
 }
 .results_table div:last-child {
   border-radius: 0 0 6px 0;
+  margin-bottom: 35px;
 }
 .results_table div:nth-last-child(2) {
   border-radius: 0 0 0 6px;
+  margin-bottom: 35px;
 }
 .search_wrapper {
   width: 30vw;
@@ -226,14 +228,6 @@
 
 .codecruncher, .pixelninja {
   display: inline-block;
-}
-.codecruncher {
-  width: calc(50% - 20px);
-  float: left;
-  padding-left: 20px;
-}
-.pixelninja {
-  width: calc(50% - 20px);
-  float: right;
-  padding-left: 20px;
+  width: 215px;
+  margin: auto;
 }

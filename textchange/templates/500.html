@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include "textchange/head.html" %}
-  <body>
 
-    <div class="content_container">
-      {% include "textchange/navbar.html" %}
-      <div class="">
-        <p>500 Server Error.</p>
+  <body onload="getColor()">
+
+<div class="content_outer">
+  <div class="content_container login_content_container">
+      <div class="login_container">
+        <p class="branding">500 Server Error. Whoops!</p>
         <p>(╯'□')╯  ┻━┻</p>
-      </br>
-        <p>Sorry about that, click <a href="{% url 'textchange:index' %}">here</a> to go home.</p>
+        <p>Something went wrong!</p>
+        <p>Click <a class="inline" href="{% url 'textchange:index' %}">here</a> to go home.</p>
       </div>
+    </div>
+  </div>
 
-      {% include "textchange/footer.html" %}
 
+    </body>
     </div> <!-- /container -->
 
   </body>
-</html>
+  </html>

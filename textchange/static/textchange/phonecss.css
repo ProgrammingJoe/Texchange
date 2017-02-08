@@ -24,6 +24,13 @@
   display: inline-block;
 }
 
+.results_table div:nth-last-child(1) {
+  margin-bottom: 35px;
+}
+.results_table div:nth-last-child(2) {
+  margin-bottom: 35px;
+}
+
 .content_container.login_content_container {
   top: 0px;
   height: calc(100vh - 5px);
@@ -203,6 +210,9 @@
 
 .codecruncher, .pixelninja {
   height: 90px;
-  width: 200px;
+  width: 205px;
   margin: auto;
+}
+.codecruncher {
+  margin-bottom: 15px;
 }

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   {% include "textchange/head.html" %}
@@ -9,15 +7,15 @@
 <div class="content_outer">
   <div class="content_container login_content_container">
       <div class="login_container">
-        <div class="">
-          <p>404 Page Not Found.</p>
-          <p>(╯'□')╯  ┻━┻</p>
-        </br>
-          <p>Sorry about that, click <a href="{% url 'textchange:index' %}">here</a> to go home.</p>
-        </div>
+        <p class="branding">404 Page Not Found. Whoops!</p>
+        <p>(╯'□')╯  ┻━┻</p>
+        <p>You have either gone to a page that does not exist or you have gone to a page that you can only access while logged in.</p>
+        <p>Click <a class="inline" href="{% url 'textchange:index' %}">here</a> to go home.</p>
       </div>
     </div>
   </div>
+
+
     </body>
     </div> <!-- /container -->
 
