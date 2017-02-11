@@ -119,11 +119,15 @@ a:hover {
 }
 
 #landing_page {
+  will-change: background;
+  background: -webkit-linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
+  background: -o-linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
+  background: -moz-linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
   background: linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
-  -moz-transition: all .2s ease-in;
-  -o-transition: all .2s ease-in;
-  -webkit-transition: all .2s ease-in;
-  transition: all .2s ease-in;
+  -moz-transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
 }
 
 .standard_container.results_container {
@@ -540,14 +544,31 @@ a:hover {
   font-size: 18px;
   padding: 0px 10px 0px 10px;
   color: #fff;
+  height: 36px;
+  width: 205px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, .18);
+  margin: auto;
+  position: relative;
+  top: 15px;
 }
 .booktosell a {
-  font-family: 'SourceSansPro-SemiBold';
+  /*font-family: 'SourceSansPro-SemiBold';*/
   text-decoration: none;
   color: #fff;
 }
 .booktosell p {
   color: white;
+  line-height: 36px;
+}
+.lookingbook {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.booktosell:hover {
+  opacity: 0.7;
+  transition: .2s;
 }
 
 .cantcontact {

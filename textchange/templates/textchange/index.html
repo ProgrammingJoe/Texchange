@@ -4,6 +4,7 @@
 
     <div class="index-search-form-container">
       <div class="index-search-form">
+        <p class="header2 lookingbook">Looking for a textbook?</p>
       <form method="POST"> {% csrf_token %}
         <div class="index-search-form-wrapper">
         {% for field in form3 %}
@@ -18,9 +19,9 @@
   </div>
       </form>
       {% if curuser.is_authenticated %}
-      <div class="booktosell"><p>Have a textbook that you want to <a href="{% url 'textchange:addposting' %}">Sell?</a></p></div>
+      <div class="booktosell"><a href="{% url 'textchange:addposting' %}"><p>Have a textbook that you want to Sell?</p></a></div>
       {% else %}
-      <div class="booktosell booktosellnope"><p>Have a textbook that you want to <a href="#">Sell?</a></p></div>
+      <div class="booktosell booktosellnope"><a href="#"><p>Looking to sell a textbook?</p></a></div>
       {% endif %}
     </div>
       </br>
