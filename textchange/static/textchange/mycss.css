@@ -2,7 +2,6 @@ html, body {
   margin: 0;
   font-family: 'SourceSansPro';
   height: 100%;
-  background-color: #FBFBFB;
   -webkit-font-smoothing: antialiased;
 }
 input, select, textarea {
