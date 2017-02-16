@@ -21,7 +21,7 @@
       {% if curuser.is_authenticated %}
       <div class="booktosell"><a href="{% url 'textchange:addposting' %}"><p>Have a textbook to sell?</p></a></div>
       {% else %}
-      <div class="booktosellnope"><p>In order to sell a book you must be logged in</p></div>
+      <div class="booktosell"><a href="{% url 'textchange:login' %}"><p>Have a textbook to sell?</p></a></div>
       {% endif %}
     </div>
       </br>
