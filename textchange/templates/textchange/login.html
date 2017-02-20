@@ -2,18 +2,21 @@
 <html lang="en">
   {% include "textchange/head.html" %}
 
-  <body onload="getColor()">
+  <body id="all_bodys">
 
 <div class="content_outer">
   <div class="content_container login_content_container">
       <div class="login_container">
         <p class="branding">texchange</p>
         <a class="close_login" href="{% url 'textchange:index' %}"></a>
-        <p class="login_sorry">We don't like this part either but, this is to connect you with other great people on texchange.
-        In order to add textbooks or contact other users you must be logged in.</p>
+        {% if route == '1' %}
+        <p class="login_sorry">We don't like this part either but, this is to connect you with other great people on texchange.</p>
+        {% else %}
+        <p class="login_sorry">Oops! You need an account to sell books, this will connect you with other great people on texchange.</p>
+        {% endif %}
         <span><a class="facebook_login" href="{% url 'social:begin' 'facebook' %}?next=/"><span class="primary_facebook">Continue with Facebook.</span></a>
       </span><span><a class="google_login" href="{% url 'social:begin' 'google-oauth2' %}?next=/"><span>Continue with Google.</span></a>
-    </span><div class="login_shit"></div>
+    </span><div class="login_smile"></div>
       </div>
     </div>
   </div>

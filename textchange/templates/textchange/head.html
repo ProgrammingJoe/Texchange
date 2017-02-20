@@ -8,7 +8,7 @@
   <meta name="author" content="Joe Czepil">
   <meta name="format-detection" content="telephone=no" />
 
-  <title>Texchange - Exchange Textbooks at Universities across British Columbia</title>
+  <title>Texchange - Exchange University Textbooks</title>
 
   {% load staticfiles %}
 
@@ -28,8 +28,6 @@
     var oldcolor = localStorage.getItem("funColor");
     var oldcolor2 = localStorage.getItem("funColor2");
 
-    console.log(oldcolor)
-    console.log(oldcolor2)
     if(oldcolor) {
       document.getElementById("landing_page").style.animation
       document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + oldcolor + ', ' +  oldcolor2 + ')';

@@ -9,6 +9,7 @@
   top: 90px;
   height: calc(100vh - 150px);
   min-height: 400px;
+  max-height: 400px;
   border-radius: 4px;
 }
 
@@ -30,7 +31,7 @@
 .login_container {
   height: 340px;
   position: relative;
-  max-width: 500px;
+  max-width: 400px;
   width: 60vw;
   padding: 0px 35px 0px 35px;
 }
@@ -56,11 +57,9 @@
 }
 .results_table div:last-child {
   border-radius: 0 0 6px 0;
-  margin-bottom: 35px;
 }
 .results_table div:nth-last-child(2) {
   border-radius: 0 0 0 6px;
-  margin-bottom: 35px;
 }
 .search_wrapper {
   width: 30vw;
@@ -230,4 +229,7 @@
   display: inline-block;
   width: 215px;
   margin: auto;
+  margin-bottom: 15px;
+  height: 80px;
+  box-shadow: 0 2px 3px 0 rgba(166, 166, 166, .20);
 }

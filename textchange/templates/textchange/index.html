@@ -13,7 +13,7 @@
           {% endif %}
           {{ field }}
         {% endfor %}
-      <input id="search" type="submit" name="Search"></input>
+      <input id="search" type="submit" name=""></input>
     </div>
 
   </div>
@@ -21,7 +21,7 @@
       {% if curuser.is_authenticated %}
       <div class="booktosell"><a href="{% url 'textchange:addposting' %}"><p>Have a textbook to sell?</p></a></div>
       {% else %}
-      <div class="booktosell"><a href="{% url 'textchange:login' %}"><p>Have a textbook to sell?</p></a></div>
+      <div class="booktosell"><a href="{% url 'textchange:login' route=2 %}"><p>Have a textbook to sell?</p></a></div>
       {% endif %}
     </div>
       </br>

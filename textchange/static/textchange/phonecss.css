@@ -209,10 +209,9 @@
 }
 
 .codecruncher, .pixelninja {
-  height: 90px;
+  height: 80px;
   width: 205px;
   margin: auto;
-}
-.codecruncher {
   margin-bottom: 15px;
+  box-shadow: 0 2px 3px 0 rgba(166, 166, 166, .20);
 }

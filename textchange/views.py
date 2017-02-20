@@ -243,7 +243,7 @@ def contactpost(request, uid, urlstring):
 
 
 # Render login page
-def login(request):
+def login(request, route):
     return render_to_response(
         'textchange/login.html',
         locals(),

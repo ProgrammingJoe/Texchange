@@ -48,7 +48,7 @@ window.onclick = function(event) {
       </div>
     {% else %}
       <div class="rightheader">
-        <a class="floatright" href="{% url 'textchange:login' %}">Login / Sign Up</a>
+        <a class="floatright" href="{% url 'textchange:login' route=1 %}">Login / Sign Up</a>
       </div>
     {% endif %}
 </div>
