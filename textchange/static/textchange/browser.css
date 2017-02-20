@@ -231,5 +231,8 @@
   margin: auto;
   margin-bottom: 15px;
   height: 80px;
+}
+
+.codecruncher img, .pixelninja img {
   box-shadow: 0 2px 3px 0 rgba(166, 166, 166, .20);
 }
