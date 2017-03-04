@@ -1,3 +1,4 @@
+appdirs==1.4.2
 awscli==1.10.39
 beautifulsoup4==4.4.0
 boto==2.38.0
@@ -26,12 +27,16 @@ Markdown==2.6.6
 mccabe==0.3.1
 oauth2==1.5.211
 oauthlib==1.0.3
+olefile==0.44
+packaging==16.8
 pep8==1.5.7
 Pillow==3.0.0
+pkg-resources==0.0.0
 psycopg2==2.6.1
 pyasn1==0.1.9
 pyflakes==1.0.0
 PyJWT==1.4.0
+pyparsing==2.1.10
 python-dateutil==2.5.3
 python-oauth2==1.0.0
 python-openid==2.2.5
@@ -40,6 +45,7 @@ requests==2.8.1
 requests-oauthlib==0.5.0
 rsa==3.4.2
 s3transfer==0.0.1
+selenium==3.0.2
 six==1.10.0
 static3==0.6.1
 uWSGI==2.0.11.2
