@@ -4,6 +4,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.db.models import Q
+import re
 from smtplib import SMTPException
 
 from .models import Textbook, Posting, User, Feedback
@@ -166,22 +167,27 @@ def addposting(request):
     school = request.POST.get('school')
 
     if(isbn and school):
+        isbn = re.sub("\D", "", isbn)
+        print(isbn)
         file_s = Textbook.objects.filter(shortschool=school).values_list('isbn', flat=True)
         if(isbn in file_s and form.is_valid() and request.POST):
+            print("bloop")
             condition = request.POST.get('condition')
             price = request.POST.get('price')
             image = request.FILES.get('image')
             comments = request.POST.get('comments')
-            isbn = request.POST.get('ISBN')
             texts = Textbook.objects.filter(isbn=isbn)
             querystring = "query=" + isbn
+            print(texts)
             for text in texts:
                 if image:
+                    print("bloooop2")
                     if (not (Posting.objects.filter(user=curuser, textbook=text))):
                         new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
                         new.save()
                         return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
                 else:
+                    print("bloooop")
                     if (not (Posting.objects.filter(user=curuser, textbook=text))):
                         new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
                         new.save()

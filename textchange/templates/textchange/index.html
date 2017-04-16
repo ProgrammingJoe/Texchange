@@ -8,20 +8,15 @@
       <form method="POST"> {% csrf_token %}
         <div class="index-search-form-wrapper">
         {% for field in form3 %}
-          {% if field.name = "school" %}
-           <div class="school_form_wrapper">
-          {% endif %}
           {{ field }}
         {% endfor %}
-      <input id="search" type="submit" name=""></input>
-    </div>
-
-  </div>
+        <input id="search" type="submit" name=""></input>
+        </div>
       </form>
       {% if curuser.is_authenticated %}
-      <div class="booktosell"><a href="{% url 'textchange:addposting' %}"><p>Have a textbook to sell?</p></a></div>
+      <div class="booktosell"><a href="{% url 'textchange:addposting' %}"><p>Have a textbook to <span class="semibold">sell?</span></p></a></div>
       {% else %}
-      <div class="booktosell"><a href="{% url 'textchange:login' route=2 %}"><p>Have a textbook to sell?</p></a></div>
+      <div class="booktosell"><a href="{% url 'textchange:login' route=2 %}"><p>Have a textbook to <span class="semibold">sell?</span></p></a></div>
       {% endif %}
     </div>
       </br>

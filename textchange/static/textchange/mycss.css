@@ -35,6 +35,10 @@ a:hover {
   opacity: var(--hoveropacity);
   transition: var(--hovertransition);
 }
+button:hover {
+  opacity: var(--hoveropacity);
+  transition: var(--hovertransition);
+}
 :root {
   --emperor: #2e2e2e;
   --concrete: #E3E3E3;
@@ -568,7 +572,7 @@ a:hover {
 }
 .lookingbook {
   color: white;
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 24px;
 }
 .booktosell:hover {
@@ -621,6 +625,7 @@ a:hover {
   display: inline;
   text-decoration: none;
   cursor: pointer;
+  white-space: pre;
   color: #fff;
 }
 .header {
@@ -649,12 +654,10 @@ a:hover {
 .header_invisible span, .header_invisible a, .header_invisible p {
   color: white;
 }
-.header a, span {
-  color: var(--emperor);
-}
 .header_in {
   text-decoration: none;
   font-size: 25px;
+  color: var(--emperor);
   font-family: 'SourceSansPro-SemiBold';
 }
 

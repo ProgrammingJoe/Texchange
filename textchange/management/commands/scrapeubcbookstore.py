@@ -15,7 +15,8 @@ class Command(BaseCommand):
         assert "UBC Bookstore" in driver.title
 
         # wait = WebDriverWait(driver, 10)
-        schoolbox = Select(WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.ID, "clCampusSelectBox"))))
+        # By.xpath("(//div[@id='brandSlider']/div[1]
+        schoolbox = Select(WebDriverWait(driver, 100).until(EC.element_to_be_clickable((By.xpath("(//select[@id='clCampusSelectBox']/option[0])")))))
         schools = schoolbox.options
         for index in range(0, len(schools) - 1):
             schoolbox.select_by_index(index)
