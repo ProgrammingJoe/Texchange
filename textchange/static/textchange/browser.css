@@ -161,7 +161,7 @@
   color: #7D7D7D;
   position: relative;
   padding-left: 14px;
-  width: 45vw;
+  width: 44vw;
   max-width: 370px;
   min-width: 207px;
   border-left: 1px solid #DBDBDB;
@@ -174,7 +174,7 @@
   position: relative;
   border: none;
   top: 9px;
-  width: 30vw;
+  width: 42vw;
   padding-left: 14px;
   min-width: 160px;
   max-width: 220px;
@@ -190,9 +190,9 @@
   background-color: #ffffff;
   height: 28px;
   color: #7D7D7D;
-  width: 42px;
+  width: 44px;
   top: 8px;
-  margin-left: -5px;
+  margin-left: -45px;
   border-right: 1px solid #DBDBDB;
   position: relative;
   cursor: pointer;

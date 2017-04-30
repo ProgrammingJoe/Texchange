@@ -90,7 +90,7 @@
   background-color: #ffffff;
   height: 42px;
   width: calc(100% - 4px);
-  width: -webkit-calc(100% - 4px);
+  width: -webkit-calc(100% - 5px);
   width: -moz-calc(100% - 4px);
   -webkit-appearance: none;
   -webkit-border-radius: 0px 0px 0px 4px;
@@ -106,7 +106,7 @@
   height: 42px;
   width: 43px;
   display: inline-block;
-  margin-left: -45px;
+  margin-left: -43px;
   border-left: 1px solid #DBDBDB;
   cursor: pointer;
   background-image: url("mag-glass.svg");
@@ -174,7 +174,7 @@
   height: 40px;
   width: 42px;
   top: 3px;
-  margin-left: -5px;
+  margin-left: -40px;
   border-left: 1px solid #DBDBDB;
   position: relative;
   font-size: 16px;

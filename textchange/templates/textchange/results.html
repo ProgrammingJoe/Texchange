@@ -6,13 +6,9 @@
     <div class="results-search-form">
       <form method="POST"> {% csrf_token %}
         {% for field in form4 %}
-          {% if field.name = "school" %}
-           <div class="school_form_wrapper">
-          {% endif %}
           {{ field }}
         {% endfor %}
-      <input id="search" type="submit" name="Search"></input>
-    </div>
+        <input id="search" type="submit" name="Search"></input>
       </form>
     </div>
   </div>
@@ -27,10 +23,10 @@
       <!-- Table -->
       <div class="results_table">
           {% for items in query %}
-            <div class="results_top-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><span class="semibold">{{items.textbook|title}}</span></a></div><!--
-            --><div class="results_top-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><span class="semibold">${{items.price}}</span></br></a></div><!--
-            --><div class="results_bottom-left"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.author|title}}</br></a></div><!--
-            --><div class="results_bottom-right"><a href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></div>
+            <div class="results_top-left"><a class="results_row" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><span class="semibold">{{items.textbook|title}}</span></a></div><!--
+            --><div class="results_top-right"><a class="results_row" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}"><span class="semibold">${{items.price}}</span></br></a></div><!--
+            --><div class="results_bottom-left"><a class="results_row" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.author|title}}</br></a></div><!--
+            --><div class="results_bottom-right"><a class="results_row" href="{% url 'textchange:contactpost' uid=items.id urlstring=urlstring %}">{{items.textbook.isbn|slice:":3"}}-{{items.textbook.isbn|slice:"3:4"}}-{{items.textbook.isbn|slice:"4:7"}}-{{items.textbook.isbn|slice:"7:12"}}-{{items.textbook.isbn|slice:"12:13"}}</br></a></div>
           {% endfor %}
       </div>
     </div>

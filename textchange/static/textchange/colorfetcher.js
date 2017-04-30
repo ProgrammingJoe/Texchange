@@ -25,7 +25,7 @@ function changeColor() {
   } else {
     globalCount += 1;
   }
-  document.getElementById("landing_page").style.background = 'linear-gradient(180deg,' + colors[globalCount][0] + ', ' +  colors[globalCount][1] + ')';
+  document.getElementById("landing_page")..background = 'linear-gradient(180deg,' + colors[globalCount][0] + ', ' +  colors[globalCount][1] + ')';
 
   localStorage.setItem("funColor", colors[globalCount][0]);
   localStorage.setItem("funColor2",  colors[globalCount][1])

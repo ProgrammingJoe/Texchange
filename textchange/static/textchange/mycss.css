@@ -125,15 +125,14 @@ button:hover {
 }
 
 #landing_page {
-  will-change: background;
   background: -webkit-linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
   background: -o-linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
   background: -moz-linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
   background: linear-gradient(180deg, 'rgb(255, 162, 102)', 'rgb(234, 107, 107)');
-  -moz-transition: all .3s ease-in;
-  -o-transition: all .3s ease-in;
-  -webkit-transition: all .3s ease-in;
-  transition: all .3s ease-in;
+  -webkit-transition: all 1s ease-in;
+  -moz-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  transition: all 1s ease-in;
 }
 
 .standard_container.results_container {
@@ -197,29 +196,31 @@ button:hover {
 .results_table a:hover {
   opacity: 1;
 }
+.results_row {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .results_top-left {
   float: left;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: calc(100% - 70px);
+  width: calc(100% - 86px);
+  padding-left: 16px;
   border-top: 1px solid #E3E3E3;
   border-left: 1px solid #E3E3E3;
 }
 .results_top-left a {
-  padding: 10px 0px 2px 16px;
+  padding: 10px 0px 2px 0px;
   color: var(--emperor);
 }
 .results_bottom-left {
   float: left;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: calc(100% - 142px);
+  padding-left: 16px;
+  width: calc(100% - 158px);
   border-left: 1px solid #E3E3E3;
 }
 .results_bottom-left a {
-  padding: 2px 0px 10px 16px;
+  padding: 2px 0px 10px 0px;
 }
 .results_top-right {
   float: right;
