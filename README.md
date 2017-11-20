@@ -14,14 +14,14 @@ I'm not actively working on this project anymore but everyone is free to make co
 
 ## How to get started?
 
-#### Tips
-* Put these settings in a file called secret_settings.py in the exchange folder
-* You will need to create a [Facebook app](https://developers.facebook.com/) and API key to get login working
-* You can also setup a [Google app](https://console.developers.google.com) with an API key to get Google login working.
-* You can use [ngrok](https://ngrok.com/) to get the login working as it will not work using 127.0.0.1/port as the target address in the Facebook app settings or the Google app settings.
-* Don't forget to update `Pathtoprojectfolder` in MEDIA_ROOT and STATIC_URL
+* Create and activate a virtual environment
+  * `$ pip install virtualenv`
+  * `$ python -m virtualenv venv` or whatever name you want instead of venv.
+  * `$ source venv/bin/activate`
+* Install python dependencies
+  * `$ pip install -r requirements.txt`
 
-#### Settings.py
+* Put these settings in a file called secret_settings.py in the exchange folder
 
 ```python
 import os
@@ -51,6 +51,12 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = 'pathtoprojectfolder/Texchange/textchange/static/'
 STATIC_URL = '/static/'
 ```
+
+#### Tips
+* You will need to create a [Facebook app](https://developers.facebook.com/) and API key to get login working
+* You can also setup a [Google app](https://console.developers.google.com) with an API key to get Google login working.
+* You can use [ngrok](https://ngrok.com/) to get the login working as it will not work using 127.0.0.1/port as the target address in the Facebook app settings or the Google app settings.
+* Don't forget to update `Pathtoprojectfolder` in MEDIA_ROOT and STATIC_URL
 
 ## Where do I go for help?
 
