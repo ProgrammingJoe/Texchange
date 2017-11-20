@@ -168,26 +168,21 @@ def addposting(request):
 
     if(isbn and school):
         isbn = re.sub("\D", "", isbn)
-        print(isbn)
         file_s = Textbook.objects.filter(shortschool=school).values_list('isbn', flat=True)
         if(isbn in file_s and form.is_valid() and request.POST):
-            print("bloop")
             condition = request.POST.get('condition')
             price = request.POST.get('price')
             image = request.FILES.get('image')
             comments = request.POST.get('comments')
             texts = Textbook.objects.filter(isbn=isbn)
             querystring = "query=" + isbn
-            print(texts)
             for text in texts:
                 if image:
-                    print("bloooop2")
                     if (not (Posting.objects.filter(user=curuser, textbook=text))):
                         new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, image=image, comments=comments)
                         new.save()
                         return HttpResponseRedirect('/' + querystring + '/' + str(new.id))
                 else:
-                    print("bloooop")
                     if (not (Posting.objects.filter(user=curuser, textbook=text))):
                         new = Posting(textbook=text, user=curuser, post_date=datetime.now(), condition=condition, price=price, comments=comments)
                         new.save()

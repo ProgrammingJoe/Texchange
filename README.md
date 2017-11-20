@@ -4,7 +4,16 @@ A web application designed to make textbook exchange at universities easier.
 
 The application can be found at: http://www.texchange.ca/
 
-# Additional Settings Required to Run Locally
+## What is Texchange?
+
+Texchange is a web platform that I began working on a couple years ago because I was tired of watching people pay ridiculous amounts of money for textbooks. I knew of multiple UVic Facebook groups that allowed UVic students to post textbooks for sale but postings often got lost as everything was sorted chronologically. This was my first big side project so please excuse any bad code practices that I haven't managed to find the time to fix :).
+
+## How can I contribute?
+
+I'm not actively working on this project anymore but everyone is free to make contributions :). If you want to clean up the code, add new features, or add new school scraping scripts please make a pull request so myself or others can review your changes.
+
+## How to get started?
+
 #### Tips
 * Put these settings in a file called secret_settings.py in the exchange folder
 * You will need to create a [Facebook app](https://developers.facebook.com/) and API key to get login working
@@ -42,3 +51,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = 'pathtoprojectfolder/Texchange/textchange/static/'
 STATIC_URL = '/static/'
 ```
+
+## Where do I go for help?
+
+I have no official documentation for this app but if you need help with anything feel free to tweet at me or send me a message on [Twitter](https://twitter.com/BanJoe_Kazooie).
