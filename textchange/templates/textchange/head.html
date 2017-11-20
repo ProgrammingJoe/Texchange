@@ -2,7 +2,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="Texchange organizes textbooks required for courses offered in University courses.
   It allows users to search for desired textbooks and contact their fellow peers to trade.">
   <meta name="author" content="Joe Czepil">
@@ -14,12 +13,12 @@
 
   <meta name="wot-verification" content="dbc0d3681956a7bd2371"/>
 
-  <link href="{% static "textchange/mycss.css" %}" rel="stylesheet">
-  <link href="{% static "textchange/browser.css" %}" media="screen and (min-width: 461px)" rel="stylesheet">
-  <link href="{% static "textchange/phonecss.css" %}" media="screen and (max-width: 460px)" rel="stylesheet">
+  <link href="{% static "textchange/css/main.css" %}" rel="stylesheet">
+  <link href="{% static "textchange/css/highres.css" %}" media="screen and (min-width: 461px)" rel="stylesheet">
+  <link href="{% static "textchange/css/mobile.css" %}" media="screen and (max-width: 460px)" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-  <link rel="shortcut icon" href="{% static "textchange/texchange.ico" %}">
+  <link rel="shortcut icon" href="{% static "textchange/imgs/texchange.ico" %}">
 
   <script>
   var globalCount = 0;
@@ -60,5 +59,5 @@
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="Texchange" />
   <meta property="og:description"   content="Making exchanging textbooks at university easy!" />
-  <meta property="og:image"         content="{% static '/textchange/landing-orange.png' %}" />
+  <meta property="og:image"         content="{% static '/textchange/imgs/landing-orange.png' %}" />
 </head>

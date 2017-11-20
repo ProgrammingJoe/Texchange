@@ -10,7 +10,6 @@ class Feedback(models.Model):
     subject = models.CharField(max_length=200)
     content = models.CharField(max_length=1000)
     name = models.CharField(max_length=200, default="Joe")
-    # Default user is Joe because I couldn't figure out how to remove this attribute (Bad practice :()
     user = models.ForeignKey(User, default=20)
 
 

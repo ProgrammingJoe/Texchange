@@ -121,7 +121,7 @@
   display: inline-block;
   border-left: 1px solid #DBDBDB;
   padding-bottom: 0px;
-  background-image: url("mag-glass.svg");
+  background-image: url("../imgs/mag-glass.svg");
   font-size: 15px;
   background-size: 20px 20px;
   background-repeat: no-repeat;
@@ -197,7 +197,7 @@
   position: relative;
   cursor: pointer;
   display: inline-block;
-  background-image: url("mag-glass.svg");
+  background-image: url("../imgs/mag-glass.svg");
   font-size: 16px;
   background-size: 20px 20px;
   background-repeat: no-repeat;
